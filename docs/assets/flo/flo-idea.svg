@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-label="Flo the flask mascot, with a bright idea">
+  <g stroke="#2b2a28" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M23 100 Q10 106 12 118" fill="none"/><path d="M93 92 Q106 76 100 50" fill="none"/>
+    <path d="M48 12 H72 V44 L104 116 Q108 128 96 128 H24 Q12 128 16 116 L48 44 Z" fill="#fffaf0" stroke="none"/>
+    <path d="M28.4 88 Q44 82 60 88 T91.6 88 L104 116 Q108 128 96 128 H24 Q12 128 16 116 Z" fill="#7fbf9a" stroke="none"/>
+    <path d="M28.4 88 Q44 82 60 88 T91.6 88" fill="none" stroke-width="3"/>
+    <circle cx="48" cy="108" r="3.5" fill="#fffaf0" stroke="none" opacity=".85"/>
+    <circle cx="70" cy="115" r="2.5" fill="#fffaf0" stroke="none" opacity=".85"/>
+    <circle cx="62" cy="100" r="3" fill="#fffaf0" stroke="none" opacity=".85"/>
+    <path d="M48 12 H72 V44 L104 116 Q108 128 96 128 H24 Q12 128 16 116 L48 44 Z" fill="none"/>
+    <rect x="43" y="5" width="34" height="9" rx="3" fill="#fffaf0"/>
+    <line x1="40" y1="62" x2="80" y2="62" stroke="#e0603f" stroke-width="3"/>
+    <circle cx="50" cy="62" r="8.5" fill="#dff1f7" stroke-width="3"/>
+    <circle cx="70" cy="62" r="8.5" fill="#dff1f7" stroke-width="3"/>
+    <circle cx="51" cy="61" r="3.5" fill="#2b2a28" stroke="none"/><circle cx="71" cy="61" r="3.5" fill="#2b2a28" stroke="none"/><circle cx="52" cy="60" r="1.2" fill="#fff" stroke="none"/><circle cx="72" cy="60" r="1.2" fill="#fff" stroke="none"/>
+    <circle cx="43" cy="75" r="3.5" fill="#e0603f" stroke="none" opacity=".55"/>
+    <circle cx="77" cy="75" r="3.5" fill="#e0603f" stroke="none" opacity=".55"/>
+    <path d="M51 75 Q60 88 69 75 Z" fill="#fff" stroke-width="3"/>
+    <circle cx="100" cy="26" r="11" fill="#e9b949" stroke-width="3"/><rect x="95" y="37" width="10" height="7" rx="2" fill="#fffaf0" stroke-width="3"/><path d="M100 6 V2 M84 14 L81 11 M116 14 L119 11" stroke="#e9b949" stroke-width="3"/>
+  </g>
+</svg>

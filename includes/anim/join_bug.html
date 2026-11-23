@@ -1,0 +1,43 @@
+<figure class="nf-anim nf-anim--join">
+<svg viewBox="0 0 700 300" role="img" aria-labelledby="joinTitle">
+<title id="joinTitle">Animation: join walks down two files sorted with different rules. It matches ACTB and BRCA1, then compares egfr with Gapdh, skips egfr, matches the rest, and finishes with 5 of 6 genes and no error.</title>
+<text class="nfa-label" x="130" y="30" text-anchor="middle">your table</text>
+<text class="nfa-small" x="130" y="46" text-anchor="middle">sorted on your Mac (en_US rules)</text>
+<text class="nfa-label" x="570" y="30" text-anchor="middle">annotation</text>
+<text class="nfa-small" x="570" y="46" text-anchor="middle">sorted on the cluster (C rules)</text>
+<g class="join-list">
+<rect x="70" y="60" width="120" height="22" rx="6"/><text x="130" y="76" text-anchor="middle">ACTB</text>
+<rect x="70" y="90" width="120" height="22" rx="6"/><text x="130" y="106" text-anchor="middle">BRCA1</text>
+<rect x="70" y="120" width="120" height="22" rx="6"/><text x="130" y="136" text-anchor="middle">egfr</text>
+<rect x="70" y="150" width="120" height="22" rx="6"/><text x="130" y="166" text-anchor="middle">Gapdh</text>
+<rect x="70" y="180" width="120" height="22" rx="6"/><text x="130" y="196" text-anchor="middle">MYC</text>
+<rect x="70" y="210" width="120" height="22" rx="6"/><text x="130" y="226" text-anchor="middle">Tp53</text>
+<rect x="510" y="60" width="120" height="22" rx="6"/><text x="570" y="76" text-anchor="middle">ACTB</text>
+<rect x="510" y="90" width="120" height="22" rx="6"/><text x="570" y="106" text-anchor="middle">BRCA1</text>
+<rect x="510" y="120" width="120" height="22" rx="6"/><text x="570" y="136" text-anchor="middle">Gapdh</text>
+<rect x="510" y="150" width="120" height="22" rx="6"/><text x="570" y="166" text-anchor="middle">MYC</text>
+<rect x="510" y="180" width="120" height="22" rx="6"/><text x="570" y="196" text-anchor="middle">Tp53</text>
+<rect x="510" y="210" width="120" height="22" rx="6"/><text x="570" y="226" text-anchor="middle">egfr</text>
+</g>
+<g class="join-match">
+<path class="join-m1" d="M190 71 L510 71"/>
+<path class="join-m2" d="M190 101 L510 101"/>
+<path class="join-m3" d="M190 161 L510 131"/>
+<path class="join-m4" d="M190 191 L510 161"/>
+<path class="join-m5" d="M190 221 L510 191"/>
+</g>
+<g class="join-cmp"><path d="M190 131 L510 131"/><text x="350" y="122" text-anchor="middle">egfr ≠ Gapdh</text></g>
+<g class="join-skip-left"><rect x="70" y="120" width="120" height="22" rx="6"/><text x="130" y="136" text-anchor="middle">egfr</text><path d="M108 131 L152 131"/><text class="join-x" x="82" y="136">✗</text></g>
+<g class="join-skip-right"><rect x="510" y="210" width="120" height="22" rx="6"/><text x="570" y="226" text-anchor="middle">egfr</text><path d="M548 221 L592 221"/><text class="join-x" x="522" y="226">✗</text></g>
+<text class="join-ptr join-ptr-left" x="48" y="77">▶</text>
+<text class="join-ptr join-ptr-right" x="638" y="77">◀</text>
+<text class="nfa-step join-l1" x="350" y="270" text-anchor="middle">join reads both files in step: ACTB = ACTB → match ✓</text>
+<text class="nfa-step join-l2" x="350" y="270" text-anchor="middle">BRCA1 = BRCA1 → match ✓</text>
+<text class="nfa-step join-l3" x="350" y="270" text-anchor="middle">egfr vs Gapdh: by your Mac's rules egfr comes first → join skips it</text>
+<text class="nfa-step join-l4" x="350" y="270" text-anchor="middle">Gapdh = Gapdh → match ✓</text>
+<text class="nfa-step join-l5" x="350" y="270" text-anchor="middle">MYC = MYC → match ✓</text>
+<text class="nfa-step join-l6" x="350" y="270" text-anchor="middle">Tp53 = Tp53 → match ✓</text>
+<text class="nfa-step join-l7" x="350" y="270" text-anchor="middle">Finished: 5 of 6 genes (both egfr rows unmatched), exit code 0. No warning.</text>
+</svg>
+<figcaption><strong>Why <code>egfr</code> vanished:</strong> <code>join</code> assumes both files use the <em>same</em> sort order and never looks back. One gene in a different position is silently skipped. <em>(Hover to pause.)</em></figcaption>
+</figure>

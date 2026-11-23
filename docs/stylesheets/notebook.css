@@ -1,0 +1,859 @@
+/* ==========================================================================
+   Learning Nextflow — "warm lab notebook" theme for MkDocs Material
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap");
+
+/* ---------- Palette tokens ---------------------------------------------- */
+/* Contrast checked (WCAG AA): ink/paper 13.3, link/paper 5.2, green/paper 7.1,
+   night ink/bg 12.7, night link/bg 6.8. Coral #e0603f is decoration only. */
+
+[data-md-color-scheme="default"] {
+  --nb-paper: #fbf6ec;
+  --nb-card: #fffdf7;
+  --nb-ink: #2b2a28;
+  --nb-muted: #6b655b;
+  --nb-coral: #e0603f;
+  --nb-link: #b4432a;
+  --nb-green: #1f5e4a;
+  --nb-sage: #7fbf9a;
+  --nb-mustard: #e9b949;
+  --nb-sticky: #fff1b8;
+  --nb-tape: rgba(233, 185, 73, 0.55);
+  --nb-rule: rgba(31, 94, 74, 0.07);
+  --nb-glow: rgba(233, 185, 73, 0.45);
+
+  --md-default-bg-color: var(--nb-paper);
+  --md-default-fg-color: var(--nb-ink);
+  --md-default-fg-color--light: rgba(43, 42, 40, 0.72);
+  --md-default-fg-color--lighter: rgba(43, 42, 40, 0.4);
+  --md-default-fg-color--lightest: rgba(43, 42, 40, 0.12);
+  --md-primary-fg-color: var(--nb-green);
+  --md-primary-fg-color--light: #2f7a62;
+  --md-primary-fg-color--dark: #164536;
+  --md-primary-bg-color: #fffaf0;
+  --md-primary-bg-color--light: rgba(255, 250, 240, 0.75);
+  --md-accent-fg-color: var(--nb-link);
+  --md-accent-fg-color--transparent: rgba(180, 67, 42, 0.1);
+  --md-typeset-a-color: var(--nb-link);
+  --md-typeset-mark-color: rgba(233, 185, 73, 0.45);
+  --md-code-bg-color: #f3ecdc;
+  --md-code-fg-color: #2b2a28;
+  --md-footer-bg-color: #164536;
+  --md-footer-bg-color--dark: #10342a;
+}
+
+[data-md-color-scheme="slate"] {
+  --nb-paper: #1e2420;
+  --nb-card: #252c27;
+  --nb-ink: #efe6d2;
+  --nb-muted: #b3a98f;
+  --nb-coral: #ff8a65;
+  --nb-link: #ff8a65;
+  --nb-green: #9fd3a8;
+  --nb-sage: #7fbf9a;
+  --nb-mustard: #e9b949;
+  --nb-sticky: #3a3522;
+  --nb-tape: rgba(233, 185, 73, 0.35);
+  --nb-rule: rgba(239, 230, 210, 0.045);
+  --nb-glow: rgba(233, 185, 73, 0.3);
+
+  --md-hue: 140;
+  --md-default-bg-color: var(--nb-paper);
+  --md-default-fg-color: var(--nb-ink);
+  --md-default-fg-color--light: rgba(239, 230, 210, 0.75);
+  --md-default-fg-color--lighter: rgba(239, 230, 210, 0.42);
+  --md-default-fg-color--lightest: rgba(239, 230, 210, 0.12);
+  --md-primary-fg-color: #163a2f;
+  --md-primary-fg-color--light: #23533f;
+  --md-primary-fg-color--dark: #0f2a22;
+  --md-primary-bg-color: #efe6d2;
+  --md-primary-bg-color--light: rgba(239, 230, 210, 0.75);
+  --md-accent-fg-color: var(--nb-link);
+  --md-accent-fg-color--transparent: rgba(255, 138, 101, 0.12);
+  --md-typeset-a-color: var(--nb-link);
+  --md-typeset-color: var(--nb-ink);
+  --md-typeset-mark-color: rgba(233, 185, 73, 0.3);
+  --md-code-bg-color: #262d28;
+  --md-code-fg-color: #efe6d2;
+  --md-footer-bg-color: #0f2a22;
+  --md-footer-bg-color--dark: #0b1f19;
+}
+
+/* ---------- Paper: ruled lines + red margin ------------------------------ */
+.md-main {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.75rem - 1px),
+    var(--nb-rule) calc(1.75rem - 1px),
+    var(--nb-rule) 1.75rem
+  );
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-content {
+    border-left: 2px solid color-mix(in srgb, var(--nb-coral) 35%, transparent);
+  }
+}
+
+/* ---------- Header ------------------------------------------------------- */
+.md-header__topic:first-child {
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.md-header__button.md-logo img {
+  height: 1.8rem;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+/* ---------- Headings ----------------------------------------------------- */
+.md-typeset h1,
+.md-typeset h2 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.md-typeset h1 {
+  color: var(--nb-ink);
+  font-size: 2.6em;
+  line-height: 1.15;
+  padding-bottom: 0.35em;
+  background: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'><path d='M3 9 C60 2 120 13 180 6 S260 4 297 8' fill='none' stroke='%23e0603f' stroke-width='5' stroke-linecap='round'/></svg>")
+    no-repeat left bottom / min(340px, 70%) 14px;
+}
+
+.md-typeset h2 {
+  color: var(--nb-green);
+  font-size: 2em;
+  margin-top: 2em;
+}
+
+.md-typeset h3 {
+  font-weight: 800;
+  color: var(--nb-ink);
+}
+
+.md-typeset hr {
+  border-bottom: 2px dashed var(--md-default-fg-color--lightest);
+}
+
+/* ---------- Code blocks: taped-in printouts ------------------------------ */
+.md-typeset .highlight {
+  position: relative;
+}
+
+.md-typeset div.highlight::before {
+  content: "";
+  position: absolute;
+  top: -0.45rem;
+  left: 1.2rem;
+  width: 3.4rem;
+  height: 0.9rem;
+  background: var(--nb-tape);
+  transform: rotate(-4deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight .filename {
+  border-radius: 0.3rem;
+}
+
+.md-typeset .highlight .filename {
+  background-color: color-mix(in srgb, var(--nb-green) 14%, var(--md-code-bg-color));
+  font-family: var(--md-code-font-family);
+  font-weight: 600;
+}
+
+/* ---------- Tables: ruled ------------------------------------------------ */
+.md-typeset table:not([class]) {
+  font-size: 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--nb-card);
+}
+
+.md-typeset table:not([class]) th {
+  background: color-mix(in srgb, var(--nb-green) 12%, var(--nb-card));
+  color: var(--nb-ink);
+}
+
+/* ---------- Grid cards as index cards ------------------------------------ */
+.md-typeset .grid.cards > ul > li {
+  background: var(--nb-card);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-top: 4px solid var(--nb-coral);
+  border-radius: 0.4rem;
+  box-shadow: 0 3px 0 var(--md-default-fg-color--lightest);
+  transition: transform 0.2s ease;
+}
+
+.md-typeset .grid.cards > ul > li:nth-child(odd) { transform: rotate(-0.6deg); }
+.md-typeset .grid.cards > ul > li:nth-child(even) { transform: rotate(0.5deg); }
+.md-typeset .grid.cards > ul > li:hover { transform: rotate(0) translateY(-2px); }
+
+/* ---------- Home hero ---------------------------------------------------- */
+.nb-hero {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Markdown wraps the <img> in a <p>; keep that flex item from shrinking */
+.nb-hero > p:first-child {
+  flex: 0 0 150px;
+  margin: 0;
+}
+
+.nb-hero__flo {
+  width: 150px;
+  animation: nb-bob 3.5s ease-in-out infinite;
+}
+
+.nb-hero__text h1 {
+  margin-bottom: 0.4em;
+}
+
+@keyframes nb-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+@media screen and (max-width: 40em) {
+  .nb-hero { flex-direction: column; text-align: center; }
+  .nb-hero__flo { width: 110px; }
+}
+
+/* ==========================================================================
+   Callouts (admonitions)
+   ========================================================================== */
+
+/* Standard Material callouts, recoloured to the notebook palette */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0.5rem;
+  background: var(--nb-card);
+  box-shadow: none;
+}
+
+.md-typeset .admonition.info, .md-typeset details.info,
+.md-typeset .admonition.abstract, .md-typeset details.abstract {
+  border-color: var(--nb-green);
+}
+.md-typeset .info > .admonition-title, .md-typeset .info > summary,
+.md-typeset .abstract > .admonition-title, .md-typeset .abstract > summary {
+  background-color: color-mix(in srgb, var(--nb-green) 12%, transparent);
+}
+.md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before,
+.md-typeset .abstract > .admonition-title::before, .md-typeset .abstract > summary::before {
+  background-color: var(--nb-green);
+}
+
+.md-typeset .admonition.question, .md-typeset details.question,
+.md-typeset .admonition.example, .md-typeset details.example {
+  border-color: var(--nb-coral);
+}
+.md-typeset .question > .admonition-title, .md-typeset .question > summary,
+.md-typeset .example > .admonition-title, .md-typeset .example > summary {
+  background-color: color-mix(in srgb, var(--nb-coral) 12%, transparent);
+}
+.md-typeset .question > .admonition-title::before, .md-typeset .question > summary::before,
+.md-typeset .example > .admonition-title::before, .md-typeset .example > summary::before {
+  background-color: var(--nb-coral);
+}
+
+.md-typeset .admonition.tip, .md-typeset details.tip,
+.md-typeset .admonition.note, .md-typeset details.note {
+  border-color: var(--nb-mustard);
+}
+.md-typeset .tip > .admonition-title, .md-typeset .tip > summary,
+.md-typeset .note > .admonition-title, .md-typeset .note > summary {
+  background-color: color-mix(in srgb, var(--nb-mustard) 16%, transparent);
+}
+.md-typeset .tip > .admonition-title::before, .md-typeset .tip > summary::before,
+.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
+  background-color: #c98d12;
+}
+
+/* ---------- Custom callout types ------------------------------------------ */
+:root {
+  --md-admonition-icon--funfact: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z'/></svg>");
+  --md-admonition-icon--analogy: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 10h16v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM1 11h3v2H1zm19 0h3v2h-3zM3 7.5h18V9H3zM10 4h4v2.5h-4z'/></svg>");
+}
+
+.md-typeset .admonition.flo, .md-typeset details.flo,
+.md-typeset .admonition.funfact, .md-typeset details.funfact,
+.md-typeset .admonition.gotcha, .md-typeset details.gotcha,
+.md-typeset .admonition.protip, .md-typeset details.protip,
+.md-typeset .admonition.predict, .md-typeset details.predict,
+.md-typeset .admonition.analogy, .md-typeset details.analogy {
+  background: var(--nb-card);
+  font-size: 0.72rem;
+}
+
+/* Mascot-icon titles: replace the mask icon with a full-colour Flo */
+.md-typeset .flo > .admonition-title, .md-typeset .flo > summary,
+.md-typeset .gotcha > .admonition-title, .md-typeset .gotcha > summary,
+.md-typeset .protip > .admonition-title, .md-typeset .protip > summary,
+.md-typeset .predict > .admonition-title, .md-typeset .predict > summary {
+  padding-left: 2.7rem;
+  min-height: 2rem;
+}
+
+.md-typeset .flo > .admonition-title::before, .md-typeset .flo > summary::before,
+.md-typeset .gotcha > .admonition-title::before, .md-typeset .gotcha > summary::before,
+.md-typeset .protip > .admonition-title::before, .md-typeset .protip > summary::before,
+.md-typeset .predict > .admonition-title::before, .md-typeset .predict > summary::before {
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 1.7rem;
+  height: 1.7rem;
+  left: 0.55rem;
+  top: 0.2rem;
+}
+
+/* Flo says — speech bubble */
+.md-typeset .admonition.flo, .md-typeset details.flo {
+  border: 2px solid var(--nb-green);
+  border-radius: 1rem 1rem 1rem 0.2rem;
+}
+.md-typeset .flo > .admonition-title, .md-typeset .flo > summary {
+  background-color: color-mix(in srgb, var(--nb-green) 12%, transparent);
+}
+.md-typeset .flo > .admonition-title::before, .md-typeset .flo > summary::before {
+  background-image: url("../assets/flo/flo-wave.svg");
+}
+
+/* Fun fact — yellow sticky note with tape */
+.md-typeset .admonition.funfact, .md-typeset details.funfact {
+  background: var(--nb-sticky);
+  border: none;
+  border-radius: 0.15rem;
+  box-shadow: 2px 4px 0 var(--md-default-fg-color--lightest);
+  transform: rotate(-0.6deg);
+  overflow: visible;
+  position: relative;
+}
+.md-typeset .admonition.funfact::after {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  width: 4rem;
+  height: 1rem;
+  margin-left: -2rem;
+  background: var(--nb-tape);
+  transform: rotate(2deg);
+}
+.md-typeset .funfact > .admonition-title, .md-typeset .funfact > summary {
+  background-color: transparent;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+}
+.md-typeset .funfact > .admonition-title::before, .md-typeset .funfact > summary::before {
+  background-color: #c98d12;
+  -webkit-mask-image: var(--md-admonition-icon--funfact);
+  mask-image: var(--md-admonition-icon--funfact);
+}
+
+/* Gotcha! — coral dashed border, alarmed Flo */
+.md-typeset .admonition.gotcha, .md-typeset details.gotcha {
+  border: 2px dashed var(--nb-coral);
+}
+.md-typeset .gotcha > .admonition-title, .md-typeset .gotcha > summary {
+  background-color: color-mix(in srgb, var(--nb-coral) 12%, transparent);
+}
+.md-typeset .gotcha > .admonition-title::before, .md-typeset .gotcha > summary::before {
+  background-image: url("../assets/flo/flo-oops.svg");
+}
+
+/* Pro tip — green margin note, lightbulb Flo */
+.md-typeset .admonition.protip, .md-typeset details.protip {
+  border: none;
+  border-left: 0.35rem solid var(--nb-green);
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+.md-typeset .protip > .admonition-title, .md-typeset .protip > summary {
+  background-color: color-mix(in srgb, var(--nb-green) 10%, transparent);
+}
+.md-typeset .protip > .admonition-title::before, .md-typeset .protip > summary::before {
+  background-image: url("../assets/flo/flo-idea.svg");
+}
+
+/* Predict the output — folded card, thinking Flo */
+.md-typeset .admonition.predict, .md-typeset details.predict {
+  border: 2px solid var(--nb-mustard);
+  border-radius: 0.5rem;
+}
+.md-typeset .predict > .admonition-title, .md-typeset .predict > summary {
+  background-color: color-mix(in srgb, var(--nb-mustard) 18%, transparent);
+}
+.md-typeset .predict > .admonition-title::before, .md-typeset .predict > summary::before {
+  background-image: url("../assets/flo/flo-think.svg");
+}
+
+/* Real-life analogy — kitchen card */
+.md-typeset .admonition.analogy, .md-typeset details.analogy {
+  border: 2px solid var(--nb-sage);
+  border-radius: 0.5rem;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 12px,
+    color-mix(in srgb, var(--nb-sage) 6%, transparent) 12px 24px
+  );
+}
+.md-typeset .analogy > .admonition-title, .md-typeset .analogy > summary {
+  background-color: color-mix(in srgb, var(--nb-sage) 18%, transparent);
+}
+.md-typeset .analogy > .admonition-title::before, .md-typeset .analogy > summary::before {
+  background-color: #3d8a5e;
+  -webkit-mask-image: var(--md-admonition-icon--analogy);
+  mask-image: var(--md-admonition-icon--analogy);
+}
+
+/* ==========================================================================
+   Animated diagrams (includes/anim/*.html)
+   ========================================================================== */
+.nf-anim {
+  margin: 1.5em 0;
+  padding: 0.8rem 0.8rem 0.4rem;
+  background: var(--nb-card);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 0 var(--md-default-fg-color--lightest);
+}
+
+.nf-anim svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.nf-anim figcaption {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  max-width: none;
+  margin-top: 0.4rem;
+}
+
+.nf-anim text {
+  font-family: var(--md-text-font-family), sans-serif;
+  fill: var(--nb-ink);
+  font-size: 13px;
+}
+.nf-anim .nfa-label { font-weight: 800; font-size: 14px; }
+.nf-anim .nfa-small { font-size: 12px; fill: var(--nb-muted); }
+.nf-anim .nfa-muted { fill: var(--nb-muted); }
+.nf-anim .nfa-lines path {
+  stroke: var(--md-default-fg-color--lighter);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  fill: none;
+}
+.nf-anim .nfa-box {
+  fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card));
+  stroke: var(--nb-green);
+  stroke-width: 2;
+}
+.nf-anim .nfa-box--sum { stroke: var(--nb-coral); }
+.nf-anim .nfa-belt {
+  fill: color-mix(in srgb, var(--nb-ink) 6%, var(--nb-card));
+  stroke: var(--nb-ink);
+  stroke-width: 2;
+  stroke-dasharray: 10 6;
+  animation: nfa-belt 1s linear infinite;
+}
+.nf-anim .nfa-funnel {
+  fill: color-mix(in srgb, var(--nb-mustard) 30%, var(--nb-card));
+  stroke: var(--nb-ink);
+  stroke-width: 2;
+}
+.nf-anim .nfa-bar {
+  fill: var(--nb-coral);
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.nf-anim .nfa-token rect { stroke: var(--nb-ink); stroke-width: 1.5; }
+.nf-anim .nfa-token text { font-weight: 800; font-size: 12px; fill: #2b2a28; }
+.nf-anim .nfa-t1 rect { fill: #f4a58a; }
+.nf-anim .nfa-t2 rect { fill: var(--nb-mustard); }
+.nf-anim .nfa-t3 rect { fill: var(--nb-sage); }
+.nf-anim .nfa-bundle rect { fill: #f7d9a0; }
+.nf-anim .nfa-bundle { opacity: 0; }
+.nf-anim .nfa-clock-t { font-weight: 800; fill: var(--nb-link); opacity: 0; }
+.nf-anim .nfa-c0, .nf-anim .nfa-n0 { opacity: 1; }
+
+.nf-anim:hover *,
+.nf-anim:hover { animation-play-state: paused !important; }
+
+@keyframes nfa-belt { to { stroke-dashoffset: -16; } }
+
+/* --- Bash: sequential (10 s cycle) --- */
+.nf-anim--bash .nfa-t1 { animation: bash-t1 10s ease-in-out infinite; }
+.nf-anim--bash .nfa-t2 { animation: bash-t2 10s ease-in-out infinite; }
+.nf-anim--bash .nfa-t3 { animation: bash-t3 10s ease-in-out infinite; }
+.nf-anim--bash .nfa-box--loop { animation: bash-loop 10s linear infinite; }
+.nf-anim--bash .nfa-box--sum { animation: bash-sum 10s linear infinite; }
+.nf-anim--bash .nfa-c0 { animation: show-0-25 10s steps(1) infinite; }
+.nf-anim--bash .nfa-c2 { animation: show-25-50 10s steps(1) infinite; }
+.nf-anim--bash .nfa-c4 { animation: show-50-75 10s steps(1) infinite; }
+.nf-anim--bash .nfa-c6 { animation: show-75-100 10s steps(1) infinite; }
+
+@keyframes bash-t1 {
+  0%, 5% { transform: translate(0, 0); opacity: 1; }
+  10%, 25% { transform: translate(275px, 40px); }
+  30%, 95% { transform: translate(470px, 0); opacity: 1; }
+  96% { transform: translate(470px, 0); opacity: 0; }
+  97% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes bash-t2 {
+  0%, 30% { transform: translate(0, 0); opacity: 1; }
+  35%, 50% { transform: translate(275px, 0); }
+  55%, 95% { transform: translate(470px, 0); opacity: 1; }
+  96% { transform: translate(470px, 0); opacity: 0; }
+  97% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes bash-t3 {
+  0%, 55% { transform: translate(0, 0); opacity: 1; }
+  60%, 75% { transform: translate(275px, -40px); }
+  80%, 95% { transform: translate(470px, 0); opacity: 1; }
+  96% { transform: translate(470px, 0); opacity: 0; }
+  97% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes bash-loop {
+  0%, 9%, 26%, 34%, 51%, 59%, 76%, 100% { stroke-width: 2; }
+  10%, 25%, 35%, 50%, 60%, 75% { stroke-width: 5; }
+}
+@keyframes bash-sum {
+  0%, 81% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); }
+  84%, 95% { fill: var(--nb-glow); }
+  100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); }
+}
+@keyframes show-0-25 { 0% { opacity: 1; } 25% { opacity: 0; } }
+@keyframes show-25-50 { 0% { opacity: 0; } 25% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes show-50-75 { 0% { opacity: 0; } 50% { opacity: 1; } 75% { opacity: 0; } }
+@keyframes show-75-100 { 0% { opacity: 0; } 75% { opacity: 1; } }
+
+/* --- Nextflow: dataflow (10 s cycle) --- */
+.nf-anim--nf .nfa-t1 { animation: nf-t1 10s ease-in-out infinite; }
+.nf-anim--nf .nfa-t2 { animation: nf-t2 10s ease-in-out infinite; }
+.nf-anim--nf .nfa-t3 { animation: nf-t3 10s ease-in-out infinite; }
+.nf-anim--nf .nfa-bar { animation: nf-bar 10s linear infinite; }
+.nf-anim--nf .nfa-bundle { animation: nf-bundle 10s ease-in-out infinite; }
+.nf-anim--nf .nfa-box--sum { animation: nf-sum 10s linear infinite; }
+.nf-anim--nf .nfa-n0 { animation: show-0-40 10s steps(1) infinite; }
+.nf-anim--nf .nfa-n2 { animation: show-40-100 10s steps(1) infinite; }
+
+@keyframes nf-t1 {
+  0%, 8% { transform: translate(0, 0); opacity: 1; }
+  16%, 40% { transform: translate(282px, -79px); opacity: 1; }
+  48% { transform: translate(427px, 1px); opacity: 1; }
+  52% { transform: translate(427px, 1px); opacity: 0; }
+  53%, 95% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes nf-t2 {
+  0%, 8% { transform: translate(0, 0); opacity: 1; }
+  16%, 40% { transform: translate(217px, -4px); opacity: 1; }
+  48% { transform: translate(362px, 1px); opacity: 1; }
+  52% { transform: translate(362px, 1px); opacity: 0; }
+  53%, 95% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes nf-t3 {
+  0%, 8% { transform: translate(0, 0); opacity: 1; }
+  16%, 40% { transform: translate(152px, 71px); opacity: 1; }
+  48% { transform: translate(297px, 1px); opacity: 1; }
+  52% { transform: translate(297px, 1px); opacity: 0; }
+  53%, 95% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes nf-bar {
+  0%, 16% { transform: scaleX(0); }
+  40%, 95% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes nf-bundle {
+  0%, 50% { transform: translate(0, 0); opacity: 0; }
+  53% { transform: translate(0, 0); opacity: 1; }
+  63%, 92% { transform: translate(145px, 0); opacity: 1; }
+  95%, 100% { transform: translate(145px, 0); opacity: 0; }
+}
+@keyframes nf-sum {
+  0%, 63% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); }
+  66%, 92% { fill: var(--nb-glow); }
+  100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); }
+}
+@keyframes show-0-40 { 0% { opacity: 1; } 40% { opacity: 0; } }
+@keyframes show-40-100 { 0% { opacity: 0; } 40% { opacity: 1; } }
+
+/* Respect reduced-motion preferences: show a static diagram */
+@media (prefers-reduced-motion: reduce) {
+  .nf-anim *, .nb-hero__flo { animation: none !important; }
+  .nf-anim .nfa-bar { transform: scaleX(1); }
+}
+
+/* ==========================================================================
+   Interactive questions (course.js)
+   ========================================================================== */
+.md-typeset .nbq {
+  margin: 1.4em 0;
+  padding: 0.8rem 1rem 0.9rem;
+  background: var(--nb-card);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 0.35rem solid var(--nb-mustard);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 0 var(--md-default-fg-color--lightest);
+  font-size: 0.74rem;
+}
+.md-typeset .nbq.is-answered { border-left-color: var(--nb-green); }
+.md-typeset .nbq--check { border-left-color: var(--nb-coral); }
+.md-typeset .nbq--check.is-answered { border-left-color: var(--nb-green); }
+
+.nbq__head { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.3rem; }
+.nbq__badge {
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--nb-link);
+}
+.nbq__optional {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nb-muted);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 1rem;
+  padding: 0 0.5em;
+}
+.md-typeset .nbq__question > :first-child { margin-top: 0; }
+.md-typeset .nbq__question p { margin: 0.4em 0; font-weight: 600; }
+
+.nbq__options { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.5rem 0; }
+.md-typeset .nbq__option {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  background: var(--md-default-bg-color);
+}
+.md-typeset .nbq__option:hover { border-color: var(--nb-mustard); }
+.md-typeset .nbq__option input { margin-top: 0.3rem; accent-color: var(--nb-green); }
+.md-typeset .nbq__option-text p { margin: 0; }
+.md-typeset .nbq__option.is-right { border-color: var(--nb-green); background: color-mix(in srgb, var(--nb-green) 12%, var(--nb-card)); }
+.md-typeset .nbq__option.is-wrong { border-color: var(--nb-coral); background: color-mix(in srgb, var(--nb-coral) 12%, var(--nb-card)); }
+
+.md-typeset .nbq__btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.8rem;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  border-radius: 0.4rem;
+  border: 1.5px solid var(--nb-green);
+  background: transparent;
+  color: var(--nb-green);
+  cursor: pointer;
+}
+.md-typeset .nbq__btn:hover:not(:disabled) { background: color-mix(in srgb, var(--nb-green) 12%, transparent); }
+.md-typeset .nbq__btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.md-typeset .nbq__btn--primary { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); border-color: var(--md-primary-fg-color); }
+.md-typeset .nbq__btn--primary:hover:not(:disabled) { background: var(--md-primary-fg-color--light); }
+.md-typeset .nbq__btn--danger { border-color: var(--nb-link); color: var(--nb-link); }
+.md-typeset .nbq__btn--rate.is-selected { background: var(--nb-mustard); border-color: var(--nb-mustard); color: #2b2a28; }
+
+.nbq__row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.5rem 0; }
+.md-typeset .nbq__input,
+.md-typeset .nbq__textarea {
+  font: inherit;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1.5px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.5rem;
+}
+.md-typeset .nbq__input { width: 7rem; }
+.md-typeset .nbq__textarea { width: 100%; display: block; margin: 0.5rem 0; resize: vertical; }
+.md-typeset .nbq__input:focus, .md-typeset .nbq__textarea:focus { outline: 2px solid var(--nb-mustard); border-color: transparent; }
+.nbq__unit { color: var(--nb-muted); font-weight: 700; }
+
+.nbq__feedback {
+  display: flex; gap: 0.7rem; align-items: flex-start;
+  margin-top: 0.5rem; padding: 0.6rem 0.7rem;
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--nb-mustard) 12%, transparent);
+}
+.nbq__feedback.is-ok { background: color-mix(in srgb, var(--nb-green) 12%, transparent); }
+.nbq__feedback.is-bad { background: color-mix(in srgb, var(--nb-coral) 12%, transparent); }
+.nbq__flo { width: 2.6rem; flex-shrink: 0; }
+.md-typeset .nbq__feedback-body p { margin: 0.3em 0; }
+.md-typeset .nbq__note { font-size: 0.65rem; color: var(--nb-muted); }
+
+.nbq__model, .nbq__solution {
+  margin-top: 0.5rem; padding: 0.6rem 0.8rem;
+  border: 1.5px dashed var(--nb-green); border-radius: 0.4rem;
+}
+.md-typeset .nbq__model-title { font-family: "Caveat", cursive; font-size: 1.1rem; font-weight: 700; color: var(--nb-green); margin: 0 0 0.3em; }
+.nbq__rate { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem; margin-top: 0.6rem; }
+.nbq__rate-label { font-weight: 700; margin-right: 0.4rem; }
+
+.md-typeset .nbq__hint summary { cursor: pointer; color: var(--nb-link); font-weight: 600; }
+.md-typeset .nbq__hint { margin: 0.3rem 0; }
+
+.md-typeset ul.nbq__steps { list-style: none; margin: 0.5rem 0; padding: 0; }
+.md-typeset ul.nbq__steps li { margin: 0.25rem 0; }
+.md-typeset .nbq__step { display: flex; gap: 0.6rem; align-items: flex-start; cursor: pointer; }
+.md-typeset .nbq__step input { margin-top: 0.35rem; accent-color: var(--nb-green); }
+.md-typeset .nbq__step p { margin: 0; }
+.md-typeset .nbq__step pre { margin: 0.3em 0; }
+
+.nbq__cmd { margin: 0.5rem 0; }
+.nbq__cmd-label { display: block; font-weight: 700; margin-bottom: 0.2rem; }
+.md-typeset .nbq__status { margin: 0.4rem 0; padding: 0.5rem 0.7rem; border-radius: 0.4rem; background: color-mix(in srgb, var(--nb-ink) 5%, transparent); }
+.md-typeset .nbq__status.is-pass { background: color-mix(in srgb, var(--nb-green) 14%, transparent); }
+.md-typeset .nbq__status.is-fail { background: color-mix(in srgb, var(--nb-coral) 14%, transparent); }
+.md-typeset ul.nbq__criteria { margin: 0.3rem 0 0; padding-left: 0.4rem; list-style: none; }
+.md-typeset ul.nbq__criteria li { margin: 0.1rem 0; }
+.md-typeset ul.nbq__criteria li.is-pass { color: var(--nb-green); }
+.md-typeset ul.nbq__criteria li.is-fail { color: var(--nb-link); }
+
+/* ---------- progress bars + dashboard ------------------------------------- */
+.nb-bar {
+  height: 0.55rem; border-radius: 1rem; overflow: hidden;
+  background: var(--md-default-fg-color--lightest);
+  margin: 0.4rem 0;
+}
+.nb-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--nb-green), var(--nb-sage)); border-radius: 1rem; transition: width 0.4s ease; }
+.nb-bar--big { height: 0.9rem; }
+.nb-bar--small { height: 0.4rem; width: 5rem; display: inline-block; vertical-align: middle; margin: 0 0.5rem 0 0; }
+.md-typeset .nb-lesson-progress { padding: 0.6rem 0.9rem; background: var(--nb-card); border-radius: 0.5rem; border: 1px solid var(--md-default-fg-color--lightest); }
+.md-typeset .nb-done { color: var(--nb-green); font-weight: 800; }
+
+.nb-dash__top { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 0.5rem; }
+.nb-dash__stat {
+  flex: 1 1 9rem; padding: 0.7rem 0.9rem;
+  background: var(--nb-card); border: 1px solid var(--md-default-fg-color--lightest);
+  border-top: 4px solid var(--nb-coral); border-radius: 0.4rem;
+}
+.nb-dash__num { display: block; font-family: "Caveat", cursive; font-size: 2rem; font-weight: 700; color: var(--nb-green); line-height: 1.1; }
+.nb-dash__lbl { font-size: 0.7rem; color: var(--nb-muted); }
+.md-typeset .nb-dash__continue { margin: 1rem 0; }
+.md-typeset .nb-dash__table { display: table; width: 100%; font-size: 0.72rem; }
+.md-typeset .nb-dash__module td { font-weight: 800; background: color-mix(in srgb, var(--nb-green) 10%, var(--nb-card)); }
+.nb-pill { font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 1rem; border: 1px solid var(--md-default-fg-color--lighter); white-space: nowrap; }
+.nb-pill--done { border-color: var(--nb-green); color: var(--nb-green); }
+.nb-pill--doing { border-color: var(--nb-mustard); color: #a0700c; }
+[data-md-color-scheme="slate"] .nb-pill--doing { color: var(--nb-mustard); }
+.nb-dash__tools { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+/* Respect the `hidden` attribute on quiz panels (display rules above would override it) */
+.md-typeset .nbq [hidden] { display: none !important; }
+/* No decorative tape on code blocks inside quiz cards */
+.md-typeset .nbq div.highlight::before { display: none; }
+
+/* ==========================================================================
+   Shared pieces for lesson animations (timings live in anim-lessons.css,
+   generated by tools/anim_css.py)
+   ========================================================================== */
+.nf-anim .nfa-dot { fill: var(--nb-coral); stroke: var(--nb-ink); stroke-width: 1.5; }
+.nf-anim .nfa-step { font-weight: 800; font-size: 13.5px; fill: var(--nb-link); }
+.nf-anim .dag-check { font-size: 20px; font-weight: 900; fill: var(--nb-green); opacity: 0; }
+
+.nf-anim .join-list rect { fill: var(--nb-card); stroke: var(--md-default-fg-color--lighter); stroke-width: 1.2; }
+.nf-anim .join-list text { font-weight: 800; font-size: 13px; }
+.nf-anim .join-match path { stroke: var(--nb-green); stroke-width: 2.5; fill: none; }
+.nf-anim .join-cmp path { stroke: var(--nb-coral); stroke-width: 2.5; stroke-dasharray: 6 5; fill: none; }
+.nf-anim .join-cmp text, .nf-anim .join-skip-left text, .nf-anim .join-skip-right text { fill: var(--nb-link); font-weight: 800; font-size: 13px; }
+.nf-anim .join-skip-left rect, .nf-anim .join-skip-right rect { fill: color-mix(in srgb, var(--nb-coral) 22%, transparent); stroke: var(--nb-coral); stroke-width: 2; }
+.nf-anim .join-ptr { fill: var(--nb-green); font-size: 18px; }
+
+.nf-anim .pipe-tube { fill: color-mix(in srgb, var(--nb-ink) 8%, var(--nb-card)); stroke: var(--nb-ink); stroke-width: 1.5; }
+.nf-anim .pipe-exit { font-weight: 800; font-size: 13px; }
+.nf-anim .pipe-bad { fill: var(--nb-link); }
+.nf-anim .pipe-ok { fill: var(--nb-green); }
+.nf-anim .pipe-big { font-family: "Caveat", cursive; font-size: 44px; font-weight: 700; fill: var(--nb-ink); }
+.nf-anim .pipe-verdict { font-weight: 900; font-size: 15px; }
+
+.nf-anim .stage-file { fill: color-mix(in srgb, var(--nb-mustard) 30%, var(--nb-card)); stroke: var(--nb-ink); stroke-width: 1.2; }
+.nf-anim .stage-file-t { font-weight: 700; font-size: 12px; }
+.nf-anim .stage-link-box { fill: color-mix(in srgb, var(--nb-sage) 25%, var(--nb-card)); stroke: var(--nb-green); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.nf-anim .stage-link { fill: none; stroke: var(--nb-green); stroke-width: 2.5; stroke-dasharray: 6 4; }
+.nf-anim .stage-link-broken { stroke: var(--nb-coral); }
+.nf-anim .stage-ghost { fill: none; stroke: var(--md-default-fg-color--lighter); stroke-width: 2; stroke-dasharray: 8 6; }
+.nf-anim .stage-deleted, .nf-anim .stage-broken-label { fill: var(--nb-link); font-weight: 900; font-size: 14px; }
+
+.nf-anim .prof-code { font-family: var(--md-code-font-family), monospace; font-size: 12px; }
+.nf-anim .prof-term { font-family: var(--md-code-font-family), monospace; font-size: 13px; font-weight: 700; }
+.nf-anim .prof-cmd { font-family: var(--md-code-font-family), monospace; font-size: 12.5px; }
+.nf-anim .prof-env { stroke-width: 2; }
+.nf-anim .prof-env--none { fill: color-mix(in srgb, var(--nb-coral) 12%, var(--nb-card)); stroke: var(--nb-coral); }
+.nf-anim .prof-env--docker { fill: color-mix(in srgb, var(--nb-sage) 18%, var(--nb-card)); stroke: var(--nb-green); }
+.nf-anim .prof-env--conda { fill: color-mix(in srgb, var(--nb-mustard) 18%, var(--nb-card)); stroke: var(--nb-green); }
+
+/* Reduced motion: show a readable static frame (the final step) for generated animations */
+@media (prefers-reduced-motion: reduce) {
+  .nf-anim .dag-l4, .nf-anim .join-l7, .nf-anim .pipe-head-50, .nf-anim .stage-l1, .nf-anim .prof-l1, .nf-anim .prof-cmd1,
+  .nf-anim .prof-out1, .nf-anim .stage-task, .nf-anim .stage-entry-in, .nf-anim .stage-link-in { opacity: 1 !important; }
+}
+
+/* ---------- Gentle animation palette (matches the Lesson 1.1 animation) ---------- */
+[data-md-color-scheme="default"] {
+  --nb-soft-coral: #f4a58a;   /* same as the sample tokens */
+  --nb-bad-bg: #fbe6dd;       /* pale peach for "something went wrong" */
+  --nb-ok-bg: #dff0e4;        /* pale mint for "worked" */
+  --nb-wait-bg: #f8efd3;      /* pale cream for "waiting/neutral" */
+}
+[data-md-color-scheme="slate"] {
+  --nb-soft-coral: #e3967c;
+  --nb-bad-bg: #45332d;
+  --nb-ok-bg: #2c4536;
+  --nb-wait-bg: #3d3826;
+}
+.nf-anim .nfa-dot,
+.nf-anim--port .nfa-dot { fill: var(--nb-soft-coral); stroke: var(--nb-ink); stroke-width: 1.2; }
+.nf-anim .nfa-step { fill: var(--nb-green); font-weight: 700; }
+.nf-anim--dag .nfa-bar { fill: var(--nb-sage); }
+.nf-anim .join-cmp path { stroke: var(--nb-soft-coral); }
+.nf-anim .join-cmp text { fill: var(--nb-muted); font-weight: 700; }
+.nf-anim .join-skip-left rect, .nf-anim .join-skip-right rect { fill: var(--nb-bad-bg); stroke: var(--nb-soft-coral); stroke-width: 1.5; }
+.nf-anim .join-skip-left text, .nf-anim .join-skip-right text { fill: var(--nb-ink); font-weight: 800; }
+.nf-anim .join-skip-left path, .nf-anim .join-skip-right path { stroke: var(--nb-link); stroke-width: 1.5; }
+.nf-anim .join-skip-left .join-x, .nf-anim .join-skip-right .join-x { fill: var(--nb-link); }
+.nf-anim .pipe-exit { font-weight: 700; }
+.nf-anim .pipe-verdict { font-weight: 800; font-size: 14px; }
+.nf-anim .stage-link-broken { stroke: var(--nb-soft-coral); }
+.nf-anim .stage-deleted, .nf-anim .stage-broken-label { font-weight: 800; }
+.nf-anim .prof-cmd { fill: var(--nb-ink); font-weight: 700; }
+.nf-anim .prof-env--none { fill: var(--nb-bad-bg); stroke: var(--nb-soft-coral); }
+.nf-anim .prof-env--docker { fill: var(--nb-ok-bg); stroke: var(--nb-green); }
+.nf-anim .prof-env--conda { fill: var(--nb-wait-bg); stroke: var(--nb-green); }
+
+/* ==========================================================================
+   Stop layout "jumps" during instant navigation
+   ========================================================================== */
+/* Material lets the sidebars' thin scrollbar appear only when content overflows.
+   Right after a page switch the new sidebar overflows for one frame, the scrollbar
+   pops in (~7px) and long entries wrap onto two lines, then it pops out again.
+   Always reserving the gutter keeps the width constant. */
+.md-sidebar__scrollwrap { scrollbar-gutter: stable !important; }
+/* Same idea for the page scrollbar when moving between short and long pages. */
+html { scrollbar-gutter: stable; }
+/* The logo <img> is re-inserted on navigation; a fixed size avoids a 0-width frame
+   that made the header title jump sideways. */
+.md-header__button.md-logo img { width: 1.8rem; height: 1.8rem; }

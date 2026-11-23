@@ -1,0 +1,29 @@
+<figure class="nf-anim nf-anim--nf">
+<svg viewBox="0 0 700 250" role="img" aria-labelledby="nfFlowTitle">
+<title id="nfFlowTitle">Animation: a Nextflow channel sends three samples into three COUNT_READS tasks at the same time; collect gathers the results into one bundle for SUMMARISE, taking about 2 seconds of task time</title>
+<g class="nfa-lines">
+<path d="M220 110 L280 40 M220 110 L280 115 M220 110 L280 190"/>
+<path d="M400 40 L455 110 M400 115 L455 115 M400 190 L455 120"/>
+<path d="M515 115 L570 115"/>
+</g>
+<rect class="nfa-belt" x="20" y="92" width="200" height="44" rx="22"/>
+<text class="nfa-label nfa-muted" x="120" y="82" text-anchor="middle">channel</text>
+<g class="nfa-task"><rect class="nfa-box" x="280" y="15" width="120" height="50" rx="10"/><rect class="nfa-bar nfa-bar1" x="288" y="55" width="104" height="5" rx="2"/></g>
+<g class="nfa-task"><rect class="nfa-box" x="280" y="90" width="120" height="50" rx="10"/><rect class="nfa-bar nfa-bar2" x="288" y="130" width="104" height="5" rx="2"/></g>
+<g class="nfa-task"><rect class="nfa-box" x="280" y="165" width="120" height="50" rx="10"/><rect class="nfa-bar nfa-bar3" x="288" y="205" width="104" height="5" rx="2"/></g>
+<text class="nfa-small" x="340" y="10" text-anchor="middle">COUNT_READS ×3 (in parallel)</text>
+<path class="nfa-funnel" d="M455 92 L515 92 L497 115 L497 138 L473 138 L473 115 Z"/>
+<text class="nfa-small" x="485" y="158" text-anchor="middle">collect()</text>
+<rect class="nfa-box nfa-box--sum" x="570" y="85" width="120" height="60" rx="10"/>
+<text class="nfa-label" x="630" y="80" text-anchor="middle">SUMMARISE</text>
+<g class="nfa-token nfa-t1"><rect x="30" y="100" width="56" height="28" rx="8"/><text x="58" y="119" text-anchor="middle">s1</text></g>
+<g class="nfa-token nfa-t2"><rect x="95" y="100" width="56" height="28" rx="8"/><text x="123" y="119" text-anchor="middle">s2</text></g>
+<g class="nfa-token nfa-t3"><rect x="160" y="100" width="56" height="28" rx="8"/><text x="188" y="119" text-anchor="middle">s3</text></g>
+<g class="nfa-token nfa-bundle"><rect x="445" y="101" width="80" height="28" rx="8"/><text x="485" y="120" text-anchor="middle">[s1,s2,s3]</text></g>
+<g class="nfa-clock">
+<text class="nfa-clock-t nfa-n0" x="340" y="243" text-anchor="middle">⏱ 0 s</text>
+<text class="nfa-clock-t nfa-n2" x="340" y="243" text-anchor="middle">⏱ 2 s: all three done together</text>
+</g>
+</svg>
+<figcaption><strong>Nextflow:</strong> the channel feeds all three samples to <code>COUNT_READS</code> at once, so the task time is about 2 s. Nextflow itself adds a few seconds of start-up, which is worth it once tasks take minutes or hours. <code>collect()</code> waits for every result, then <code>SUMMARISE</code> starts on its own. <em>(Hover to pause.)</em></figcaption>
+</figure>

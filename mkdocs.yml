@@ -1,0 +1,106 @@
+site_name: Learning Nextflow
+site_description: An interactive, beginner-to-advanced Nextflow course for bioinformatics
+site_author: Mohamed Elmanzalawi
+# Needed for Material's instant navigation (it reads sitemap.xml to know which links are internal).
+# Without it every click is a full page reload, which makes fonts visibly flash.
+site_url: http://127.0.0.1:8000/
+copyright: Course designed by Mohamed Elmanzalawi
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  logo: assets/flo/flo-wave.svg
+  favicon: assets/flo/flo-wave.svg
+  font:
+    text: Nunito
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/desk-lamp
+        name: Switch to night notebook
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to day notebook
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.footer
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.code.annotate
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+extra_css:
+  - stylesheets/notebook.css
+  - stylesheets/anim-lessons.css
+
+extra_javascript:
+  - javascripts/course.js
+
+hooks:
+  - hooks/course.py
+
+watch:
+  - progress
+  - includes
+  - hooks
+  - tools
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Setup: setup.md
+  - "Level 1 · Beginner":
+      - "Module 1 · Introduction":
+          - "1.1 What is Nextflow?": level1/module01/lesson01.md
+          - "1.2 Reproducibility & dataflow": level1/module01/lesson02.md
+      - "Module 2 · Environment":
+          - "2.1 The Bash Nextflow relies on": level1/module02/lesson01.md
+          - "2.2 Install Java & Nextflow": level1/module02/lesson02.md
+          - "2.3 Conda, Docker & Apptainer": level1/module02/lesson03.md
+          - "2.4 VS Code & Git": level1/module02/lesson04.md
+  - Progress: progress.md
+  - Glossary: glossary.md

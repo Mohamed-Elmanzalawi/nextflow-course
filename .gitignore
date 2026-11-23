@@ -1,0 +1,18 @@
+# Built website
+site/
+
+# Nextflow runtime files
+work/
+.nextflow/
+.nextflow.log*
+results/
+
+# Generated exercise data (recreate with each lesson's make_data.sh)
+**/lesson*/data/
+
+.DS_Store
+
+# Python bytecode (from hooks/)
+__pycache__/
+
+CLAUDE.md

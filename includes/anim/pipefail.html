@@ -1,0 +1,27 @@
+<figure class="nf-anim nf-anim--pipe">
+<svg viewBox="0 0 700 215" role="img" aria-labelledby="pipeTitle">
+<title id="pipeTitle">Animation: in the pipe gzip | awk, gzip fails with exit 1 but awk exits 0. Without pipefail the pipe reports 0 and Nextflow marks the task as a success; with pipefail the pipe reports 1 and the task fails.</title>
+<rect class="nfa-box pipe-gzip" x="40" y="60" width="160" height="60" rx="10"/>
+<rect class="nfa-box pipe-awk" x="300" y="60" width="160" height="60" rx="10"/>
+<rect class="pipe-tube" x="200" y="82" width="100" height="16" rx="8"/>
+<text class="nfa-step pipe-head-0" x="350" y="24" text-anchor="middle">Nextflow's default shell: bash -ue (no pipefail)</text>
+<g class="nfa-token pipe-dot1-0"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g><g class="nfa-token pipe-dot2-0"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g><g class="nfa-token pipe-dot3-0"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g>
+<text class="pipe-exit pipe-bad pipe-gzip-exit-0" x="120" y="145" text-anchor="middle">exit 1 ✗ corrupt file</text>
+<text class="pipe-exit pipe-ok pipe-awk-exit-0" x="380" y="145" text-anchor="middle">exit 0 (printed "0")</text>
+<text class="pipe-big pipe-result-0" x="595" y="112" text-anchor="middle">0</text>
+<g class="pipe-verdict-0"><text class="pipe-verdict pipe-bad" x="595" y="160" text-anchor="middle">Nextflow: SUCCESS ✓</text><text class="nfa-small" x="595" y="180" text-anchor="middle">…with a broken result!</text></g>
+
+<text class="nfa-step pipe-head-50" x="350" y="24" text-anchor="middle">With pipefail: process.shell = ['/bin/bash', '-euo', 'pipefail']</text>
+<g class="nfa-token pipe-dot1-50"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g><g class="nfa-token pipe-dot2-50"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g><g class="nfa-token pipe-dot3-50"><circle class="nfa-dot" cx="205" cy="90" r="6"/></g>
+<text class="pipe-exit pipe-bad pipe-gzip-exit-50" x="120" y="145" text-anchor="middle">exit 1 ✗ corrupt file</text>
+<text class="pipe-exit pipe-ok pipe-awk-exit-50" x="380" y="145" text-anchor="middle">exit 0 (printed "0")</text>
+<text class="pipe-big pipe-result-50" x="595" y="112" text-anchor="middle">1</text>
+<g class="pipe-verdict-50"><text class="pipe-verdict pipe-ok" x="595" y="160" text-anchor="middle">Nextflow: FAILED ✗</text><text class="nfa-small" x="595" y="180" text-anchor="middle">good: you find out now</text></g>
+
+<text class="nfa-label" x="120" y="95" text-anchor="middle">gzip -dc file.gz</text>
+<text class="nfa-label" x="380" y="95" text-anchor="middle">awk '…NR/4…'</text>
+<rect class="nfa-box nfa-box--sum" x="520" y="55" width="150" height="72" rx="10" style="fill:none"/>
+<text class="nfa-small" x="595" y="75" text-anchor="middle">pipe's exit code</text>
+</svg>
+<figcaption><strong>Why a broken pipe can "succeed":</strong> without <code>pipefail</code>, a pipe reports only its <em>last</em> command's exit code, so <code>gzip</code>'s failure is lost. <em>(Hover to pause.)</em></figcaption>
+</figure>

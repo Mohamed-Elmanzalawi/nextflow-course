@@ -1,0 +1,26 @@
+<figure class="nf-anim nf-anim--bash">
+<svg viewBox="0 0 700 190" role="img" aria-labelledby="bashSeqTitle">
+<title id="bashSeqTitle">Animation: a Bash for-loop processes three samples one after another, taking 6 seconds in total</title>
+<g class="nfa-lines">
+<path d="M100 60 L250 95 M100 100 L250 100 M100 140 L250 105"/>
+<path d="M430 100 L495 60 M430 100 L495 100 M430 100 L495 140"/>
+<path d="M570 100 L600 100"/>
+</g>
+<rect class="nfa-box nfa-box--loop" x="250" y="55" width="180" height="90" rx="10"/>
+<text class="nfa-label" x="340" y="48" text-anchor="middle">for fq in data/*.fastq</text>
+<text class="nfa-small" x="340" y="138" text-anchor="middle">one at a time…</text>
+<rect class="nfa-box nfa-box--sum" x="600" y="70" width="90" height="60" rx="10"/>
+<text class="nfa-label" x="645" y="105" text-anchor="middle">summary</text>
+<text class="nfa-label nfa-muted" x="65" y="25" text-anchor="middle">data/</text>
+<g class="nfa-token nfa-t1"><rect x="30" y="46" width="70" height="28" rx="8"/><text x="65" y="65" text-anchor="middle">sample1</text></g>
+<g class="nfa-token nfa-t2"><rect x="30" y="86" width="70" height="28" rx="8"/><text x="65" y="105" text-anchor="middle">sample2</text></g>
+<g class="nfa-token nfa-t3"><rect x="30" y="126" width="70" height="28" rx="8"/><text x="65" y="145" text-anchor="middle">sample3</text></g>
+<g class="nfa-clock">
+<text class="nfa-clock-t nfa-c0" x="340" y="180" text-anchor="middle">⏱ 0 s</text>
+<text class="nfa-clock-t nfa-c2" x="340" y="180" text-anchor="middle">⏱ 2 s</text>
+<text class="nfa-clock-t nfa-c4" x="340" y="180" text-anchor="middle">⏱ 4 s</text>
+<text class="nfa-clock-t nfa-c6" x="340" y="180" text-anchor="middle">⏱ 6 s: done</text>
+</g>
+</svg>
+<figcaption><strong>Bash:</strong> each sample waits its turn. 3 samples × 2 s = 6 s. With 200 samples × 2 h, that's 400 h. <em>(Hover to pause.)</em></figcaption>
+</figure>

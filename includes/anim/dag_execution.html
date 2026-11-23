@@ -1,0 +1,24 @@
+<figure class="nf-anim nf-anim--dag">
+<svg viewBox="0 0 700 265" role="img" aria-labelledby="dagTitle">
+<title id="dagTitle">Animation: a pipeline graph runs. FASTQC and TRIM start together from the reads; ALIGN starts as soon as TRIM finishes; MULTIQC waits for both FASTQC and ALIGN.</title>
+<g class="nfa-lines">
+<path d="M130 125 L220 62 M130 125 L220 182 M340 182 L400 182 M340 62 L570 122 M520 182 L570 122"/>
+</g>
+<rect class="nfa-box dag-reads" x="20" y="105" width="110" height="40" rx="20"/>
+<text class="nfa-label" x="75" y="130" text-anchor="middle">reads ×4</text>
+<g class="dag-fastqc"><rect class="nfa-box" x="220" y="40" width="120" height="44" rx="10"/><text class="nfa-label" x="280" y="66" text-anchor="middle">FASTQC</text><rect class="nfa-bar" x="228" y="74" width="104" height="5" rx="2"/><text class="dag-check" x="336" y="38">✓</text><text class="nfa-small" x="280" y="100" text-anchor="middle">4 tasks</text></g>
+<g class="dag-trim"><rect class="nfa-box" x="220" y="160" width="120" height="44" rx="10"/><text class="nfa-label" x="280" y="186" text-anchor="middle">TRIM</text><rect class="nfa-bar" x="228" y="194" width="104" height="5" rx="2"/><text class="dag-check" x="336" y="158">✓</text><text class="nfa-small" x="280" y="220" text-anchor="middle">4 tasks</text></g>
+<g class="dag-align"><rect class="nfa-box" x="400" y="160" width="120" height="44" rx="10"/><text class="nfa-label" x="460" y="186" text-anchor="middle">ALIGN</text><rect class="nfa-bar" x="408" y="194" width="104" height="5" rx="2"/><text class="dag-check" x="516" y="158">✓</text><text class="nfa-small" x="460" y="220" text-anchor="middle">4 tasks</text></g>
+<g class="dag-multiqc"><rect class="nfa-box nfa-box--sum" x="570" y="100" width="120" height="44" rx="10"/><text class="nfa-label" x="630" y="126" text-anchor="middle">MULTIQC</text><rect class="nfa-bar" x="578" y="134" width="104" height="5" rx="2"/><text class="dag-check" x="686" y="98">✓</text><text class="nfa-small" x="630" y="160" text-anchor="middle">1 task</text></g>
+<g class="nfa-token dag-d1"><circle class="nfa-dot" cx="130" cy="125" r="6"/></g>
+<g class="nfa-token dag-d2"><circle class="nfa-dot" cx="130" cy="125" r="6"/></g>
+<g class="nfa-token dag-d3"><circle class="nfa-dot" cx="340" cy="182" r="6"/></g>
+<g class="nfa-token dag-d4"><circle class="nfa-dot" cx="340" cy="62" r="6"/></g>
+<g class="nfa-token dag-d5"><circle class="nfa-dot" cx="520" cy="182" r="6"/></g>
+<text class="nfa-step dag-l1" x="350" y="255" text-anchor="middle">① FASTQC and TRIM need only the reads, so they start together</text>
+<text class="nfa-step dag-l2" x="350" y="255" text-anchor="middle">② ALIGN starts the moment TRIM finishes, while FASTQC is still running</text>
+<text class="nfa-step dag-l3" x="350" y="255" text-anchor="middle">③ MULTIQC waits until both FASTQC and ALIGN are done</text>
+<text class="nfa-step dag-l4" x="350" y="255" text-anchor="middle">✓ Done. The order came from the arrows, not from the code</text>
+</svg>
+<figcaption><strong>The pipeline graph in action:</strong> each box starts as soon as <em>all</em> its incoming arrows have delivered data. Watch the numbered steps. <em>(Hover to pause.)</em></figcaption>
+</figure>

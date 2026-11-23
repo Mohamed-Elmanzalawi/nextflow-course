@@ -1,0 +1,13 @@
+<figure class="nf-anim nf-anim--port">
+<svg viewBox="0 0 700 235" role="img" aria-labelledby="portTitle">
+<title id="portTitle">Animation: the same main.nf pipeline sends its tasks to a laptop, then a SLURM cluster, then the cloud; only the -profile setting changes</title>
+<g class="nfa-lines"><path d="M190 115 L450 40 M190 115 L450 115 M190 115 L450 190"/></g>
+<rect class="nfa-box" x="20" y="80" width="170" height="70" rx="10"/>
+<text class="nfa-label" x="105" y="110" text-anchor="middle">main.nf</text>
+<text class="nfa-small" x="105" y="132" text-anchor="middle">never changes</text>
+<rect class="nfa-box port-v1" x="450" y="12" width="240" height="56" rx="10"/><text class="nfa-label" x="595" y="45" text-anchor="middle">💻 your Mac (local)</text><rect class="nfa-box port-v2" x="450" y="87" width="240" height="56" rx="10"/><text class="nfa-label" x="595" y="120" text-anchor="middle">🖥️ SLURM cluster</text><rect class="nfa-box port-v3" x="450" y="162" width="240" height="56" rx="10"/><text class="nfa-label" x="595" y="195" text-anchor="middle">☁️ cloud batch</text>
+<g class="nfa-token port-d1"><circle class="nfa-dot" cx="170" cy="115" r="7"/><circle class="nfa-dot" cx="187" cy="115" r="7"/><circle class="nfa-dot" cx="204" cy="115" r="7"/></g><g class="nfa-token port-d2"><circle class="nfa-dot" cx="170" cy="115" r="7"/><circle class="nfa-dot" cx="187" cy="115" r="7"/><circle class="nfa-dot" cx="204" cy="115" r="7"/></g><g class="nfa-token port-d3"><circle class="nfa-dot" cx="170" cy="115" r="7"/><circle class="nfa-dot" cx="187" cy="115" r="7"/><circle class="nfa-dot" cx="204" cy="115" r="7"/></g>
+<text class="nfa-step port-p1" x="320" y="225" text-anchor="middle">nextflow run main.nf -profile local</text><text class="nfa-step port-p2" x="320" y="225" text-anchor="middle">nextflow run main.nf -profile slurm</text><text class="nfa-step port-p3" x="320" y="225" text-anchor="middle">nextflow run main.nf -profile cloud</text>
+</svg>
+<figcaption><strong>Portability:</strong> the same <code>main.nf</code> runs on your Mac, on your SLURM cluster or in the cloud. Only the <em>configuration</em> (here, <code>-profile</code>) changes; the pipeline code never does. <em>(Hover to pause.)</em></figcaption>
+</figure>
