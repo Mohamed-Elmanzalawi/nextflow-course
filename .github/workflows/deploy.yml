@@ -1,21 +1,44 @@
 name: deploy-site
+
 on:
   push:
     branches:
-    - main
+      - main
+  workflow_dispatch:          # adds a "Run workflow" button in the Actions tab
+
+# Least privilege: read the code, publish to Pages, prove the upload came from this repo.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deployments at once; let a running one finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Configure Git Credentials
-        run: |
-            git config user.name github-actions[bot]
-            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
-        with: 
-            python-version: 3.12.16
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12.16"
       - run: pip install mkdocs-material==9.8.2
-      - run: mkdocs gh-deploy --force --strict
+      - run: mkdocs build --strict
+        env:
+          NO_MKDOCS_2_WARNING: "1"   # hide Material's end-of-life banner in the log
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
