@@ -10,7 +10,7 @@ conda activate nf-course
 mkdocs serve
 ```
 
-Then open <http://127.0.0.1:8000> in your browser.
+Then open <http://127.0.0.1:8000/nextflow-course/> in your browser.
 
 - The page reloads automatically whenever a lesson file changes.
 - Stop the server with ++ctrl+c++.
@@ -48,9 +48,9 @@ mkdocs build        # writes plain HTML to site/
 open site/index.html
 ```
 
-Later, when we cover Git, you can publish the site with `mkdocs gh-deploy` if you want it online.
+The course is also published online at <https://mohamed-elmanzalawi.github.io/nextflow-course/>. It updates automatically on every push to `main`. The checker scripts still need this local copy.
 
 ## How your progress is saved
 
-- **Answers on the lesson pages** are saved in your browser (local storage) for the address `http://127.0.0.1:8000`. Always open the course through `mkdocs serve` at that address so your answers stay together. Use **Export progress** on the [progress page](progress.md) to make a backup.
+- **Answers on the lesson pages** are saved in your browser (local storage) for the address `http://127.0.0.1:8000/nextflow-course/`. Always open the course through `mkdocs serve` at that address so your answers stay together. The online site keeps its own separate progress. Use **Export progress** on the [progress page](progress.md) to make a backup.
 - **Checker scripts** (`bash check_….sh` in a lesson folder) save their results in `progress/checks/` in this project. While `mkdocs serve` is running, the site rebuilds and shows the new result automatically.

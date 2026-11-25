@@ -36,7 +36,7 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which has two jobs:
 1. `build` runs `mkdocs build --strict` and uploads the `site/` folder.
 2. `deploy` publishes that upload to GitHub Pages.
 
-No `gh-pages` branch is used: in the repository settings, Pages has **Source: GitHub Actions**. You can also redeploy without pushing, using **Run workflow** in the Actions tab. Before pushing, check that `mkdocs build --strict` passes locally.
+In the repository settings, Pages has **Source: GitHub Actions**. You can also redeploy without pushing, using **Run workflow** in the Actions tab. Before pushing, check that `mkdocs build --strict` passes locally.
 
 ## Layout
 
