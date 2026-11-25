@@ -3,7 +3,7 @@ site_description: An interactive, beginner-to-advanced Nextflow course for bioin
 site_author: Mohamed Elmanzalawi
 # Needed for Material's instant navigation (it reads sitemap.xml to know which links are internal).
 # Without it every click is a full page reload, which makes fonts visibly flash.
-site_url: http://127.0.0.1:8000/
+site_url: https://mohamed-elmanzalawi.github.io/nextflow-course/
 copyright: Course designed by Mohamed Elmanzalawi
 docs_dir: docs
 site_dir: site
