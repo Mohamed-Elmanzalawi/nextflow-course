@@ -1,0 +1,25 @@
+<figure class="nf-anim nf-anim--parm">
+<svg viewBox="0 0 700 300" role="img" aria-labelledby="parmTitle">
+<title id="parmTitle">Animation: four places can set params.title. First the default in the script's params block, then nextflow.config overrides it, then a -params-file overrides that, and finally --title on the command line wins. The value Nextflow uses is always the one from the highest layer present.</title>
+<g class="parm-layer1"><rect class="nfa-box parm-box1" x="20" y="214" width="432" height="40" rx="8"/><text class="nfa-label" x="34" y="239">① main.nf</text><text class="prof-code" x="150" y="239">title: String = 'from the script'</text></g>
+<g class="parm-layer2"><rect class="nfa-box parm-box2" x="20" y="164" width="432" height="40" rx="8"/><text class="nfa-label" x="34" y="189">② nextflow.config</text><text class="prof-code" x="175" y="189">params.title = 'from nextflow.config'</text></g>
+<g class="parm-layer3"><rect class="nfa-box parm-box3" x="20" y="114" width="432" height="40" rx="8"/><text class="nfa-label" x="34" y="139">③ -params-file</text><text class="prof-code" x="175" y="139">title: 'from params.yaml'</text></g>
+<g class="parm-layer4"><rect class="nfa-box parm-box4" x="20" y="64" width="432" height="40" rx="8"/><text class="nfa-label" x="34" y="89">④ command line</text><text class="prof-code" x="175" y="89">--title 'from the command line'</text></g>
+<text class="nfa-small" x="210" y="40" text-anchor="middle">lowest priority at the bottom, highest at the top</text>
+<rect class="nfa-box nfa-box--sum" x="478" y="120" width="210" height="80" rx="10"/>
+<text class="nfa-label" x="583" y="146" text-anchor="middle">params.title is…</text>
+<text class="prof-term parm-v1" x="583" y="178" text-anchor="middle">'from the script'</text>
+<text class="prof-term parm-v2" x="583" y="178" text-anchor="middle">'from nextflow.config'</text>
+<text class="prof-term parm-v3" x="583" y="178" text-anchor="middle">'from params.yaml'</text>
+<text class="prof-term parm-v4" x="583" y="178" text-anchor="middle">'from the command line'</text>
+<g class="parm-arrow1"><path class="stage-link" d="M452 234 C470 234 462 160 478 160"/></g>
+<g class="parm-arrow2"><path class="stage-link" d="M452 184 C470 184 462 160 478 160"/></g>
+<g class="parm-arrow3"><path class="stage-link" d="M452 134 C470 134 462 160 478 160"/></g>
+<g class="parm-arrow4"><path class="stage-link" d="M452 84 C470 84 462 160 478 160"/></g>
+<text class="nfa-step parm-l1" x="350" y="285" text-anchor="middle">① Only the script's default exists → it is used</text>
+<text class="nfa-step parm-l2" x="350" y="285" text-anchor="middle">② nextflow.config sets it too → the config wins over the script</text>
+<text class="nfa-step parm-l3" x="350" y="285" text-anchor="middle">③ -params-file params.yaml → the file wins over the config</text>
+<text class="nfa-step parm-l4" x="350" y="285" text-anchor="middle">④ --title on the command line beats everything</text>
+</svg>
+<figcaption><strong>Four places, one winner:</strong> Nextflow uses the value from the highest layer that sets it. These are the real values from the test runs in this lesson. <em>(Hover to pause.)</em></figcaption>
+</figure>

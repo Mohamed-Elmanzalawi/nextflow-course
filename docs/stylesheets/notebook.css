@@ -844,6 +844,22 @@
 .nf-anim .prof-env--docker { fill: var(--nb-ok-bg); stroke: var(--nb-green); }
 .nf-anim .prof-env--conda { fill: var(--nb-wait-bg); stroke: var(--nb-green); }
 
+/* ---------- Module 3 animations (timings in anim-lessons.css) ---------- */
+.nf-anim .nfa-hl { fill: rgba(0, 0, 0, 0); }
+.nf-anim .res-hash { font-size: 11.5px; }
+.nf-anim .res-ran { font-weight: 800; font-size: 14px; fill: var(--nb-green); }
+.nf-anim .res-cached { font-weight: 800; font-size: 14px; fill: var(--nb-muted); }
+.nf-anim--res .nfa-bar, .nf-anim--wire .nfa-bar { fill: var(--nb-sage); }
+@media (prefers-reduced-motion: reduce) {
+  .nf-anim .anat-l4, .nf-anim .anat-task, .nf-anim .anat-folder, .nf-anim .anat-f-sh, .nf-anim .anat-f-run,
+  .nf-anim .anat-f-out, .nf-anim .anat-f-exit, .nf-anim .anat-console,
+  .nf-anim .wire-l4, .nf-anim .wire-out,
+  .nf-anim .parm-layer1, .nf-anim .parm-layer2, .nf-anim .parm-layer3, .nf-anim .parm-layer4,
+  .nf-anim .parm-v4, .nf-anim .parm-l4, .nf-anim .parm-arrow4,
+  .nf-anim .res-cmd1, .nf-anim .res-l1, .nf-anim .res-h1a, .nf-anim .res-h4a,
+  .nf-anim .res-ran1-1, .nf-anim .res-ran2-1, .nf-anim .res-ran3-1, .nf-anim .res-ran4-1 { opacity: 1 !important; }
+}
+
 /* ==========================================================================
    Stop layout "jumps" during instant navigation
    ========================================================================== */

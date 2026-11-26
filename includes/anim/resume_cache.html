@@ -1,0 +1,57 @@
+<figure class="nf-anim nf-anim--res">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="resTitle">
+<title id="resTitle">Animation: four runs of the same pipeline. Run 1 runs all three COUNT_READS tasks and SUMMARISE. Run 2 with -resume takes all four from the cache. After editing SUMMARISE, -resume re-runs only SUMMARISE. After touching sample1.fastq, -resume re-runs the sample1 task and SUMMARISE, while sample2 and sample3 stay cached.</title>
+<text class="prof-cmd res-cmd1" x="20" y="34">$ nextflow run main.nf</text>
+<text class="prof-cmd res-cmd2" x="20" y="34">$ nextflow run main.nf -resume</text>
+<text class="prof-cmd res-cmd3" x="20" y="34">✎ edit the SUMMARISE script, then:  $ nextflow run main.nf -resume</text>
+<text class="prof-cmd res-cmd4" x="20" y="34">$ touch data/sample1.fastq;  nextflow run main.nf -resume</text>
+<rect class="nfa-box res-card1" x="20" y="55" width="155" height="140" rx="10"/>
+<text class="nfa-label" x="97" y="79" text-anchor="middle">COUNT_READS</text>
+<text class="nfa-small" x="97" y="96" text-anchor="middle">sample1</text>
+<text class="prof-code res-hash res-h1a" x="97" y="122" text-anchor="middle">hash 3f/a91c4e</text>
+<text class="prof-code res-hash res-h1b" x="97" y="122" text-anchor="middle">hash 8d/02e7b1 (new)</text>
+<rect class="nfa-bar res-bar1-1" x="35" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran1-1" x="97" y="175" text-anchor="middle">▶ ran ✔</text>
+<text class="res-cached res-cached1-2" x="97" y="175" text-anchor="middle">↺ cached ✔</text>
+<text class="res-cached res-cached1-3" x="97" y="175" text-anchor="middle">↺ cached ✔</text>
+<rect class="nfa-bar res-bar1-4" x="35" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran1-4" x="97" y="175" text-anchor="middle">▶ ran ✔</text>
+<rect class="nfa-box res-card2" x="195" y="55" width="155" height="140" rx="10"/>
+<text class="nfa-label" x="272" y="79" text-anchor="middle">COUNT_READS</text>
+<text class="nfa-small" x="272" y="96" text-anchor="middle">sample2</text>
+<text class="prof-code res-hash" x="272" y="122" text-anchor="middle">hash b4/52ea4e</text>
+<rect class="nfa-bar res-bar2-1" x="210" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran2-1" x="272" y="175" text-anchor="middle">▶ ran ✔</text>
+<text class="res-cached res-cached2-2" x="272" y="175" text-anchor="middle">↺ cached ✔</text>
+<text class="res-cached res-cached2-3" x="272" y="175" text-anchor="middle">↺ cached ✔</text>
+<text class="res-cached res-cached2-4" x="272" y="175" text-anchor="middle">↺ cached ✔</text>
+<rect class="nfa-box res-card3" x="370" y="55" width="155" height="140" rx="10"/>
+<text class="nfa-label" x="447" y="79" text-anchor="middle">COUNT_READS</text>
+<text class="nfa-small" x="447" y="96" text-anchor="middle">sample3</text>
+<text class="prof-code res-hash" x="447" y="122" text-anchor="middle">hash e2/98df6a</text>
+<rect class="nfa-bar res-bar3-1" x="385" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran3-1" x="447" y="175" text-anchor="middle">▶ ran ✔</text>
+<text class="res-cached res-cached3-2" x="447" y="175" text-anchor="middle">↺ cached ✔</text>
+<text class="res-cached res-cached3-3" x="447" y="175" text-anchor="middle">↺ cached ✔</text>
+<text class="res-cached res-cached3-4" x="447" y="175" text-anchor="middle">↺ cached ✔</text>
+<rect class="nfa-box res-card4" x="545" y="55" width="155" height="140" rx="10"/>
+<text class="nfa-label" x="622" y="79" text-anchor="middle">SUMMARISE</text>
+<text class="nfa-small" x="622" y="96" text-anchor="middle">all counts</text>
+<text class="prof-code res-hash res-h4a" x="622" y="122" text-anchor="middle">hash 9f/658f23</text>
+<text class="prof-code res-hash res-h4b" x="622" y="122" text-anchor="middle">hash a4/e7746d (new)</text>
+<text class="prof-code res-hash res-h4c" x="622" y="122" text-anchor="middle">hash ed/5f3834 (new)</text>
+<rect class="nfa-bar res-bar4-1" x="560" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran4-1" x="622" y="175" text-anchor="middle">▶ ran ✔</text>
+<text class="res-cached res-cached4-2" x="622" y="175" text-anchor="middle">↺ cached ✔</text>
+<rect class="nfa-bar res-bar4-3" x="560" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran4-3" x="622" y="175" text-anchor="middle">▶ ran ✔</text>
+<rect class="nfa-bar res-bar4-4" x="560" y="140" width="125" height="5" rx="2"/>
+<text class="res-ran res-ran4-4" x="622" y="175" text-anchor="middle">▶ ran ✔</text>
+<text class="nfa-step res-l1" x="360" y="235" text-anchor="middle">① First run: every task runs, and Nextflow records each task's hash</text>
+<text class="nfa-step res-l2" x="360" y="235" text-anchor="middle">② -resume: same scripts, same inputs → same hashes → all 4 come from the cache</text>
+<text class="nfa-step res-l3" x="360" y="235" text-anchor="middle">③ SUMMARISE's script changed → new hash → only SUMMARISE runs again</text>
+<text class="nfa-step res-l4" x="360" y="235" text-anchor="middle">④ sample1.fastq has a new timestamp → its task re-runs, so SUMMARISE's input changes too</text>
+<text class="nfa-small" x="360" y="262" text-anchor="middle">hash = script + inputs (path, size, timestamp) + container/conda + … → same hash, same result</text>
+</svg>
+<figcaption><strong>How <code>-resume</code> decides:</strong> a task is skipped only when its hash matches a task that already finished. Hashes are shortened, as on the console; the rerun pattern is from the real runs in this lesson. <em>(Hover to pause.)</em></figcaption>
+</figure>

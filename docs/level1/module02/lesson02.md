@@ -116,21 +116,24 @@ nextflow run hello
     Real output from the test install:
 
     ```text title="Real output"
+     N E X T F L O W   ~  version 26.10.7
+
     Pulling nextflow-io/hello ...
      downloaded from https://github.com/nextflow-io/hello.git
-    [PROCESS 8f/870f47] sayHello (1)
-    [PROCESS ab/886ede] sayHello (2)
-    [PROCESS e0/1d4b8a] sayHello (4)
-    [PROCESS 8e/804478] sayHello (3)
-    Ciao world!
+    Launching `https://github.com/nextflow-io/hello` [goofy_kare] revision: 3c2cdc9823 [master]
+
+    executor >  local (4)
+    [39/612874] sayHello (4) | 4 of 4 ✔
     Hello world!
-    Hola world!
+
     Bonjour world!
 
-    [SUCCESS] completed=4 failed=0 cached=0
+    Ciao world!
+
+    Hola world!
     ```
 
-    The order **changes from run to run**: the four tasks run in parallel and print as they finish (remember Lesson 1.2!). In your terminal you'll also see a live, updating progress display instead of these plain lines.
+    The order **changes from run to run**: the four tasks run in parallel and print as they finish (remember Lesson 1.2!). The `sayHello` line is **live**: while the run is going, it counts up (`0 of 4`, `1 of 4`, …) and ends with ✔. Lesson 3.1 takes this display apart line by line.
 
 ---
 
@@ -140,8 +143,8 @@ nextflow run hello
 |---|---|
 | `nextflow run hello` | Looked for a pipeline called `hello`. Not a local file, so it treated it as **`nextflow-io/hello` on GitHub** and downloaded it into `~/.nextflow/assets/`. |
 | | Read the pipeline: one process, `sayHello`, fed by a channel of four greetings. |
-| | Created **4 tasks**, one per greeting, each in its own `work/xx/yyyy…` folder (the `8f/870f47` codes are the start of those folder names). |
-| | Ran them **in parallel**, collected the output, and reported `completed=4`. |
+| | Created **4 tasks**, one per greeting, each in its own `work/xx/yyyy…` folder. The `39/612874` code is the start of one task's folder name; the display shows the most recent task. |
+| | Ran them **in parallel**, printed their output, and reported `4 of 4 ✔`. |
 
 Have a look at what it left behind:
 

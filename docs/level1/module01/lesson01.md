@@ -190,7 +190,7 @@ You know Bash already, so focus on **what's missing**:
 ### The same pipeline in Nextflow (preview)
 
 !!! warning "Preview: read it, don't memorise it"
-    You'll write and run this yourself in Lesson 3.1. It **has been tested** with Nextflow 26.10.7: the three `COUNT_READS` tasks ran in parallel, and the whole run took about 5 s, including Nextflow's own start-up.
+    You'll run it yourself in Lesson 3.2. It **has been tested** with Nextflow 26.10.7: the three `COUNT_READS` tasks ran in parallel, and the whole run took about 5 s, including Nextflow's own start-up.
 
     Click the :material-plus-circle: markers for explanations.
 

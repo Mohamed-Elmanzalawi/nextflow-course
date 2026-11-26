@@ -114,13 +114,24 @@ nextflow run main.nf -profile conda
     Real output from the test setup (Nextflow 26.10.7):
 
     ```text title="Real output: -profile docker"
+     N E X T F L O W   ~  version 26.10.7
+
+    Launching `main.nf` [goofy_payne] revision: abdef03057
+
+    executor >  local (1)
+    [99/ff6630] FASTQC_VERSION | 1 of 1 ✔
     Inside the task: FastQC v0.12.1
-    [SUCCESS] completed=1 failed=0 cached=0
     ```
 
     ```text title="Real output: -profile conda"
+     N E X T F L O W   ~  version 26.10.7
+
+    Launching `main.nf` [prickly_bell] revision: abdef03057
+
+    executor >  local (1)
+    [c2/82a89a] FASTQC_VERSION | 1 of 1 ✔
+    Creating env using conda: bioconda::fastqc=0.12.1 [cache …/work/conda/env-49dea791c31ead673ed2e341e1c6d206]
     Inside the task: FastQC v0.12.1
-    [SUCCESS] completed=1 failed=0 cached=0
     ```
 
     Same version, same result. The **conda** run took about **18 s** the first time, because Nextflow had to **build the environment** (it reuses it afterwards). The Docker image was already downloaded, so that run took only a few seconds.

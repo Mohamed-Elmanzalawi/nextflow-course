@@ -271,3 +271,288 @@
 
 .nf-anim--port .port-p3 { opacity: 0; animation: port-91 12s linear infinite; }
 @keyframes port-91 { 0%, 66.65% { opacity: 0; } 66.70%, 100.00% { opacity: 1; } }
+
+.nf-anim--anat .anat-hl-call { animation: anat-92 12s linear infinite; }
+@keyframes anat-92 { 0.00%, 1.95% { fill: rgba(0, 0, 0, 0); } 2.00%, 25.00% { fill: var(--nb-wait-bg); } 25.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--anat .anat-hl-script { animation: anat-93 12s linear infinite; }
+@keyframes anat-93 { 0.00%, 49.95% { fill: rgba(0, 0, 0, 0); } 50.00%, 75.00% { fill: var(--nb-wait-bg); } 75.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--anat .anat-hl-output { animation: anat-94 12s linear infinite; }
+@keyframes anat-94 { 0.00%, 74.95% { fill: rgba(0, 0, 0, 0); } 75.00%, 97.00% { fill: var(--nb-wait-bg); } 97.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--anat .anat-task { opacity: 0; animation: anat-95 12s linear infinite; }
+@keyframes anat-95 { 0%, 26.95% { opacity: 0; } 27.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-folder { opacity: 0; animation: anat-96 12s linear infinite; }
+@keyframes anat-96 { 0%, 32.95% { opacity: 0; } 33.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-f-sh { opacity: 0; animation: anat-97 12s linear infinite; }
+@keyframes anat-97 { 0%, 51.95% { opacity: 0; } 52.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-f-run { opacity: 0; animation: anat-98 12s linear infinite; }
+@keyframes anat-98 { 0%, 54.95% { opacity: 0; } 55.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-f-out { opacity: 0; animation: anat-99 12s linear infinite; }
+@keyframes anat-99 { 0%, 63.95% { opacity: 0; } 64.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-f-exit { opacity: 0; animation: anat-100 12s linear infinite; }
+@keyframes anat-100 { 0%, 76.95% { opacity: 0; } 77.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-console { opacity: 0; animation: anat-101 12s linear infinite; }
+@keyframes anat-101 { 0%, 79.95% { opacity: 0; } 80.00%, 97.00% { opacity: 1; } 97.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-folder-box { animation: anat-102 12s linear infinite; }
+@keyframes anat-102 { 0.00%, 79.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 80.00%, 97.00% { fill: var(--nb-ok-bg); } 97.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--anat .anat-l1 { opacity: 0; animation: anat-103 12s linear infinite; }
+@keyframes anat-103 { 0.00%, 25.00% { opacity: 1; } 25.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-l2 { opacity: 0; animation: anat-104 12s linear infinite; }
+@keyframes anat-104 { 0%, 24.95% { opacity: 0; } 25.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-l3 { opacity: 0; animation: anat-105 12s linear infinite; }
+@keyframes anat-105 { 0%, 49.95% { opacity: 0; } 50.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--anat .anat-l4 { opacity: 0; animation: anat-106 12s linear infinite; }
+@keyframes anat-106 { 0%, 74.95% { opacity: 0; } 75.00%, 100.00% { opacity: 1; } }
+
+.nf-anim--wire .wire-hl1 { animation: wire-107 15s linear infinite; }
+@keyframes wire-107 { 0.00%, 0.95% { fill: rgba(0, 0, 0, 0); } 1.00%, 28.00% { fill: var(--nb-wait-bg); } 28.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--wire .wire-hl2 { animation: wire-108 15s linear infinite; }
+@keyframes wire-108 { 0.00%, 27.95% { fill: rgba(0, 0, 0, 0); } 28.00%, 60.00% { fill: var(--nb-wait-bg); } 60.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--wire .wire-hl3 { animation: wire-109 15s linear infinite; }
+@keyframes wire-109 { 0.00%, 59.95% { fill: rgba(0, 0, 0, 0); } 60.00%, 90.00% { fill: var(--nb-wait-bg); } 90.05%, 100% { fill: rgba(0, 0, 0, 0); } }
+
+.nf-anim--wire .wire-r1 { opacity: 0; animation: wire-110 15s linear infinite; }
+@keyframes wire-110 { 0% { transform: translate(0px, 0px); opacity: 0; } 4.00% { transform: translate(0px, 0px); opacity: 0; } 6.00% { transform: translate(0px, 0px); opacity: 1; } 31.00% { transform: translate(0px, 0px); opacity: 1; } 38.00% { transform: translate(92px, 0px); opacity: 1; } 39.00% { transform: translate(92px, 0px); opacity: 0; } 100% { transform: translate(92px, 0px); opacity: 0; } }
+
+.nf-anim--wire .wire-c1 { opacity: 0; animation: wire-111 15s linear infinite; }
+@keyframes wire-111 { 0% { transform: translate(0px, 0px); opacity: 0; } 50.00% { transform: translate(0px, 0px); opacity: 0; } 52.00% { transform: translate(0px, 0px); opacity: 1; } 62.00% { transform: translate(0px, 0px); opacity: 1; } 69.00% { transform: translate(78px, 35px); opacity: 1; } 70.00% { transform: translate(78px, 35px); opacity: 0; } 100% { transform: translate(78px, 35px); opacity: 0; } }
+
+.nf-anim--wire .wire-bar1 { animation: wire-112 15s linear infinite; }
+@keyframes wire-112 { 0%, 38.00% { transform: scaleX(0); } 50.00%, 97.00% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+
+.nf-anim--wire .wire-r2 { opacity: 0; animation: wire-113 15s linear infinite; }
+@keyframes wire-113 { 0% { transform: translate(0px, 0px); opacity: 0; } 7.00% { transform: translate(0px, 0px); opacity: 0; } 9.00% { transform: translate(0px, 0px); opacity: 1; } 31.00% { transform: translate(0px, 0px); opacity: 1; } 38.00% { transform: translate(92px, 0px); opacity: 1; } 39.00% { transform: translate(92px, 0px); opacity: 0; } 100% { transform: translate(92px, 0px); opacity: 0; } }
+
+.nf-anim--wire .wire-c2 { opacity: 0; animation: wire-114 15s linear infinite; }
+@keyframes wire-114 { 0% { transform: translate(0px, 0px); opacity: 0; } 50.00% { transform: translate(0px, 0px); opacity: 0; } 52.00% { transform: translate(0px, 0px); opacity: 1; } 62.00% { transform: translate(0px, 0px); opacity: 1; } 69.00% { transform: translate(78px, 0px); opacity: 1; } 70.00% { transform: translate(78px, 0px); opacity: 0; } 100% { transform: translate(78px, 0px); opacity: 0; } }
+
+.nf-anim--wire .wire-bar2 { animation: wire-115 15s linear infinite; }
+@keyframes wire-115 { 0%, 38.00% { transform: scaleX(0); } 50.00%, 97.00% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+
+.nf-anim--wire .wire-r3 { opacity: 0; animation: wire-116 15s linear infinite; }
+@keyframes wire-116 { 0% { transform: translate(0px, 0px); opacity: 0; } 10.00% { transform: translate(0px, 0px); opacity: 0; } 12.00% { transform: translate(0px, 0px); opacity: 1; } 31.00% { transform: translate(0px, 0px); opacity: 1; } 38.00% { transform: translate(92px, 0px); opacity: 1; } 39.00% { transform: translate(92px, 0px); opacity: 0; } 100% { transform: translate(92px, 0px); opacity: 0; } }
+
+.nf-anim--wire .wire-c3 { opacity: 0; animation: wire-117 15s linear infinite; }
+@keyframes wire-117 { 0% { transform: translate(0px, 0px); opacity: 0; } 50.00% { transform: translate(0px, 0px); opacity: 0; } 52.00% { transform: translate(0px, 0px); opacity: 1; } 62.00% { transform: translate(0px, 0px); opacity: 1; } 69.00% { transform: translate(78px, -35px); opacity: 1; } 70.00% { transform: translate(78px, -35px); opacity: 0; } 100% { transform: translate(78px, -35px); opacity: 0; } }
+
+.nf-anim--wire .wire-bar3 { animation: wire-118 15s linear infinite; }
+@keyframes wire-118 { 0%, 38.00% { transform: scaleX(0); } 50.00%, 97.00% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+
+.nf-anim--wire .wire-task { animation: wire-119 15s linear infinite; }
+@keyframes wire-119 { 0.00%, 37.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 38.00%, 50.00% { fill: var(--nb-wait-bg); } 50.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--wire .wire-bundle { opacity: 0; animation: wire-120 15s linear infinite; }
+@keyframes wire-120 { 0% { transform: translate(0px, 0px); opacity: 0; } 69.00% { transform: translate(0px, 0px); opacity: 0; } 70.00% { transform: translate(0px, 0px); opacity: 1; } 75.00% { transform: translate(0px, 0px); opacity: 1; } 81.00% { transform: translate(85px, 17px); opacity: 1; } 82.00% { transform: translate(85px, 17px); opacity: 0; } 100% { transform: translate(85px, 17px); opacity: 0; } }
+
+.nf-anim--wire .wire-sum { animation: wire-121 15s linear infinite; }
+@keyframes wire-121 { 0.00%, 81.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 82.00%, 90.00% { fill: var(--nb-wait-bg); } 90.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--wire .wire-out { opacity: 0; animation: wire-122 15s linear infinite; }
+@keyframes wire-122 { 0%, 88.95% { opacity: 0; } 89.00%, 99.00% { opacity: 1; } 99.05%, 100% { opacity: 0; } }
+
+.nf-anim--wire .wire-l1 { opacity: 0; animation: wire-123 15s linear infinite; }
+@keyframes wire-123 { 0.00%, 28.00% { opacity: 1; } 28.05%, 100% { opacity: 0; } }
+
+.nf-anim--wire .wire-l2 { opacity: 0; animation: wire-124 15s linear infinite; }
+@keyframes wire-124 { 0%, 27.95% { opacity: 0; } 28.00%, 60.00% { opacity: 1; } 60.05%, 100% { opacity: 0; } }
+
+.nf-anim--wire .wire-l3 { opacity: 0; animation: wire-125 15s linear infinite; }
+@keyframes wire-125 { 0%, 59.95% { opacity: 0; } 60.00%, 90.00% { opacity: 1; } 90.05%, 100% { opacity: 0; } }
+
+.nf-anim--wire .wire-l4 { opacity: 0; animation: wire-126 15s linear infinite; }
+@keyframes wire-126 { 0%, 89.95% { opacity: 0; } 90.00%, 100.00% { opacity: 1; } }
+
+.nf-anim--parm .parm-layer1 { opacity: 0; animation: parm-127 12s linear infinite; }
+@keyframes parm-127 { 0%, 1.95% { opacity: 0; } 2.00%, 99.00% { opacity: 1; } 99.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-v1 { opacity: 0; animation: parm-128 12s linear infinite; }
+@keyframes parm-128 { 0%, 5.95% { opacity: 0; } 6.00%, 25.00% { opacity: 1; } 25.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-l1 { opacity: 0; animation: parm-129 12s linear infinite; }
+@keyframes parm-129 { 0.00%, 25.00% { opacity: 1; } 25.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-box1 { animation: parm-130 12s linear infinite; }
+@keyframes parm-130 { 0.00%, 5.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 6.00%, 25.00% { fill: var(--nb-ok-bg); } 25.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--parm .parm-arrow1 { opacity: 0; animation: parm-131 12s linear infinite; }
+@keyframes parm-131 { 0% { transform: translate(0px, 14px); opacity: 0; } 3.00% { transform: translate(0px, 14px); opacity: 0; } 6.00% { transform: translate(0px, 0px); opacity: 1; } 24.00% { transform: translate(0px, 0px); opacity: 1; } 25.00% { transform: translate(0px, 0px); opacity: 0; } 100% { transform: translate(0px, 0px); opacity: 0; } }
+
+.nf-anim--parm .parm-layer2 { opacity: 0; animation: parm-132 12s linear infinite; }
+@keyframes parm-132 { 0%, 26.95% { opacity: 0; } 27.00%, 99.00% { opacity: 1; } 99.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-v2 { opacity: 0; animation: parm-133 12s linear infinite; }
+@keyframes parm-133 { 0%, 30.95% { opacity: 0; } 31.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-l2 { opacity: 0; animation: parm-134 12s linear infinite; }
+@keyframes parm-134 { 0%, 24.95% { opacity: 0; } 25.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-box2 { animation: parm-135 12s linear infinite; }
+@keyframes parm-135 { 0.00%, 30.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 31.00%, 50.00% { fill: var(--nb-ok-bg); } 50.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--parm .parm-arrow2 { opacity: 0; animation: parm-136 12s linear infinite; }
+@keyframes parm-136 { 0% { transform: translate(0px, 14px); opacity: 0; } 28.00% { transform: translate(0px, 14px); opacity: 0; } 31.00% { transform: translate(0px, 0px); opacity: 1; } 49.00% { transform: translate(0px, 0px); opacity: 1; } 50.00% { transform: translate(0px, 0px); opacity: 0; } 100% { transform: translate(0px, 0px); opacity: 0; } }
+
+.nf-anim--parm .parm-layer3 { opacity: 0; animation: parm-137 12s linear infinite; }
+@keyframes parm-137 { 0%, 51.95% { opacity: 0; } 52.00%, 99.00% { opacity: 1; } 99.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-v3 { opacity: 0; animation: parm-138 12s linear infinite; }
+@keyframes parm-138 { 0%, 55.95% { opacity: 0; } 56.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-l3 { opacity: 0; animation: parm-139 12s linear infinite; }
+@keyframes parm-139 { 0%, 49.95% { opacity: 0; } 50.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-box3 { animation: parm-140 12s linear infinite; }
+@keyframes parm-140 { 0.00%, 55.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 56.00%, 75.00% { fill: var(--nb-ok-bg); } 75.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--parm .parm-arrow3 { opacity: 0; animation: parm-141 12s linear infinite; }
+@keyframes parm-141 { 0% { transform: translate(0px, 14px); opacity: 0; } 53.00% { transform: translate(0px, 14px); opacity: 0; } 56.00% { transform: translate(0px, 0px); opacity: 1; } 74.00% { transform: translate(0px, 0px); opacity: 1; } 75.00% { transform: translate(0px, 0px); opacity: 0; } 100% { transform: translate(0px, 0px); opacity: 0; } }
+
+.nf-anim--parm .parm-layer4 { opacity: 0; animation: parm-142 12s linear infinite; }
+@keyframes parm-142 { 0%, 76.95% { opacity: 0; } 77.00%, 99.00% { opacity: 1; } 99.05%, 100% { opacity: 0; } }
+
+.nf-anim--parm .parm-v4 { opacity: 0; animation: parm-143 12s linear infinite; }
+@keyframes parm-143 { 0%, 80.95% { opacity: 0; } 81.00%, 100.00% { opacity: 1; } }
+
+.nf-anim--parm .parm-l4 { opacity: 0; animation: parm-144 12s linear infinite; }
+@keyframes parm-144 { 0%, 74.95% { opacity: 0; } 75.00%, 100.00% { opacity: 1; } }
+
+.nf-anim--parm .parm-box4 { animation: parm-145 12s linear infinite; }
+@keyframes parm-145 { 0.00%, 80.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 81.00%, 100.00% { fill: var(--nb-ok-bg); } }
+
+.nf-anim--parm .parm-arrow4 { opacity: 0; animation: parm-146 12s linear infinite; }
+@keyframes parm-146 { 0% { transform: translate(0px, 14px); opacity: 0; } 78.00% { transform: translate(0px, 14px); opacity: 0; } 81.00% { transform: translate(0px, 0px); opacity: 1; } 99.00% { transform: translate(0px, 0px); opacity: 1; } 100.00% { transform: translate(0px, 0px); opacity: 0; } }
+
+.nf-anim--res .res-card1 { animation: res-147 16s linear infinite; }
+@keyframes res-147 { 0.00%, 3.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 4.00%, 16.00% { fill: var(--nb-wait-bg); } 16.05%, 78.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 79.00%, 91.00% { fill: var(--nb-wait-bg); } 91.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--res .res-bar1-1 { animation: res-148 16s linear infinite; }
+@keyframes res-148 { 0%, 4.00% { transform: scaleX(0); } 16.00%, 24.70% { transform: scaleX(1); } 24.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran1-1 { opacity: 0; animation: res-149 16s linear infinite; }
+@keyframes res-149 { 0%, 15.95% { opacity: 0; } 16.00%, 24.70% { opacity: 1; } 24.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached1-2 { opacity: 0; animation: res-150 16s linear infinite; }
+@keyframes res-150 { 0%, 28.95% { opacity: 0; } 29.00%, 49.70% { opacity: 1; } 49.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached1-3 { opacity: 0; animation: res-151 16s linear infinite; }
+@keyframes res-151 { 0%, 53.95% { opacity: 0; } 54.00%, 74.70% { opacity: 1; } 74.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-bar1-4 { animation: res-152 16s linear infinite; }
+@keyframes res-152 { 0%, 79.00% { transform: scaleX(0); } 91.00%, 99.70% { transform: scaleX(1); } 99.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran1-4 { opacity: 0; animation: res-153 16s linear infinite; }
+@keyframes res-153 { 0%, 90.95% { opacity: 0; } 91.00%, 99.70% { opacity: 1; } 99.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-card2 { animation: res-154 16s linear infinite; }
+@keyframes res-154 { 0.00%, 3.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 4.00%, 16.00% { fill: var(--nb-wait-bg); } 16.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--res .res-bar2-1 { animation: res-155 16s linear infinite; }
+@keyframes res-155 { 0%, 4.00% { transform: scaleX(0); } 16.00%, 24.70% { transform: scaleX(1); } 24.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran2-1 { opacity: 0; animation: res-156 16s linear infinite; }
+@keyframes res-156 { 0%, 15.95% { opacity: 0; } 16.00%, 24.70% { opacity: 1; } 24.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached2-2 { opacity: 0; animation: res-157 16s linear infinite; }
+@keyframes res-157 { 0%, 28.95% { opacity: 0; } 29.00%, 49.70% { opacity: 1; } 49.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached2-3 { opacity: 0; animation: res-158 16s linear infinite; }
+@keyframes res-158 { 0%, 53.95% { opacity: 0; } 54.00%, 74.70% { opacity: 1; } 74.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached2-4 { opacity: 0; animation: res-159 16s linear infinite; }
+@keyframes res-159 { 0%, 78.95% { opacity: 0; } 79.00%, 99.70% { opacity: 1; } 99.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-card3 { animation: res-160 16s linear infinite; }
+@keyframes res-160 { 0.00%, 3.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 4.00%, 16.00% { fill: var(--nb-wait-bg); } 16.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--res .res-bar3-1 { animation: res-161 16s linear infinite; }
+@keyframes res-161 { 0%, 4.00% { transform: scaleX(0); } 16.00%, 24.70% { transform: scaleX(1); } 24.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran3-1 { opacity: 0; animation: res-162 16s linear infinite; }
+@keyframes res-162 { 0%, 15.95% { opacity: 0; } 16.00%, 24.70% { opacity: 1; } 24.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached3-2 { opacity: 0; animation: res-163 16s linear infinite; }
+@keyframes res-163 { 0%, 28.95% { opacity: 0; } 29.00%, 49.70% { opacity: 1; } 49.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached3-3 { opacity: 0; animation: res-164 16s linear infinite; }
+@keyframes res-164 { 0%, 53.95% { opacity: 0; } 54.00%, 74.70% { opacity: 1; } 74.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached3-4 { opacity: 0; animation: res-165 16s linear infinite; }
+@keyframes res-165 { 0%, 78.95% { opacity: 0; } 79.00%, 99.70% { opacity: 1; } 99.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-card4 { animation: res-166 16s linear infinite; }
+@keyframes res-166 { 0.00%, 3.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 4.00%, 16.00% { fill: var(--nb-wait-bg); } 16.05%, 53.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 54.00%, 66.00% { fill: var(--nb-wait-bg); } 66.05%, 78.95% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } 79.00%, 91.00% { fill: var(--nb-wait-bg); } 91.05%, 100% { fill: color-mix(in srgb, var(--nb-green) 8%, var(--nb-card)); } }
+
+.nf-anim--res .res-bar4-1 { animation: res-167 16s linear infinite; }
+@keyframes res-167 { 0%, 4.00% { transform: scaleX(0); } 16.00%, 24.70% { transform: scaleX(1); } 24.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran4-1 { opacity: 0; animation: res-168 16s linear infinite; }
+@keyframes res-168 { 0%, 15.95% { opacity: 0; } 16.00%, 24.70% { opacity: 1; } 24.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cached4-2 { opacity: 0; animation: res-169 16s linear infinite; }
+@keyframes res-169 { 0%, 28.95% { opacity: 0; } 29.00%, 49.70% { opacity: 1; } 49.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-bar4-3 { animation: res-170 16s linear infinite; }
+@keyframes res-170 { 0%, 54.00% { transform: scaleX(0); } 66.00%, 74.70% { transform: scaleX(1); } 74.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran4-3 { opacity: 0; animation: res-171 16s linear infinite; }
+@keyframes res-171 { 0%, 65.95% { opacity: 0; } 66.00%, 74.70% { opacity: 1; } 74.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-bar4-4 { animation: res-172 16s linear infinite; }
+@keyframes res-172 { 0%, 79.00% { transform: scaleX(0); } 91.00%, 99.70% { transform: scaleX(1); } 99.75%, 100% { transform: scaleX(0); } }
+
+.nf-anim--res .res-ran4-4 { opacity: 0; animation: res-173 16s linear infinite; }
+@keyframes res-173 { 0%, 90.95% { opacity: 0; } 91.00%, 99.70% { opacity: 1; } 99.75%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-h1a { opacity: 0; animation: res-174 16s linear infinite; }
+@keyframes res-174 { 0.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-h1b { opacity: 0; animation: res-175 16s linear infinite; }
+@keyframes res-175 { 0%, 75.00% { opacity: 0; } 75.05%, 100.00% { opacity: 1; } }
+
+.nf-anim--res .res-h4a { opacity: 0; animation: res-176 16s linear infinite; }
+@keyframes res-176 { 0.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-h4b { opacity: 0; animation: res-177 16s linear infinite; }
+@keyframes res-177 { 0%, 50.00% { opacity: 0; } 50.05%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-h4c { opacity: 0; animation: res-178 16s linear infinite; }
+@keyframes res-178 { 0%, 75.00% { opacity: 0; } 75.05%, 100.00% { opacity: 1; } }
+
+.nf-anim--res .res-cmd1 { opacity: 0; animation: res-179 16s linear infinite; }
+@keyframes res-179 { 0.00%, 25.00% { opacity: 1; } 25.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-l1 { opacity: 0; animation: res-180 16s linear infinite; }
+@keyframes res-180 { 0.00%, 25.00% { opacity: 1; } 25.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cmd2 { opacity: 0; animation: res-181 16s linear infinite; }
+@keyframes res-181 { 0%, 24.95% { opacity: 0; } 25.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-l2 { opacity: 0; animation: res-182 16s linear infinite; }
+@keyframes res-182 { 0%, 24.95% { opacity: 0; } 25.00%, 50.00% { opacity: 1; } 50.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cmd3 { opacity: 0; animation: res-183 16s linear infinite; }
+@keyframes res-183 { 0%, 49.95% { opacity: 0; } 50.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-l3 { opacity: 0; animation: res-184 16s linear infinite; }
+@keyframes res-184 { 0%, 49.95% { opacity: 0; } 50.00%, 75.00% { opacity: 1; } 75.05%, 100% { opacity: 0; } }
+
+.nf-anim--res .res-cmd4 { opacity: 0; animation: res-185 16s linear infinite; }
+@keyframes res-185 { 0%, 74.95% { opacity: 0; } 75.00%, 100.00% { opacity: 1; } }
+
+.nf-anim--res .res-l4 { opacity: 0; animation: res-186 16s linear infinite; }
+@keyframes res-186 { 0%, 74.95% { opacity: 0; } 75.00%, 100.00% { opacity: 1; } }

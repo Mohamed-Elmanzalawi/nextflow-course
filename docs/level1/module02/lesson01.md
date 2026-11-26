@@ -70,9 +70,16 @@ echo "pipe status ignored: reached the end"
 ```
 
 ```text title="Real output"
-PIPEFAIL_TEST: pipe status ignored: reached the end
-[SUCCESS] completed=1 failed=0 cached=0
+ N E X T F L O W   ~  version 26.10.7
+
+Launching `test.nf` [compassionate_brattain] revision: f4b7dce9dc
+
+executor >  local (1)
+[63/8391f5] PIPEFAIL_TEST | 1 of 1 ✔
+pipe status ignored: reached the end
 ```
+
+The ✔ means Nextflow recorded this task as **successful**.
 
 !!! protip "Pro tip: turn on `pipefail` for every task"
     Add this line to your pipeline's `nextflow.config`, and every task runs with `pipefail`:

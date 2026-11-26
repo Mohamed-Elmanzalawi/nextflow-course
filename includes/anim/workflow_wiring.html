@@ -1,0 +1,44 @@
+<figure class="nf-anim nf-anim--wire">
+<svg viewBox="0 0 720 320" role="img" aria-labelledby="wireTitle">
+<title id="wireTitle">Animation: the three lines of the workflow block, highlighted one at a time. Line one fills reads_ch with three FASTQ files. Line two sends each file into its own COUNT_READS task, all three running at once, producing counts_ch. Line three collects the three counts into one bundle and gives it to SUMMARISE, which writes summary.tsv.</title>
+<rect class="nfa-box" x="20" y="10" width="680" height="92" rx="10"/>
+<rect class="nfa-hl wire-hl1" x="30" y="20" width="660" height="22" rx="5"/>
+<rect class="nfa-hl wire-hl2" x="30" y="45" width="660" height="22" rx="5"/>
+<rect class="nfa-hl wire-hl3" x="30" y="70" width="660" height="22" rx="5"/>
+<text class="prof-code" x="40" y="36">reads_ch   = channel.fromPath('data/*.fastq')</text>
+<text class="prof-code" x="40" y="61">counts_ch  = COUNT_READS(reads_ch)</text>
+<text class="prof-code" x="40" y="86">summary_ch = SUMMARISE(counts_ch.collect())</text>
+<text class="nfa-small" x="60" y="128" text-anchor="middle">data/</text>
+<rect class="stage-file" x="30" y="140" width="60" height="22" rx="4"/><text class="stage-file-t" x="60" y="155" text-anchor="middle">sample1</text>
+<rect class="stage-file" x="30" y="175" width="60" height="22" rx="4"/><text class="stage-file-t" x="60" y="190" text-anchor="middle">sample2</text>
+<rect class="stage-file" x="30" y="210" width="60" height="22" rx="4"/><text class="stage-file-t" x="60" y="225" text-anchor="middle">sample3</text>
+<text class="nfa-small" x="148" y="128" text-anchor="middle">reads_ch</text>
+<g class="nfa-lines"><path d="M108 140 L108 232"/><path d="M188 140 L188 232"/><path d="M372 140 L372 232"/><path d="M452 140 L452 232"/></g>
+<text class="nfa-small" x="270" y="128" text-anchor="middle">COUNT_READS ×3</text>
+<g class="wire-task-boxes">
+<rect class="nfa-box wire-task" x="215" y="138" width="110" height="26" rx="6"/>
+<rect class="nfa-box wire-task" x="215" y="173" width="110" height="26" rx="6"/>
+<rect class="nfa-box wire-task" x="215" y="208" width="110" height="26" rx="6"/>
+<rect class="nfa-bar wire-bar1" x="220" y="157" width="100" height="4" rx="2"/>
+<rect class="nfa-bar wire-bar2" x="220" y="192" width="100" height="4" rx="2"/>
+<rect class="nfa-bar wire-bar3" x="220" y="227" width="100" height="4" rx="2"/>
+</g>
+<text class="nfa-small" x="412" y="128" text-anchor="middle">counts_ch</text>
+<text class="nfa-small" x="505" y="128" text-anchor="middle">collect()</text>
+<rect class="nfa-box nfa-box--sum wire-sum" x="545" y="158" width="110" height="60" rx="8"/>
+<text class="nfa-label" x="600" y="180" text-anchor="middle">SUMMARISE</text>
+<g class="wire-out"><rect class="stage-file" x="560" y="228" width="80" height="24" rx="5"/><text class="stage-file-t" x="600" y="244" text-anchor="middle">summary.tsv</text></g>
+<g class="nfa-token nfa-t1 wire-r1"><rect x="128" y="140" width="40" height="22" rx="5"/><text x="148" y="155" text-anchor="middle">s1</text></g>
+<g class="nfa-token nfa-t2 wire-r2"><rect x="128" y="175" width="40" height="22" rx="5"/><text x="148" y="190" text-anchor="middle">s2</text></g>
+<g class="nfa-token nfa-t3 wire-r3"><rect x="128" y="210" width="40" height="22" rx="5"/><text x="148" y="225" text-anchor="middle">s3</text></g>
+<g class="nfa-token nfa-t1 wire-c1"><rect x="392" y="140" width="40" height="22" rx="5"/><text x="412" y="155" text-anchor="middle">n1</text></g>
+<g class="nfa-token nfa-t2 wire-c2"><rect x="392" y="175" width="40" height="22" rx="5"/><text x="412" y="190" text-anchor="middle">n2</text></g>
+<g class="nfa-token nfa-t3 wire-c3"><rect x="392" y="210" width="40" height="22" rx="5"/><text x="412" y="225" text-anchor="middle">n3</text></g>
+<g class="nfa-token nfa-bundle wire-bundle"><rect x="470" y="175" width="70" height="22" rx="5"/><text x="505" y="190" text-anchor="middle">[n1,n2,n3]</text></g>
+<text class="nfa-step wire-l1" x="360" y="290" text-anchor="middle">① channel.fromPath puts one item per matching file into reads_ch</text>
+<text class="nfa-step wire-l2" x="360" y="290" text-anchor="middle">② COUNT_READS(reads_ch): one task per item, all three at the same time</text>
+<text class="nfa-step wire-l3" x="360" y="290" text-anchor="middle">③ collect() waits for every count, then SUMMARISE gets them as one list</text>
+<text class="nfa-step wire-l4" x="360" y="290" text-anchor="middle">No loop, no "wait": data arriving is what starts each task</text>
+</svg>
+<figcaption><strong>Each line of the workflow block wires up one part of the flow.</strong> The highlighted line is the one doing the work. <em>(Hover to pause.)</em></figcaption>
+</figure>

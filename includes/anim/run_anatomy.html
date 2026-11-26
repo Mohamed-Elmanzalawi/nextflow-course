@@ -1,0 +1,36 @@
+<figure class="nf-anim nf-anim--anat">
+<svg viewBox="0 0 700 270" role="img" aria-labelledby="anatTitle">
+<title id="anatTitle">Animation: Nextflow reads hello.nf, the call SAY_HELLO() in the workflow creates one task, the task gets its own hashed folder under work, the script block is written to .command.sh and run there, it produces hello.txt, and because the declared output exists the task is marked done with a tick.</title>
+<rect class="nfa-box" x="20" y="20" width="300" height="200" rx="10"/>
+<text class="nfa-label" x="34" y="42">hello.nf</text>
+<rect class="nfa-hl anat-hl-output" x="30" y="72" width="280" height="40" rx="5"/>
+<rect class="nfa-hl anat-hl-script" x="30" y="116" width="280" height="44" rx="5"/>
+<rect class="nfa-hl anat-hl-call" x="30" y="182" width="280" height="22" rx="5"/>
+<text class="prof-code" x="40" y="66">process SAY_HELLO {</text>
+<text class="prof-code" x="56" y="86">output:</text>
+<text class="prof-code" x="56" y="104">path 'hello.txt'</text>
+<text class="prof-code" x="56" y="130">script:</text>
+<text class="prof-code" x="56" y="150">"echo 'Hello…' &gt; hello.txt"</text>
+<text class="prof-code" x="40" y="172">}</text>
+<text class="prof-code" x="40" y="198">workflow { SAY_HELLO() }</text>
+<g class="nfa-lines"><path d="M320 193 C350 193 350 70 380 70"/></g>
+<g class="anat-task">
+<rect class="stage-file" x="380" y="56" width="110" height="28" rx="6"/>
+<text class="stage-file-t" x="435" y="75" text-anchor="middle">task: SAY_HELLO</text>
+</g>
+<g class="anat-folder">
+<rect class="nfa-box anat-folder-box" x="380" y="96" width="300" height="120" rx="10"/>
+<text class="nfa-label" x="394" y="118">📁 work/54/3b7873c4…/</text>
+</g>
+<g class="anat-f-sh"><rect class="stage-link-box" x="394" y="130" width="130" height="24" rx="5"/><text class="stage-file-t" x="459" y="147" text-anchor="middle">.command.sh</text></g>
+<g class="anat-f-run"><rect class="stage-link-box" x="534" y="130" width="130" height="24" rx="5"/><text class="stage-file-t" x="599" y="147" text-anchor="middle">.command.run</text></g>
+<g class="anat-f-out"><rect class="stage-file" x="394" y="166" width="130" height="24" rx="5"/><text class="stage-file-t" x="459" y="183" text-anchor="middle">hello.txt</text></g>
+<g class="anat-f-exit"><rect class="stage-link-box" x="534" y="166" width="130" height="24" rx="5"/><text class="stage-file-t" x="599" y="183" text-anchor="middle">.exitcode = 0</text></g>
+<text class="prof-term anat-console" x="530" y="40" text-anchor="middle">[54/3b7873] SAY_HELLO | 1 of 1 ✔</text>
+<text class="nfa-step anat-l1" x="350" y="252" text-anchor="middle">① Nextflow reads the script. The call SAY_HELLO() in the workflow means: run this process</text>
+<text class="nfa-step anat-l2" x="350" y="252" text-anchor="middle">② The call becomes a task, and the task gets its own folder named by a hash</text>
+<text class="nfa-step anat-l3" x="350" y="252" text-anchor="middle">③ The script block is saved as .command.sh and runs inside that folder</text>
+<text class="nfa-step anat-l4" x="350" y="252" text-anchor="middle">④ The declared output hello.txt exists and the exit code is 0 → ✔</text>
+</svg>
+<figcaption><strong>What <code>nextflow run hello.nf</code> does</strong>, in four steps. The hash <code>54/3b7873</code> on the console is the start of the task's folder name. <em>(Hover to pause.)</em></figcaption>
+</figure>

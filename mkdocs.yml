@@ -102,5 +102,10 @@ nav:
           - "2.2 Install Java & Nextflow": level1/module02/lesson02.md
           - "2.3 Conda, Docker & Apptainer": level1/module02/lesson03.md
           - "2.4 VS Code & Git": level1/module02/lesson04.md
+      - "Module 3 · First pipeline":
+          - "3.1 Anatomy of a script": level1/module03/lesson01.md
+          - "3.2 Processes & workflows": level1/module03/lesson02.md
+          - "3.3 Params & publishing": level1/module03/lesson03.md
+          - "3.4 work/ and -resume": level1/module03/lesson04.md
   - Progress: progress.md
   - Glossary: glossary.md

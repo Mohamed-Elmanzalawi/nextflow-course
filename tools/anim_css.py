@@ -84,6 +84,32 @@ def bar(anim, sel, a, b, dur, hold=96):
     _rule(anim, sel, dur, kf)
 
 
+def bar_win(anim, sel, a, b, off, dur):
+    """Bar grows 0→1 between a% and b%, stays full until off%, then vanishes at once."""
+    e = 0.05
+    kf = (
+        f"0%, {_p(a)} {{ transform: scaleX(0); }} "
+        f"{_p(b)}, {_p(off)} {{ transform: scaleX(1); }} "
+        f"{_p(off + e)}, 100% {{ transform: scaleX(0); }}"
+    )
+    _rule(anim, sel, dur, kf)
+
+
+def track(anim, sel, points, dur):
+    """Full control: points = [(pct, dx, dy, opacity), ...] in time order.
+    Every keyframe sets both transform and opacity, so nothing is left undefined."""
+    kf = []
+    if points[0][0] > 0:
+        p0 = points[0]
+        kf.append(f"0% {{ transform: translate({p0[1]}px, {p0[2]}px); opacity: {p0[3]}; }}")
+    for pct, dx, dy, op in points:
+        kf.append(f"{_p(pct)} {{ transform: translate({dx}px, {dy}px); opacity: {op}; }}")
+    if points[-1][0] < 100:
+        pl = points[-1]
+        kf.append(f"100% {{ transform: translate({pl[1]}px, {pl[2]}px); opacity: {pl[3]}; }}")
+    _rule(anim, sel, dur, " ".join(kf), "opacity: 0; ")
+
+
 def steps_y(anim, sel, points, dur, hide_after=None):
     e = 0.05
     kf = []
@@ -190,6 +216,85 @@ for i, (a, dy) in enumerate([(0, -75), (33.4, 0), (66.7, 75)], start=1):
     move("port", f".port-d{i}", a + 3, a + 20, 290, dy, Q, until=a + 28)
     glow("port", f".port-v{i}", a + 20, a + 31, Q, colour="var(--nb-ok-bg)")
     show("port", f".port-p{i}", a, min(a + 33.3, 100), Q)
+
+# ---------------------------------------------------------------------------
+# Lesson 3.1 — anatomy of a run: script → task → work folder → ✔ (12 s, quarters)
+# ---------------------------------------------------------------------------
+A = 12
+HL = "var(--nb-wait-bg)"
+CLEAR = "rgba(0, 0, 0, 0)"
+glow("anat", ".anat-hl-call", 0, 0, A, colour=HL, rest=CLEAR, windows=[(2, 25)])
+glow("anat", ".anat-hl-script", 0, 0, A, colour=HL, rest=CLEAR, windows=[(50, 75)])
+glow("anat", ".anat-hl-output", 0, 0, A, colour=HL, rest=CLEAR, windows=[(75, 97)])
+show("anat", ".anat-task", 27, 97, A)
+show("anat", ".anat-folder", 33, 97, A)
+show("anat", ".anat-f-sh", 52, 97, A)
+show("anat", ".anat-f-run", 55, 97, A)
+show("anat", ".anat-f-out", 64, 97, A)
+show("anat", ".anat-f-exit", 77, 97, A)
+show("anat", ".anat-console", 80, 97, A)
+glow("anat", ".anat-folder-box", 0, 0, A, colour="var(--nb-ok-bg)", windows=[(80, 97)])
+for i, (a, b) in enumerate([(0, 25), (25, 50), (50, 75), (75, 100)], start=1):
+    show("anat", f".anat-l{i}", a, b, A)
+
+# ---------------------------------------------------------------------------
+# Lesson 3.2 — each workflow line wires up part of the dataflow (15 s, 3 steps + finale)
+# ---------------------------------------------------------------------------
+W = 15
+glow("wire", ".wire-hl1", 0, 0, W, colour=HL, rest=CLEAR, windows=[(1, 28)])
+glow("wire", ".wire-hl2", 0, 0, W, colour=HL, rest=CLEAR, windows=[(28, 60)])
+glow("wire", ".wire-hl3", 0, 0, W, colour=HL, rest=CLEAR, windows=[(60, 90)])
+for k in range(3):
+    # read tokens: appear in the channel, travel into their task box, vanish
+    track("wire", f".wire-r{k + 1}", [(4 + 3 * k, 0, 0, 0), (6 + 3 * k, 0, 0, 1), (31, 0, 0, 1),
+                                       (38, 92, 0, 1), (39, 92, 0, 0)], W)
+    # count tokens: appear at the box exit, wait in counts_ch, travel into the bundle
+    track("wire", f".wire-c{k + 1}", [(50, 0, 0, 0), (52, 0, 0, 1), (62, 0, 0, 1),
+                                       (69, 78, 35 * (1 - k), 1), (70, 78, 35 * (1 - k), 0)], W)
+    bar("wire", f".wire-bar{k + 1}", 38, 50, W, hold=97)
+glow("wire", ".wire-task", 0, 0, W, colour="var(--nb-wait-bg)", windows=[(38, 50)])
+track("wire", ".wire-bundle", [(69, 0, 0, 0), (70, 0, 0, 1), (75, 0, 0, 1), (81, 85, 17, 1), (82, 85, 17, 0)], W)
+glow("wire", ".wire-sum", 0, 0, W, colour="var(--nb-wait-bg)", windows=[(82, 90)])
+show("wire", ".wire-out", 89, 99, W)
+show("wire", ".wire-l1", 0, 28, W)
+show("wire", ".wire-l2", 28, 60, W)
+show("wire", ".wire-l3", 60, 90, W)
+show("wire", ".wire-l4", 90, 100, W)
+
+# ---------------------------------------------------------------------------
+# Lesson 3.3 — where params.title comes from: four layers, the highest wins (12 s, quarters)
+# ---------------------------------------------------------------------------
+P3 = 12
+for i, (a, b) in enumerate([(0, 25), (25, 50), (50, 75), (75, 100)], start=1):
+    show("parm", f".parm-layer{i}", a + 2, 99, P3)
+    show("parm", f".parm-v{i}", a + 6, b, P3)
+    show("parm", f".parm-l{i}", a, b, P3)
+    glow("parm", f".parm-box{i}", 0, 0, P3, colour="var(--nb-ok-bg)", windows=[(a + 6, b)])
+    track("parm", f".parm-arrow{i}", [(a + 3, 0, 14, 0), (a + 6, 0, 0, 1), (b - 1, 0, 0, 1), (b, 0, 0, 0)], P3)
+
+# ---------------------------------------------------------------------------
+# Lesson 3.4 — -resume: what runs again and what comes from the cache (16 s, quarters)
+# ---------------------------------------------------------------------------
+R4 = 16
+Q4 = [(0, 25), (25, 50), (50, 75), (75, 100)]
+# which cards run (instead of coming from the cache) in each phase: c1..c3 = COUNT_READS, c4 = SUMMARISE
+RUNS = {1: [1, 2, 3, 4], 2: [], 3: [4], 4: [1, 4]}
+for c in range(1, 5):
+    run_windows = [(a + 4, a + 16) for p, (a, b) in enumerate(Q4, start=1) if c in RUNS[p]]
+    if run_windows:
+        glow("res", f".res-card{c}", 0, 0, R4, colour="var(--nb-wait-bg)", windows=run_windows)
+    for p, (a, b) in enumerate(Q4, start=1):
+        if c in RUNS[p]:
+            bar_win("res", f".res-bar{c}-{p}", a + 4, a + 16, b - 0.3, R4)
+            show("res", f".res-ran{c}-{p}", a + 16, b - 0.3, R4)
+        else:
+            show("res", f".res-cached{c}-{p}", a + 4, b - 0.3, R4)
+# hashes: c4 changes at phase 3, c1 at phase 4 (and c4 again, its input changed)
+show("res", ".res-h1a", 0, 75, R4); show("res", ".res-h1b", 75.05, 100, R4)
+show("res", ".res-h4a", 0, 50, R4); show("res", ".res-h4b", 50.05, 75, R4); show("res", ".res-h4c", 75.05, 100, R4)
+for p, (a, b) in enumerate(Q4, start=1):
+    show("res", f".res-cmd{p}", a, b, R4)
+    show("res", f".res-l{p}", a, b, R4)
 
 HEADER = "/* GENERATED by tools/anim_css.py: edit that file, not this one. */\n"
 OUT.write_text(HEADER + "\n".join(_rules))

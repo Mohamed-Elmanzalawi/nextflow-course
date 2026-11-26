@@ -47,8 +47,10 @@ fi
 # ---- hello pipeline --------------------------------------------------------
 if command -v nextflow > /dev/null 2>&1; then
     TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
-    if (cd "$TMP" && perl -e 'alarm 300; exec @ARGV' nextflow run hello -ansi-log false > hello.log 2>&1) \
-       && grep -q 'completed=4' "$TMP/hello.log"; then
+    # Count finished tasks in the trace file: the console text differs between
+    # a normal terminal and "agent mode" (NXF_AGENT_MODE), the trace does not.
+    if (cd "$TMP" && perl -e 'alarm 300; exec @ARGV' nextflow run hello -ansi-log false -with-trace trace.tsv > hello.log 2>&1) \
+       && [[ "$(awk -F'\t' 'NR > 1 && $5 == "COMPLETED"' "$TMP/trace.tsv" 2>/dev/null | wc -l | tr -d ' ')" == 4 ]]; then
         pass "'nextflow run hello' succeeds" "4 tasks completed"
     else
         fail "'nextflow run hello' succeeds" "$(tail -n 3 "$TMP/hello.log" 2>/dev/null | tr '\n' ' ')"

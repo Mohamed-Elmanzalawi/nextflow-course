@@ -85,6 +85,24 @@ Language server *(2.4)*
 Git commit / tag *(2.4)*
 :   A saved snapshot of your files / a permanent name for one snapshot (e.g. a release).
 
+Task folder / work directory *(3.1)*
+:   The private folder where one task runs: `work/xx/yyyy…`, named by the task's hash. It holds `.command.sh`, `.exitcode`, `.command.out/.err` and the task's outputs.
+
+Staging *(3.2)*
+:   Making a task's input files available in its task folder, by default as symbolic links (no copying).
+
+Parameter (`params`) *(3.3)*
+:   A setting of a pipeline that users change without editing code: `--reads 'x/*.fastq'`. Declared in a typed `params { }` block.
+
+Publishing *(3.3)*
+:   Putting final results outside `work/`, into the output directory (`results/` by default), with workflow outputs (`publish:` + `output {}`) or the older `publishDir` directive.
+
+Task hash *(3.4)*
+:   A fingerprint of everything that can change a task's result: script, inputs (path, size, timestamp), software environment and more. It names the task folder and decides what `-resume` can skip.
+
+Session *(3.4)*
+:   A run and all the runs that resumed it. `-resume` continues the previous run's session and reuses its cached tasks.
+
 ## Commands
 
 | Command | What it does | Lesson |
@@ -108,3 +126,12 @@ Git commit / tag *(2.4)*
 | `nextflow lint main.nf` | Check Nextflow code for errors | 2.4 |
 | `git init -b main` / `git add` / `git commit -m` / `git tag` | Version control basics | 2.4 |
 | `git check-ignore -v path` | Show which `.gitignore` rule ignores a path | 2.4 |
+| `nextflow run main.nf -ansi-log false` | Plain output, one line per task (logs, clusters) | 3.1 |
+| `ls work/ab/123456*` | Open a task folder from the hash on the console | 3.1 |
+| `channel.of(...)` / `channel.fromPath('data/*.fastq')` | Make a channel of values / of files | 3.1, 3.2 |
+| `ch.collect()` / `ch.view()` | Gather all items into one list / print every item | 3.2 |
+| `nextflow run main.nf --reads 'x/*.fastq'` | Set a pipeline parameter (quote globs!) | 3.3 |
+| `-params-file params.yaml` / `-output-dir dir` | Parameters from a file / where results are published | 3.3 |
+| `nextflow run main.nf -resume` | Reuse finished tasks from the previous run | 3.4 |
+| `nextflow log <run> -f name,hash,status` | List the tasks of one run | 3.4 |
+| `nextflow clean -n -but last` / `-f` | Preview / delete task folders the last run doesn't use | 3.4 |
