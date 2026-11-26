@@ -30,6 +30,7 @@ Lesson pages declare front matter:  lesson: "1.1", module: 1, level: 1
 from __future__ import annotations
 
 import glob
+import hashlib
 import html
 import json
 import os
@@ -53,9 +54,14 @@ LABELS = {
     "check": "Auto-checked",
 }
 
+# Cache busting: these files are linked as file?v=<content hash>, so a browser
+# fetches them again whenever they change (GitHub Pages lets browsers cache 10 min).
+VERSIONED = ("javascripts/course.js", "stylesheets/notebook.css", "stylesheets/anim-lessons.css")
+
 _page_specs: dict[str, list[dict]] = {}
 _lessons: dict[str, dict] = {}
 _seen_ids: dict[str, str] = {}
+_versions: dict[str, str] = {}
 _root = "."
 
 
@@ -78,6 +84,12 @@ def on_pre_build(config, **kwargs):
     _page_specs.clear()
     _lessons.clear()
     _seen_ids.clear()
+    _versions.clear()
+    for rel in VERSIONED:
+        path = os.path.join(config["docs_dir"], rel)
+        if os.path.exists(path):
+            with open(path, "rb") as fh:
+                _versions[rel] = hashlib.sha1(fh.read()).hexdigest()[:10]
 
 
 def on_page_markdown(markdown_src, page, config, files, **kwargs):
@@ -191,7 +203,20 @@ def on_page_content(content, page, config, files, **kwargs):
         if new == content:
             raise ValueError(f"{page.file.src_path}: could not place quiz {spec['id']}")
         content = new
-    return content
+    # Build marker inside the swapped page content. course.js compares it with its
+    # own ?v= and reloads once if a tab kept an old script across a deploy.
+    build = _versions.get("javascripts/course.js", "")
+    return content + f'\n<span class="nb-build" data-v="{build}" hidden></span>\n'
+
+
+def on_post_page(output, page, config, **kwargs):
+    for rel, version in _versions.items():
+        output = re.sub(
+            r'((?:src|href)="[^"?]*' + re.escape(rel) + r')"',
+            rf'\1?v={version}"',
+            output,
+        )
+    return output
 
 
 def _lesson_key(lesson: str):

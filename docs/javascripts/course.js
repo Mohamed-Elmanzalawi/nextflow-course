@@ -8,6 +8,30 @@
   var KEY = "nfcourse:v1";
   var CHEERS = ["Nice work!", "Spot on!", "Exactly right!", "You've got it!", "Great thinking!"];
 
+  /* ---------- version check ------------------------------------------------
+   * The hook loads this file as course.js?v=<hash> and puts the same hash on
+   * every page (.nb-build). Instant navigation keeps this script in memory, so
+   * a tab left open across a deploy would pair new pages with old code. When
+   * the hashes differ, reload once to fetch the new script.               */
+  var SELF_V = (function () {
+    try {
+      var m = ((document.currentScript && document.currentScript.src) || "").match(/[?&]v=([^&#]+)/);
+      return m ? m[1] : "";
+    } catch (e) { return ""; }
+  })();
+  function reloadIfStale() {
+    var mark = document.querySelector(".nb-build");
+    var v = mark && mark.getAttribute("data-v");
+    if (!SELF_V || !v || v === SELF_V) return false;
+    try {
+      var k = "nfcourse:reloaded:" + v;
+      if (window.sessionStorage.getItem(k)) return false; // tried once already: never loop
+      window.sessionStorage.setItem(k, "1");
+    } catch (e) { return false; }
+    window.location.reload();
+    return true;
+  }
+
   /* ---------- storage ---------------------------------------------------- */
   function load() {
     try {
@@ -513,6 +537,7 @@
 
   /* ---------- init (runs on every instant-navigation page load) ------------ */
   function init() {
+    if (reloadIfStale()) return;
     var state = load();
     var lessonNode = document.querySelector(".nb-lesson-progress");
     if (lessonNode) {
