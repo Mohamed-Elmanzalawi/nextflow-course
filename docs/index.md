@@ -116,7 +116,7 @@ Code blocks are labelled by **where the code goes**:
     | **M4 Processes in depth** | 4.1 Process blocks · 4.2 Directives · 4.3 Task isolation and exit codes · 4.4 `path` vs `val`, globs, `emit`, optional outputs |
     | **M5 Channels & dataflow** | 5.1 Queue vs value channels · 5.2 Channel factories and samplesheets · 5.3 Core operators · 5.4 Tuples and meta maps |
 
-    :material-trophy: **Capstone 1:** FastQC on paired-end samples read from a samplesheet, then a MultiQC report.
+    :material-trophy: **[Capstone 1](level1/capstone1.md):** FastQC on paired-end samples read from a samplesheet, then a MultiQC report.
 
 === "Level 2 · Intermediate (~32 h)"
 

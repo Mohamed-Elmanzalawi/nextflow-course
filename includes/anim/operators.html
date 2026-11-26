@@ -1,0 +1,30 @@
+<figure class="nf-anim nf-anim--ops">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="opsTitle">
+<title id="opsTitle">Animation: three operators, one after the other. join matches items with the same key from two channels. groupTuple collects all items with the same key into one item with a list. combine makes every pair of items from two channels.</title>
+<rect class="nfa-box ops-panel1" x="10" y="20" width="222" height="232" rx="10"/>
+<text class="nfa-label" x="121" y="44" text-anchor="middle">join</text>
+<text class="prof-code" x="22" y="72" style="font-size:10.5px">a: [cov_a, 100]   [cov_b, 100]</text>
+<text class="prof-code" x="22" y="92" style="font-size:10.5px">b: [cov_b, 37.6]  [cov_a, 38.2]</text>
+<text class="prof-code" x="121" y="128" text-anchor="middle" style="font-size:11px;font-weight:700">↓ a.join(b)</text>
+<g class="ops-out1"><text class="prof-code" x="22" y="158" style="font-size:10.5px">[cov_a, 100, 38.2]</text><text class="prof-code" x="22" y="178" style="font-size:10.5px">[cov_b, 100, 37.6]</text></g>
+<text class="nfa-small" x="121" y="242" text-anchor="middle">≈ merging two dicts by key</text>
+<rect class="nfa-box ops-panel2" x="248" y="20" width="222" height="232" rx="10"/>
+<text class="nfa-label" x="359" y="44" text-anchor="middle">groupTuple</text>
+<text class="prof-code" x="260" y="72" style="font-size:10.5px">[s1, L001.fq]  [s2, L001.fq]</text>
+<text class="prof-code" x="260" y="92" style="font-size:10.5px">[s1, L002.fq]</text>
+<text class="prof-code" x="359" y="128" text-anchor="middle" style="font-size:11px;font-weight:700">↓ lanes.groupTuple()</text>
+<g class="ops-out2"><text class="prof-code" x="260" y="158" style="font-size:10.5px">[s1, [L001.fq, L002.fq]]</text><text class="prof-code" x="260" y="178" style="font-size:10.5px">[s2, [L001.fq]]</text></g>
+<text class="nfa-small" x="359" y="242" text-anchor="middle">≈ defaultdict(list) / groupby</text>
+<rect class="nfa-box ops-panel3" x="486" y="20" width="222" height="232" rx="10"/>
+<text class="nfa-label" x="597" y="44" text-anchor="middle">combine</text>
+<text class="prof-code" x="498" y="72" style="font-size:10.5px">samples: cov_a, cov_b</text>
+<text class="prof-code" x="498" y="92" style="font-size:10.5px">refs: MN908947, GRCh38</text>
+<text class="prof-code" x="597" y="128" text-anchor="middle" style="font-size:11px;font-weight:700">↓ samples.combine(refs)</text>
+<g class="ops-out3"><text class="prof-code" x="498" y="158" style="font-size:10.5px">[cov_a, MN908947]</text><text class="prof-code" x="498" y="176" style="font-size:10.5px">[cov_a, GRCh38]</text><text class="prof-code" x="498" y="194" style="font-size:10.5px">[cov_b, MN908947]</text><text class="prof-code" x="498" y="212" style="font-size:10.5px">[cov_b, GRCh38]</text></g>
+<text class="nfa-small" x="597" y="242" text-anchor="middle">≈ itertools.product</text>
+<text class="nfa-step ops-l1" x="360" y="280" text-anchor="middle">① join: items with the same key (the first element) are merged into one</text>
+<text class="nfa-step ops-l2" x="360" y="280" text-anchor="middle">② groupTuple: all items with the same key → one item with a list</text>
+<text class="nfa-step ops-l3" x="360" y="280" text-anchor="middle">③ combine: every item of one channel with every item of the other</text>
+</svg>
+<figcaption><strong>Three operators you'll use constantly</strong>, with the real output of <code>operators.nf</code>. <em>(Hover to pause.)</em></figcaption>
+</figure>

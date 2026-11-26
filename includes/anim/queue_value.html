@@ -1,0 +1,33 @@
+<figure class="nf-anim nf-anim--qv">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="qvTitle">
+<title id="qvTitle">Animation: with a queue channel holding one reference file, the first sample and the reference go into the first task; samples two and three wait for a reference that never comes, so only one task runs. With a value channel, the same reference is given to every sample, so three tasks run.</title>
+<text class="prof-code qv-code1" x="20" y="28">ref_ch = channel.fromPath('ref.fa')          // a QUEUE channel with 1 item</text>
+<text class="prof-code qv-code2" x="20" y="28">ref_ch = channel.value(file('ref.fa'))       // a VALUE channel</text>
+<text class="nfa-small" x="20" y="92">reads_ch</text>
+<text class="nfa-small" x="20" y="144">ref_ch</text>
+<g class="nfa-lines"><path d="M30 112 L380 112"/><path d="M30 162 L380 162"/></g>
+<rect class="nfa-box" x="380" y="70" width="160" height="110" rx="10"/>
+<text class="nfa-label" x="460" y="130" text-anchor="middle">MAP_READS</text>
+<g class="nfa-token nfa-t1 qv-a-s1"><rect x="40" y="100" width="40" height="24" rx="5"/><text x="60.0" y="116.0" text-anchor="middle">s1</text></g>
+<g class="nfa-token nfa-t2 qv-a-s2"><rect x="90" y="100" width="40" height="24" rx="5"/><text x="110.0" y="116.0" text-anchor="middle">s2</text></g>
+<g class="nfa-token nfa-t3 qv-a-s3"><rect x="140" y="100" width="40" height="24" rx="5"/><text x="160.0" y="116.0" text-anchor="middle">s3</text></g>
+<g class="nfa-token nfa-bundle qv-a-ref"><rect x="40" y="150" width="60" height="24" rx="5"/><text x="70.0" y="166.0" text-anchor="middle">ref.fa</text></g>
+<text class="pipe-verdict pipe-ok qv-a-done1" x="560" y="105">task 1 ✔</text>
+<text class="nfa-small qv-a-wait" x="20" y="205">s2 and s3 wait for a reference that never comes: the queue is empty</text>
+<g class="nfa-token nfa-t1 qv-b-s1"><rect x="40" y="100" width="40" height="24" rx="5"/><text x="60.0" y="116.0" text-anchor="middle">s1</text></g>
+<g class="nfa-token nfa-t2 qv-b-s2"><rect x="90" y="100" width="40" height="24" rx="5"/><text x="110.0" y="116.0" text-anchor="middle">s2</text></g>
+<g class="nfa-token nfa-t3 qv-b-s3"><rect x="140" y="100" width="40" height="24" rx="5"/><text x="160.0" y="116.0" text-anchor="middle">s3</text></g>
+<g class="qv-b-ref"><g class="nfa-token nfa-bundle "><rect x="40" y="150" width="60" height="24" rx="5"/><text x="70.0" y="166.0" text-anchor="middle">ref.fa</text></g><text class="nfa-small nfa-halo" x="110" y="167">value: stays put</text></g>
+<g class="nfa-token nfa-bundle qv-b-rc1"><rect x="40" y="150" width="60" height="24" rx="5"/><text x="70.0" y="166.0" text-anchor="middle">ref.fa</text></g>
+<g class="nfa-token nfa-bundle qv-b-rc2"><rect x="40" y="150" width="60" height="24" rx="5"/><text x="70.0" y="166.0" text-anchor="middle">ref.fa</text></g>
+<g class="nfa-token nfa-bundle qv-b-rc3"><rect x="40" y="150" width="60" height="24" rx="5"/><text x="70.0" y="166.0" text-anchor="middle">ref.fa</text></g>
+<text class="pipe-verdict pipe-ok qv-b-done1" x="560" y="100">task 1 ✔</text>
+<text class="pipe-verdict pipe-ok qv-b-done2" x="560" y="128">task 2 ✔</text>
+<text class="pipe-verdict pipe-ok qv-b-done3" x="560" y="156">task 3 ✔</text>
+<text class="nfa-step qv-l1" x="360" y="255" text-anchor="middle">① A queue channel hands out each item once: s1 and ref.fa make task 1</text>
+<text class="nfa-step qv-l2" x="360" y="255" text-anchor="middle">② ref.fa is used up. s2 and s3 have no partner → only 1 task, no error!</text>
+<text class="nfa-step qv-l3" x="360" y="255" text-anchor="middle">③ A value channel holds one value and gives it to EVERY task</text>
+<text class="nfa-step qv-l4" x="360" y="255" text-anchor="middle">channel.value(…), .first() or a plain file(…): 3 samples → 3 tasks</text>
+</svg>
+<figcaption><strong>Queue vs value:</strong> the same pipeline, one changed line, 1 task or 3. <em>(Hover to pause.)</em></figcaption>
+</figure>

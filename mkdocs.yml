@@ -112,5 +112,11 @@ nav:
           - "4.2 Directives & retries": level1/module04/lesson02.md
           - "4.3 Debugging tasks": level1/module04/lesson03.md
           - "4.4 Inputs & outputs": level1/module04/lesson04.md
+      - "Module 5 · Channels":
+          - "5.1 Queue vs value channels": level1/module05/lesson01.md
+          - "5.2 Factories & samplesheets": level1/module05/lesson02.md
+          - "5.3 Core operators": level1/module05/lesson03.md
+          - "5.4 Tuples & meta maps": level1/module05/lesson04.md
+      - "Capstone 1": level1/capstone1.md
   - Progress: progress.md
   - Glossary: glossary.md

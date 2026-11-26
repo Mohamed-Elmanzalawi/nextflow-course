@@ -16,3 +16,8 @@ results/
 __pycache__/
 
 CLAUDE.md
+# Downloaded course data (recreate with get_data.sh)
+capstone1/data/
+
+# Data cache used by the Module 5 checkers
+module05_channels/data/

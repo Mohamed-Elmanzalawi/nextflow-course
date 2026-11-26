@@ -1,0 +1,16 @@
+<figure class="nf-anim nf-anim--meta">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="metaTitle">
+<title id="metaTitle">Animation: a sample travels as a pair of a meta map, like a luggage tag with its id and condition, and its files. The process uses meta.id for its tag and output names, and emits the same meta map with the new file. Afterwards a map operator adds a read_pairs field to the meta map.</title>
+<text class="prof-code" x="20" y="30">tuple(meta, [R1, R2])  →  COUNT_PAIRS  →  tuple(meta, count.txt)  →  meta + [read_pairs: 100]</text>
+<rect class="nfa-box meta-proc" x="255" y="70" width="210" height="116" rx="10"/>
+<text class="nfa-label" x="360" y="92" text-anchor="middle">COUNT_PAIRS</text>
+<text class="nfa-small" x="360" y="172" text-anchor="middle">tag ${meta.id} → cov_a</text>
+<g class="meta-in"><rect class="stage-file" x="20" y="96" width="200" height="64" rx="8"/><rect class="stage-link-box" x="28" y="102" width="184" height="22" rx="4"/><text class="stage-file-t" x="120" y="118" text-anchor="middle">🏷 [id: cov_a, condition: infected]</text><text class="stage-file-t" x="120" y="148" text-anchor="middle">📄 cov_a_R1  📄 cov_a_R2</text></g>
+<g class="meta-out"><rect class="stage-file" x="485" y="96" width="200" height="64" rx="8"/><rect class="stage-link-box" x="493" y="102" width="184" height="22" rx="4"/><text class="stage-file-t" x="585" y="118" text-anchor="middle">🏷 [id: cov_a, condition: infected]</text><text class="stage-file-t" x="585" y="148" text-anchor="middle">📄 cov_a.count.txt</text><g class="meta-newfield"><rect class="prof-env prof-env--docker" x="493" y="166" width="184" height="22" rx="4"/><text class="stage-file-t" x="585" y="182" text-anchor="middle">+ read_pairs: 100</text></g></g>
+<text class="nfa-step meta-l1" x="360" y="245" text-anchor="middle">① Each sample = [meta, files]: the meta map is its luggage tag</text>
+<text class="nfa-step meta-l2" x="360" y="245" text-anchor="middle">② The process reads meta.id for its tag and its output file names</text>
+<text class="nfa-step meta-l3" x="360" y="245" text-anchor="middle">③ It emits the SAME meta with its new file: the tag never gets lost</text>
+<text class="nfa-step meta-l4" x="360" y="245" text-anchor="middle">④ meta + [read_pairs: 100] makes a NEW map with one more field</text>
+</svg>
+<figcaption><strong>The meta-map pattern:</strong> information about a sample travels with its files through every step. <em>(Hover to pause.)</em></figcaption>
+</figure>

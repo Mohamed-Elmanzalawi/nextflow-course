@@ -1,0 +1,4 @@
+sample,fastq_1,fastq_2
+cov_a,data/cov_a_R1.fastq.gz,data/cov_a_R2.fastq.gz
+cov_b,data/cov_b_R1.fastq.gz,data/cov_b_R2.fastq.gz
+hsa_rna,data/hsa_rna_R1.fastq.gz,data/hsa_rna_R2.fastq.gz

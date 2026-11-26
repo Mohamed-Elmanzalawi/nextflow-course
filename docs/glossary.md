@@ -121,6 +121,18 @@ Error strategy *(4.2)*
 Glob output / `emit` / optional output *(4.4)*
 :   `path 'chunk_*.fastq'` captures every matching file (several → one list); `emit: name` names an output; `optional: true` allows it to be missing.
 
+Queue channel / value channel *(5.1)*
+:   A queue channel delivers items one by one, each to one task; a value channel holds one value that every task reuses (`channel.value(…)`, `.first()`, `.collect()`).
+
+Samplesheet *(5.2)*
+:   A CSV file listing each sample and its files (`sample,fastq_1,fastq_2`): the standard input of nf-core pipelines.
+
+Key *(5.3)*
+:   The first element of a tuple; `join` and `groupTuple` match and group items by it.
+
+Meta map *(5.4)*
+:   A map of facts about one sample (`[id: 'cov_a', condition: 'infected', …]`) that travels with its files as `[meta, files]`.
+
 ## Commands
 
 | Command | What it does | Lesson |
@@ -158,3 +170,10 @@ Glob output / `emit` / optional output *(4.4)*
 | `cd <work dir>; cat .command.err; bash .command.run` | Inspect and re-run a failed task by hand | 4.3 |
 | `process.shell = ['/bin/bash', '-euo', 'pipefail']` | (nextflow.config) Make pipe failures fail the task | 4.3 |
 | `ch.flatten()` | Unpack lists: one item per element | 4.4 |
+| `channel.value(file('ref.fa'))` / `ch.first()` | A value channel, reused by every task | 5.1 |
+| `channel.fromFilePairs('data/*_R{1,2}.fastq.gz')` | `[id, [R1, R2]]` per pair | 5.2 |
+| `channel.fromPath(params.input).splitCsv(header: true)` | One map per samplesheet line | 5.2 |
+| `file(path, checkIfExists: true)` | A file object; stops the run if it's missing | 5.2 |
+| `a.join(b)` / `ch.groupTuple()` / `a.combine(b)` | Match by key / group by key / every pair | 5.3 |
+| `nextflow -q run main.nf` | Quiet: only your own output, no banner or progress | 5.3 |
+| `meta + [key: value]` | A new meta map with one more field | 5.4 |

@@ -44,6 +44,7 @@ In the repository settings, Pages has **Source: GitHub Actions**. You can also r
 |---|---|
 | `docs/` | Lesson pages, the progress dashboard, the glossary, and the theme |
 | `moduleXX_*/lessonYY_*/` | Hands-on files for each lesson, including its `check_*.sh` checker scripts |
+| `capstone1/` | Level 1's final project: a FastQC + MultiQC pipeline, with its checker |
 | `includes/` | Animated diagrams and reference solutions shown on the site |
 | `hooks/`, `tools/` | The interactive-question system, the checker helpers, and the animation generator |
 | `progress/checks/` | Results written by the checker scripts |

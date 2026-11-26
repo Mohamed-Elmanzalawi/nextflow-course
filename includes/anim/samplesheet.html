@@ -1,0 +1,26 @@
+<figure class="nf-anim nf-anim--sheet">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="sheetTitle">
+<title id="sheetTitle">Animation: channel.fromPath reads the samplesheet file; splitCsv with header true turns each line into a row map; map turns each row into a tuple of the sample name and two file objects; a row pointing to a missing file stops the run with No such file, thanks to checkIfExists.</title>
+<rect class="nfa-box sheet-file" x="15" y="40" width="240" height="170" rx="8"/>
+<text class="nfa-label" x="28" y="62">📄 samplesheet.csv</text>
+<text class="prof-code" x="28" y="90" style="font-size:10.5px">sample,fastq_1,fastq_2</text>
+<text class="prof-code" x="28" y="116" style="font-size:10.5px">cov_a,data/cov_a_R1.fastq.gz,…</text>
+<text class="prof-code" x="28" y="142" style="font-size:10.5px">cov_b,data/cov_b_R1.fastq.gz,…</text>
+<text class="prof-code" x="28" y="168" style="font-size:10.5px">hsa_rna,data/hsa_rna_R1.fastq.gz,…</text>
+<g class="sheet-row4"><text class="prof-code" x="28" y="194" style="font-size:10.5px">cov_c,data/cov_c_R1.fastq.gz,…</text></g>
+<text class="nfa-small" x="362" y="40" text-anchor="middle">.splitCsv(header: true)</text>
+<text class="nfa-small" x="590" y="40" text-anchor="middle">.map { row -&gt; tuple(…) }</text>
+<g class="sheet-row1"><rect class="stage-link-box" x="268" y="64" width="188" height="26" rx="5"/><text class="stage-file-t" x="362" y="81" text-anchor="middle">[sample:cov_a, fastq_1:…]</text></g>
+<g class="sheet-tup1"><rect class="stage-file" x="470" y="64" width="235" height="26" rx="5"/><text class="stage-file-t" x="587" y="81" text-anchor="middle">[cov_a, 📄 cov_a_R1.fastq.gz, 📄 R2]</text></g>
+<g class="sheet-row2"><rect class="stage-link-box" x="268" y="98" width="188" height="26" rx="5"/><text class="stage-file-t" x="362" y="115" text-anchor="middle">[sample:cov_b, fastq_1:…]</text></g>
+<g class="sheet-tup2"><rect class="stage-file" x="470" y="98" width="235" height="26" rx="5"/><text class="stage-file-t" x="587" y="115" text-anchor="middle">[cov_b, 📄 cov_b_R1.fastq.gz, 📄 R2]</text></g>
+<g class="sheet-row3"><rect class="stage-link-box" x="268" y="132" width="188" height="26" rx="5"/><text class="stage-file-t" x="362" y="149" text-anchor="middle">[sample:hsa_rna, fastq_1:…]</text></g>
+<g class="sheet-tup3"><rect class="stage-file" x="470" y="132" width="235" height="26" rx="5"/><text class="stage-file-t" x="587" y="149" text-anchor="middle">[hsa_rna, 📄 hsa_rna_R1.fastq.gz, 📄 R2]</text></g>
+<g class="sheet-err"><rect class="prof-env prof-env--none" x="470" y="170" width="235" height="40" rx="6"/><text class="pipe-verdict pipe-bad" x="587" y="195" text-anchor="middle">✗ No such file: cov_c_R1.fastq.gz</text></g>
+<text class="nfa-step sheet-l1" x="360" y="255" text-anchor="middle">① channel.fromPath(params.input): one item, the samplesheet file</text>
+<text class="nfa-step sheet-l2" x="360" y="255" text-anchor="middle">② splitCsv(header: true): one map per line, keys from the header</text>
+<text class="nfa-step sheet-l3" x="360" y="255" text-anchor="middle">③ map: each row becomes tuple(sample, R1 file, R2 file)</text>
+<text class="nfa-step sheet-l4" x="360" y="255" text-anchor="middle">④ file(…, checkIfExists: true): a missing file stops the run, by name</text>
+</svg>
+<figcaption><strong>From samplesheet to channel</strong>, one operator at a time. <em>(Hover to pause.)</em></figcaption>
+</figure>

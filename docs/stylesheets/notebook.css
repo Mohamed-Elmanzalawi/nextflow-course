@@ -871,6 +871,15 @@
   .nf-anim .rtry-mem1, .nf-anim .rtry-mem2, .nf-anim .rtry-mem3 { transform: scaleX(1) !important; }
 }
 
+/* ---------- Module 5 animations: static frames for reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .nf-anim .qv-code2, .nf-anim .qv-b-ref, .nf-anim .qv-b-done1, .nf-anim .qv-b-done2, .nf-anim .qv-b-done3, .nf-anim .qv-l4,
+  .nf-anim .sheet-row1, .nf-anim .sheet-row2, .nf-anim .sheet-row3, .nf-anim .sheet-row4, .nf-anim .sheet-tup1,
+  .nf-anim .sheet-tup2, .nf-anim .sheet-tup3, .nf-anim .sheet-err, .nf-anim .sheet-l4,
+  .nf-anim .ops-out1, .nf-anim .ops-out2, .nf-anim .ops-out3, .nf-anim .ops-l3,
+  .nf-anim .meta-out, .nf-anim .meta-newfield, .nf-anim .meta-l4 { opacity: 1 !important; }
+}
+
 /* ==========================================================================
    Stop layout "jumps" during instant navigation
    ========================================================================== */
