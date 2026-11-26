@@ -171,11 +171,13 @@ def _widget(spec: dict) -> str:
             solution=spec.get("solution_text"),
             solution_name=spec.get("solution_name"),
         )
-    payload = json.dumps(client).replace("</", "<\\/")
+    # The spec travels in a data attribute, NOT in <script type="application/json">:
+    # Material's instant navigation re-creates every inline <script> without its
+    # `type`, so the browser would execute the JSON and the widget would stay empty.
+    payload = html.escape(json.dumps(client), quote=True)
     return (
         f'<div class="nbq nbq--{qtype}" id="q-{html.escape(spec["id"])}" '
-        f'data-qid="{html.escape(spec["id"])}">'
-        f'<script type="application/json" class="nbq__spec">{payload}</script>'
+        f'data-qid="{html.escape(spec["id"])}" data-spec="{payload}">'
         f'<noscript><p>Enable JavaScript to answer this question.</p></noscript>'
         f"</div>"
     )

@@ -287,9 +287,9 @@
 
   function renderWidget(node, state) {
     if (node.dataset.ready) return;
-    var specNode = node.querySelector("script.nbq__spec");
-    if (!specNode) return;
-    var spec = JSON.parse(specNode.textContent);
+    var raw = node.getAttribute("data-spec");
+    if (!raw) return;
+    var spec = JSON.parse(raw);
     node.dataset.ready = "1";
     var head = el("div", "nbq__head");
     head.appendChild(text("span", "nbq__badge", spec.label));
