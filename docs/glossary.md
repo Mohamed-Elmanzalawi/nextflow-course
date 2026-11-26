@@ -103,6 +103,24 @@ Task hash *(3.4)*
 Session *(3.4)*
 :   A run and all the runs that resumed it. `-resume` continues the previous run's session and reuses its cached tasks.
 
+Stub run *(4.1)*
+:   `nextflow run main.nf -stub`: every process runs its `stub:` block (usually `touch` on the outputs) instead of `script:`, to test the pipeline's wiring in seconds.
+
+Directive *(4.2)*
+:   A setting at the top of a process that controls how its tasks run: `cpus`, `memory`, `time`, `tag`, `errorStrategy`, `maxRetries`…
+
+Closure *(4.2)*
+:   A small piece of code in braces, `{ 1.GB * task.attempt }`, evaluated again each time it's needed. Like a Python `lambda`.
+
+Error strategy *(4.2)*
+:   What Nextflow does when a task fails: `terminate` (default), `finish`, `ignore` or `retry`.
+
+`bin/` folder *(4.3)*
+:   A folder next to `main.nf` whose executable scripts are on the `PATH` of every task.
+
+Glob output / `emit` / optional output *(4.4)*
+:   `path 'chunk_*.fastq'` captures every matching file (several → one list); `emit: name` names an output; `optional: true` allows it to be missing.
+
 ## Commands
 
 | Command | What it does | Lesson |
@@ -135,3 +153,8 @@ Session *(3.4)*
 | `nextflow run main.nf -resume` | Reuse finished tasks from the previous run | 3.4 |
 | `nextflow log <run> -f name,hash,status` | List the tasks of one run | 3.4 |
 | `nextflow clean -n -but last` / `-f` | Preview / delete task folders the last run doesn't use | 3.4 |
+| `nextflow run main.nf -stub` | Run every process's `stub:` block instead of its script | 4.1 |
+| `nextflow log last -f name,tag,attempt,memory,status,exit` | Every attempt of the last run, with its resources and exit code | 4.2 |
+| `cd <work dir>; cat .command.err; bash .command.run` | Inspect and re-run a failed task by hand | 4.3 |
+| `process.shell = ['/bin/bash', '-euo', 'pipefail']` | (nextflow.config) Make pipe failures fail the task | 4.3 |
+| `ch.flatten()` | Unpack lists: one item per element | 4.4 |

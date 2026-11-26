@@ -1,0 +1,29 @@
+<figure class="nf-anim nf-anim--intp">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="intpTitle">
+<title id="intpTitle">Animation: a script block is read twice. First Nextflow replaces every ${...} with values, such as the file name sample1.fastq, and turns each backslash-dollar into a plain dollar. The result is .command.sh. Then Bash runs it and fills in its own variables, such as $reads, producing: sample: sample1, reads: 1000.</title>
+<text class="nfa-small" x="20" y="26">main.nf: what you write</text>
+<rect class="nfa-box" x="20" y="34" width="680" height="62" rx="8"/>
+<rect class="nfa-hl intp-nf" x="293.9" y="44" width="40.1" height="19" rx="3"/>
+<rect class="nfa-hl intp-nf" x="135.1" y="70" width="105.1" height="19" rx="3"/>
+<rect class="nfa-hl intp-esc" x="77.3" y="44" width="18.4" height="19" rx="3"/>
+<rect class="nfa-hl intp-esc" x="301.1" y="70" width="18.4" height="19" rx="3"/>
+<text class="prof-code" x="36" y="58">reads=\$(awk &#x27;END { print NR / 4 }&#x27; ${fq})</text>
+<text class="prof-code" x="36" y="84">echo &quot;sample: ${fq.baseName}, reads: \$reads&quot;</text>
+<g class="intp-sh">
+<text class="nfa-small" x="20" y="124">.command.sh: what Bash receives (after Nextflow filled in the values)</text>
+<rect class="nfa-box nfa-box--sum" x="20" y="132" width="680" height="62" rx="8"/>
+<rect class="nfa-hl intp-filled" x="286.7" y="142" width="97.9" height="19" rx="3"/>
+<rect class="nfa-hl intp-filled" x="135.1" y="168" width="54.5" height="19" rx="3"/>
+<rect class="nfa-hl intp-bashvar" x="250.6" y="168" width="47.3" height="19" rx="3"/>
+<rect class="nfa-hl intp-bashvar" x="77.3" y="142" width="18.4" height="19" rx="3"/>
+<text class="prof-code" x="36" y="156">reads=$(awk &#x27;END { print NR / 4 }&#x27; sample1.fastq)</text>
+<text class="prof-code" x="36" y="182">echo &quot;sample: sample1, reads: $reads&quot;</text>
+</g>
+<g class="intp-out"><text class="nfa-small" x="20" y="220">the task prints</text>
+<text class="prof-term" x="36" y="244">sample: sample1, reads: 1000</text></g>
+<text class="nfa-step intp-l1" x="360" y="284" text-anchor="middle">① Nextflow reads the block first and fills in every ${…} (yellow)</text>
+<text class="nfa-step intp-l2" x="360" y="284" text-anchor="middle">② Each \$ becomes a plain $ (peach): Nextflow leaves it for Bash</text>
+<text class="nfa-step intp-l3" x="360" y="284" text-anchor="middle">③ Only now does Bash run the script and fill in its own $reads (green)</text>
+</svg>
+<figcaption><strong>Two languages, one block:</strong> Nextflow fills in <code>${…}</code> before the task starts; Bash fills in <code>$name</code> while it runs. <em>(Hover to pause.)</em></figcaption>
+</figure>

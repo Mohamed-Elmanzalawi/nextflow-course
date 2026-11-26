@@ -1,0 +1,43 @@
+<figure class="nf-anim nf-anim--dbug">
+<svg viewBox="0 0 720 290" role="img" aria-labelledby="dbugTitle">
+<title id="dbugTitle">Animation: the five-step debugging loop. Read the error report, go to the task folder it names, read .command.sh and .command.err, re-run the task there with bash .command.run, then fix the script and continue with -resume.</title>
+<rect class="nfa-box dbug-step1" x="20" y="30" width="120" height="70" rx="10"/>
+<text class="nfa-label" x="80" y="22" text-anchor="middle">①</text>
+<text class="stage-file-t" x="80" y="60" text-anchor="middle">Read the</text>
+<text class="stage-file-t" x="80" y="80" text-anchor="middle">error report</text>
+<g class="nfa-lines"><path d="M140 65 L160 65"/></g>
+<rect class="nfa-box dbug-step2" x="160" y="30" width="120" height="70" rx="10"/>
+<text class="nfa-label" x="220" y="22" text-anchor="middle">②</text>
+<text class="stage-file-t" x="220" y="60" text-anchor="middle">Go to the</text>
+<text class="stage-file-t" x="220" y="80" text-anchor="middle">task folder</text>
+<g class="nfa-lines"><path d="M280 65 L300 65"/></g>
+<rect class="nfa-box dbug-step3" x="300" y="30" width="120" height="70" rx="10"/>
+<text class="nfa-label" x="360" y="22" text-anchor="middle">③</text>
+<text class="stage-file-t" x="360" y="60" text-anchor="middle">Read .command.sh</text>
+<text class="stage-file-t" x="360" y="80" text-anchor="middle">and .command.err</text>
+<g class="nfa-lines"><path d="M420 65 L440 65"/></g>
+<rect class="nfa-box dbug-step4" x="440" y="30" width="120" height="70" rx="10"/>
+<text class="nfa-label" x="500" y="22" text-anchor="middle">④</text>
+<text class="stage-file-t" x="500" y="60" text-anchor="middle">Re-run it there:</text>
+<text class="stage-file-t" x="500" y="80" text-anchor="middle">bash .command.run</text>
+<g class="nfa-lines"><path d="M560 65 L580 65"/></g>
+<rect class="nfa-box dbug-step5" x="580" y="30" width="120" height="70" rx="10"/>
+<text class="nfa-label" x="640" y="22" text-anchor="middle">⑤</text>
+<text class="stage-file-t" x="640" y="60" text-anchor="middle">Fix the script,</text>
+<text class="stage-file-t" x="640" y="80" text-anchor="middle">then -resume</text>
+<g class="nfa-lines"><path d="M640 100 C640 125 80 125 80 100"/></g>
+<text class="nfa-small nfa-halo" x="360" y="122" text-anchor="middle">still failing? go round again</text>
+<rect class="nfa-box nfa-box--sum" x="20" y="135" width="680" height="80" rx="8"/>
+<g class="dbug-term1"><text class="prof-code" x="36" y="166">Caused by: Process `MEAN_LENGTH (3)` terminated with an error exit status (127)</text><text class="prof-code" x="36" y="192">Work dir: …/work/e4/4e50a612e14a425cf5eee844ae395e</text></g>
+<g class="dbug-term2"><text class="prof-code" x="36" y="166">$ cd work/e4/4e50a6*</text><text class="prof-code" x="36" y="192">$ ls -a      # the task&#x27;s private folder: no scripts/ in here!</text></g>
+<g class="dbug-term3"><text class="prof-code" x="36" y="166">$ cat .command.err</text><text class="prof-code" x="36" y="192">bash: scripts/mean_length.sh: No such file or directory</text></g>
+<g class="dbug-term4"><text class="prof-code" x="36" y="166">$ bash .command.run</text><text class="prof-code" x="36" y="192"># same error, same folder: try a fix here before touching the pipeline</text></g>
+<g class="dbug-term5"><text class="prof-code" x="36" y="166">$ nextflow run qc.nf -resume</text><text class="prof-code" x="36" y="192"># finished tasks come from the cache; only the fixed step runs again</text></g>
+<text class="nfa-step dbug-l1" x="360" y="252" text-anchor="middle">① The error report names the failing task, its exit status and its work dir</text>
+<text class="nfa-step dbug-l2" x="360" y="252" text-anchor="middle">② Each task has its own folder: look at it exactly as the task saw it</text>
+<text class="nfa-step dbug-l3" x="360" y="252" text-anchor="middle">③ .command.sh is what ran; .command.err is what went wrong</text>
+<text class="nfa-step dbug-l4" x="360" y="252" text-anchor="middle">④ Re-run the task by hand in its folder: a fast way to test a fix</text>
+<text class="nfa-step dbug-l5" x="360" y="252" text-anchor="middle">⑤ Fix the pipeline and resume: nothing that already worked runs again</text>
+</svg>
+<figcaption><strong>The debugging loop</strong>, with the real error from this lesson's challenge. <em>(Hover to pause.)</em></figcaption>
+</figure>

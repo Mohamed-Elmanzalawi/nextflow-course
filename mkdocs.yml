@@ -107,5 +107,10 @@ nav:
           - "3.2 Processes & workflows": level1/module03/lesson02.md
           - "3.3 Params & publishing": level1/module03/lesson03.md
           - "3.4 work/ and -resume": level1/module03/lesson04.md
+      - "Module 4 · Processes":
+          - "4.1 Process blocks": level1/module04/lesson01.md
+          - "4.2 Directives & retries": level1/module04/lesson02.md
+          - "4.3 Debugging tasks": level1/module04/lesson03.md
+          - "4.4 Inputs & outputs": level1/module04/lesson04.md
   - Progress: progress.md
   - Glossary: glossary.md

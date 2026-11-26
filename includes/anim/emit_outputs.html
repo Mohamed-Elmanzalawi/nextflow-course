@@ -1,0 +1,29 @@
+<figure class="nf-anim nf-anim--emit">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="emitTitle">
+<title id="emitTitle">Animation: SPLIT has two named outputs. For a big sample it emits one item on chunks, a list of three files; flatten turns that list into three items, so COUNT_CHUNK runs three times, and nothing is sent on small. For a small sample, chunks carries a list of one file and the optional small output carries a .small file.</title>
+<g class="nfa-token nfa-t2 emit-in1"><rect x="20" y="120" width="120" height="24" rx="5"/><text x="80.0" y="136" text-anchor="middle">big.fastq</text></g>
+<g class="nfa-token nfa-t3 emit-in2"><rect x="20" y="120" width="120" height="24" rx="5"/><text x="80.0" y="136" text-anchor="middle">small.fastq</text></g>
+<rect class="nfa-box emit-split" x="165" y="90" width="120" height="110" rx="10"/>
+<text class="nfa-label" x="225" y="150" text-anchor="middle">SPLIT</text>
+<g class="nfa-lines"><path d="M285 110 L560 110"/><path d="M285 200 L540 200"/></g>
+<text class="prof-code" x="300" y="90">SPLIT.out.chunks</text>
+<text class="prof-code" x="300" y="182">SPLIT.out.small (optional)</text>
+<text class="nfa-small" x="430" y="90">flatten()</text>
+<rect class="nfa-box emit-count" x="560" y="88" width="140" height="44" rx="8"/>
+<text class="nfa-label" x="630" y="80" text-anchor="middle">COUNT_CHUNK</text>
+<g class="nfa-token nfa-t1 emit-list3"><rect x="300" y="98" width="80" height="24" rx="5"/><text x="340.0" y="114" text-anchor="middle">[c1,c2,c3]</text></g>
+<g class="nfa-token nfa-t1 emit-c1"><rect x="450" y="98" width="30" height="24" rx="5"/><text x="465.0" y="114" text-anchor="middle">c1</text></g>
+<g class="nfa-token nfa-t1 emit-c2"><rect x="485" y="98" width="30" height="24" rx="5"/><text x="500.0" y="114" text-anchor="middle">c2</text></g>
+<g class="nfa-token nfa-t1 emit-c3"><rect x="520" y="98" width="30" height="24" rx="5"/><text x="535.0" y="114" text-anchor="middle">c3</text></g>
+<g class="nfa-token nfa-t3 emit-list1"><rect x="300" y="98" width="80" height="24" rx="5"/><text x="340.0" y="114" text-anchor="middle">[c1]</text></g>
+<g class="nfa-token nfa-t3 emit-c4"><rect x="450" y="98" width="30" height="24" rx="5"/><text x="465.0" y="114" text-anchor="middle">c1</text></g>
+<g class="emit-small"><rect class="stage-file" x="300" y="190" width="110" height="24" rx="5"/><text class="stage-file-t" x="355" y="206" text-anchor="middle">small.small</text></g>
+<text class="nfa-small emit-none" x="300" y="226">nothing: a big sample makes no .small file</text>
+<text class="nfa-step emit-l1" x="360" y="262" text-anchor="middle">① Big sample: SPLIT sends ONE item down chunks, a list of 3 files</text>
+<text class="nfa-step emit-l2" x="360" y="262" text-anchor="middle">② flatten() turns that list into 3 items → 3 COUNT_CHUNK tasks</text>
+<text class="nfa-step emit-l3" x="360" y="262" text-anchor="middle">③ Small sample: a list of 1 chunk (arity '1..*') plus the optional .small file</text>
+<text class="nfa-step emit-l4" x="360" y="262" text-anchor="middle">④ An optional output sends something only when the task made the file</text>
+<text class="nfa-small" x="360" y="288" text-anchor="middle">emit: gives each output its own name, so each kind of result travels on its own channel</text>
+</svg>
+<figcaption><strong>One task, two named outputs.</strong> Lists, <code>flatten()</code> and optional outputs in action. <em>(Hover to pause.)</em></figcaption>
+</figure>

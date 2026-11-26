@@ -1,0 +1,41 @@
+<figure class="nf-anim nf-anim--rtry">
+<svg viewBox="0 0 720 290" role="img" aria-labelledby="rtryTitle">
+<title id="rtryTitle">Animation: a task fails with 1 GB of memory and exit status 137, is retried with 2 GB and fails again, and succeeds on the third attempt with 3 GB, because memory is set to 1 GB times task.attempt.</title>
+<text class="prof-code" x="20" y="28">memory { 1.GB * task.attempt }  ·  errorStrategy 'retry'  ·  maxRetries 3</text>
+<g class="rtry-card1">
+<rect class="nfa-box rtry-box1" x="20" y="50" width="210" height="150" rx="10"/>
+<text class="nfa-label" x="125" y="76" text-anchor="middle">attempt 1</text>
+<text class="nfa-small" x="125" y="98" text-anchor="middle">task.attempt = 1 → memory = 1 GB</text>
+<rect class="stage-link-box" x="50" y="112" width="150" height="16" rx="4"/>
+<rect class="nfa-bar rtry-mem1" x="50" y="112" width="50" height="16" rx="4"/>
+<text class="nfa-small" x="125" y="146" text-anchor="middle">needs 3 GB</text>
+<text class="pipe-verdict pipe-bad rtry-res1" x="125" y="180" text-anchor="middle">✗ exit 137: out of memory</text>
+</g>
+<g class="nfa-lines rtry-card2"><path d="M230 125 L255 125"/></g>
+<g class="rtry-card2">
+<rect class="nfa-box rtry-box2" x="255" y="50" width="210" height="150" rx="10"/>
+<text class="nfa-label" x="360" y="76" text-anchor="middle">attempt 2</text>
+<text class="nfa-small" x="360" y="98" text-anchor="middle">task.attempt = 2 → memory = 2 GB</text>
+<rect class="stage-link-box" x="285" y="112" width="150" height="16" rx="4"/>
+<rect class="nfa-bar rtry-mem2" x="285" y="112" width="100" height="16" rx="4"/>
+<text class="nfa-small" x="360" y="146" text-anchor="middle">needs 3 GB</text>
+<text class="pipe-verdict pipe-bad rtry-res2" x="360" y="180" text-anchor="middle">✗ exit 137: out of memory</text>
+</g>
+<g class="nfa-lines rtry-card3"><path d="M465 125 L490 125"/></g>
+<g class="rtry-card3">
+<rect class="nfa-box rtry-box3" x="490" y="50" width="210" height="150" rx="10"/>
+<text class="nfa-label" x="595" y="76" text-anchor="middle">attempt 3</text>
+<text class="nfa-small" x="595" y="98" text-anchor="middle">task.attempt = 3 → memory = 3 GB</text>
+<rect class="stage-link-box" x="520" y="112" width="150" height="16" rx="4"/>
+<rect class="nfa-bar rtry-mem3" x="520" y="112" width="150" height="16" rx="4"/>
+<text class="nfa-small" x="595" y="146" text-anchor="middle">needs 3 GB</text>
+<text class="pipe-verdict pipe-ok rtry-res3" x="595" y="180" text-anchor="middle">✔ success</text>
+</g>
+<text class="nfa-step rtry-l1" x="360" y="240" text-anchor="middle">① Attempt 1 gets 1 GB: not enough → exit 137 → errorStrategy says retry</text>
+<text class="nfa-step rtry-l2" x="360" y="240" text-anchor="middle">② Attempt 2: the closure is evaluated again, task.attempt = 2 → 2 GB, still too little</text>
+<text class="nfa-step rtry-l3" x="360" y="240" text-anchor="middle">③ Attempt 3 gets 3 GB → the task succeeds</text>
+<text class="nfa-step rtry-l4" x="360" y="240" text-anchor="middle">On SLURM every attempt is a new job asking for more memory, all automatic</text>
+<text class="nfa-small" x="360" y="268" text-anchor="middle">{ … } makes the value a closure: Nextflow works it out again for every attempt</text>
+</svg>
+<figcaption><strong>Retry with more memory:</strong> the same task, three attempts, the memory request grows each time. <em>(Hover to pause.)</em></figcaption>
+</figure>
