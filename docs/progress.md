@@ -3,7 +3,7 @@
 This page updates **automatically** from your answers on the lesson pages and from the checker scripts you run in the terminal.
 
 <div id="nb-dashboard" markdown>
-Loading your progress… (this page needs JavaScript and must be opened through `mkdocs serve`.)
+Loading your progress… (this page needs JavaScript.)
 </div>
 
 ??? info "How progress is counted"
@@ -11,7 +11,7 @@ Loading your progress… (this page needs JavaScript and must be opened through 
         - a question answered;
         - a self-check question rated;
         - every step of a "Mission steps" checklist ticked;
-        - a checker script that has **passed**.
+        - a checker script that has **passed** (on the online site: once you paste its result code).
     - **Lesson complete:** every required activity in the lesson is done.
     - **First-try score:**
         - for graded questions, your **first** attempt counts;

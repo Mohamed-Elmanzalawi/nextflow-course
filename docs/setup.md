@@ -67,3 +67,4 @@ The course is also published online at <https://mohamed-elmanzalawi.github.io/ne
 
 - **Answers on the lesson pages** are saved in your browser (local storage) for the address `http://127.0.0.1:8000/nextflow-course/`. Always open the course through `mkdocs serve` at that address so your answers stay together. The online site keeps its own separate progress. Use **Export progress** on the [progress page](progress.md) to make a backup.
 - **Checker scripts** (`bash check_….sh` in a lesson folder) save their results in `progress/checks/` in this project. While `mkdocs serve` is running, the site rebuilds and shows the new result automatically.
+- **On the online site**, checker results can't arrive by themselves, because it can't see your `progress/` folder. Every checker ends by printing a **result code** (`NFC1:…`). Paste it into the box under the checker on the lesson page: it's saved with your answers in that browser.

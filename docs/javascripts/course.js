@@ -81,10 +81,41 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () { return null; });
   }
+  /* Checker results come from two places: assets/checks.json (built from
+   * progress/checks/ on the local site) and result codes the learner pasted
+   * (state.checks; the online site has no progress/ folder). The newer wins. */
   var checksPromise = null;
   function getChecks(refresh) {
     if (!checksPromise || refresh) checksPromise = fetchJSON("assets/checks.json").then(function (c) { return c || {}; });
-    return checksPromise;
+    return checksPromise.then(withPasted);
+  }
+  function withPasted(fileChecks) {
+    var out = {}, pasted = load().checks || {};
+    Object.keys(fileChecks).forEach(function (id) { out[id] = fileChecks[id]; });
+    Object.keys(pasted).forEach(function (id) {
+      var p = pasted[id];
+      if (!out[id] || new Date(p.timestamp) > new Date(out[id].timestamp)) out[id] = p;
+    });
+    return out;
+  }
+  // FNV-1a, 32 bit: the same checksum tools/checklib.sh prints.
+  function fnv1a(s) {
+    var bytes = new TextEncoder().encode(s), h = 0x811c9dc5;
+    for (var i = 0; i < bytes.length; i++) h = Math.imul(h ^ bytes[i], 0x01000193) >>> 0;
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+  // "NFC1:<id>:<passed>/<total>:<unix time>:<checksum>" -> result, or an error string.
+  function parseCode(raw, expectId) {
+    var code = String(raw).trim();
+    var m = code.match(/^(NFC1:([^:\s]+):(\d+)\/(\d+):(\d+)):([0-9a-f]{8})$/);
+    if (!m) return "That doesn't look like a result code. Copy the whole line that starts with NFC1: from the checker's output.";
+    if (fnv1a(m[1]) !== m[6]) return "The code is damaged (a character is missing or changed). Copy it again from the terminal.";
+    if (m[2] !== expectId) return "This code is for checker " + m[2] + ", not " + expectId + ".";
+    var n = +m[3], total = +m[4];
+    return {
+      id: m[2], passed: total > 0 && n === total, n: n, total: total, criteria: [],
+      info: "from a pasted result code", timestamp: new Date(+m[5] * 1000).toISOString(),
+    };
   }
   function when(ts) {
     try { return new Date(ts).toLocaleString(); } catch (e) { return ts; }
@@ -288,12 +319,15 @@
       status.innerHTML = "";
       if (!r) {
         status.className = "nbq__status is-pending";
-        status.textContent = "Not run yet. Run the command above in your terminal and this updates automatically.";
+        status.textContent = "Not run yet. Run the command above in your terminal: the local site updates automatically; on the online site, paste the result code below.";
         return;
       }
       status.className = "nbq__status " + (r.passed ? "is-pass" : "is-fail");
-      var n = (r.criteria || []).filter(function (c) { return c.passed; }).length;
-      status.appendChild(text("strong", "", (r.passed ? "PASSED " : "Not passed yet ") + "(" + n + "/" + (r.criteria || []).length + " criteria) · last run " + when(r.timestamp)));
+      var crit = r.criteria || [];
+      var n = crit.length ? crit.filter(function (c) { return c.passed; }).length : (r.n || 0);
+      var total = crit.length || r.total || 0;
+      status.appendChild(text("strong", "", (r.passed ? "PASSED " : "Not passed yet ") + "(" + n + "/" + total + " criteria) · last run " + when(r.timestamp)));
+      if (!crit.length && r.info) status.appendChild(text("span", "nbq__status-note", " · " + r.info + "; the terminal shows each criterion"));
       var ul = el("ul", "nbq__criteria");
       (r.criteria || []).forEach(function (c) {
         var li = el("li", c.passed ? "is-pass" : "is-fail");
@@ -307,6 +341,36 @@
     }
     getChecks().then(paint);
     refresh.addEventListener("click", function () { getChecks(true).then(function (c) { paint(c); refreshLessonBars(); }); });
+
+    // The online site can't read progress/checks/: accept the printed result code.
+    var paste = el("details", "nbq__hint nbq__paste");
+    paste.appendChild(text("summary", "", "Studying on the online site? Paste the result code"));
+    paste.appendChild(el("p", "", "The checker ends by printing a result code that starts with <code>NFC1:</code>. Paste it here to record the result in this browser."));
+    var row = el("div", "nbq__row");
+    var inp = document.createElement("input");
+    inp.type = "text"; inp.className = "nbq__input nbq__input--code";
+    inp.placeholder = "NFC1:" + spec.check + ":…"; inp.spellcheck = false; inp.autocomplete = "off";
+    inp.setAttribute("aria-label", "Result code for checker " + spec.check);
+    var save_ = btn("Save result", "nbq__btn--primary");
+    row.appendChild(inp); row.appendChild(save_);
+    paste.appendChild(row);
+    var msg = el("p", "nbq__paste-msg"); msg.setAttribute("role", "status");
+    paste.appendChild(msg);
+    root.appendChild(paste);
+    function submit() {
+      var r = parseCode(inp.value, spec.check);
+      if (typeof r === "string") { msg.className = "nbq__paste-msg is-bad"; msg.textContent = r; return; }
+      var state = load();
+      state.checks = state.checks || {};
+      state.checks[r.id] = r;
+      save(state);
+      inp.value = "";
+      msg.className = "nbq__paste-msg is-ok";
+      msg.textContent = "Saved: " + r.n + "/" + r.total + " criteria" + (r.passed ? ", passed." : ". Fix the failing criteria and run the checker again.");
+      getChecks().then(function (c) { paint(c); refreshLessonBars(); });
+    }
+    save_.addEventListener("click", submit);
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
   }
 
   function renderWidget(node, state) {
@@ -503,7 +567,7 @@
       host.appendChild(text("h2", "", "Back up or move your progress"));
       host.appendChild(el("p", "",
         "Your answers are saved in <strong>this browser</strong> for this site address (" + esc(window.location.host || "local file") +
-        "). Export a backup now and then, especially before clearing browser data or switching browsers. Checker results live in the <code>progress/checks/</code> folder of your project."));
+        "). Export a backup now and then, especially before clearing browser data or switching browsers. On the local site, checker results live in the <code>progress/checks/</code> folder of your project; result codes you pasted are saved with your answers."));
       var tools = el("div", "nb-dash__tools");
       var exp = btn("Export progress"), imp = btn("Import progress"), rst = btn("Reset all answers", "nbq__btn--danger");
       var file = document.createElement("input"); file.type = "file"; file.accept = "application/json"; file.hidden = true;
@@ -525,7 +589,7 @@
         }).catch(function () { alert("That file doesn't look like a progress export."); });
       });
       rst.addEventListener("click", function () {
-        if (confirm("Erase all your saved answers in this browser? Checker results are not affected.")) {
+        if (confirm("Erase all your saved answers and pasted result codes in this browser? Results in progress/checks/ are not affected.")) {
           try { window.localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
           renderDashboard(host);
         }

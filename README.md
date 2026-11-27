@@ -15,7 +15,7 @@ A dashboard tracks your progress automatically.
 
 ## Study with a local copy
 
-The online site is fine for reading and answering questions. The hands-on parts need the repository on your own machine: the exercise files, and the checker scripts that report your results to the site.
+The online site is fine for reading and answering questions. The hands-on parts need the repository on your own machine: the exercise files, and the checker scripts that test your work. On the local site, checker results appear by themselves; on the online site, paste the result code each checker prints into the box under it.
 
 ```bash
 git clone https://github.com/Mohamed-Elmanzalawi/nextflow-course.git
