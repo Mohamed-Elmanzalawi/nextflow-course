@@ -43,6 +43,39 @@ The hash **is** the task folder's name: `work/9e/24edb3…`. With **`-resume`**,
 !!! analogy "Real-life analogy: a lab notebook with checksums"
     Before repeating an experiment you check your notebook: same protocol, same reagent lot, same sample? Then the result on page 42 is still valid and you don't redo it. Change the protocol (the script) or the sample (an input), and you must run it again.
 
+### The same idea in Python
+
+`resume.py` counts reads the slow way, but first computes a fingerprint from the script and each input file's path, size and modification time, and looks for a folder with that name in `py_work/`:
+
+```python title="resume.py"
+--8<-- "module03_first_pipeline/lesson04_resume/resume.py"
+```
+
+```bash title="Terminal"
+bash ../make_data.sh
+python3 resume.py
+python3 resume.py
+touch data/sample1.fastq
+python3 resume.py
+```
+
+```text title="Real output (your hashes will differ: they include the full path)"
+[27/91ecef] sample1.fastq: ran
+[1f/263d27] sample2.fastq: ran
+[ec/dc5c79] sample3.fastq: ran
+[27/91ecef] sample1.fastq: cached
+[1f/263d27] sample2.fastq: cached
+[ec/dc5c79] sample3.fastq: cached
+[a9/36c3ce] sample1.fastq: ran
+[1f/263d27] sample2.fastq: cached
+[ec/dc5c79] sample3.fastq: cached
+```
+
+`touch` changed only the timestamp of `sample1.fastq`, but the timestamp is part of the fingerprint, so that one task ran again. Nextflow behaves exactly the same way, as you'll see in section B.
+
+!!! note "Where the analogy stops"
+    Nextflow's hash also covers the container or conda environment and the values filled into the script, and with `-resume` it reuses only tasks that **succeeded**. Python's `functools.cache` is the in-memory cousin of this idea; it forgets everything when the program ends.
+
 ### A ripple effect
 
 When one task re-runs, its **outputs** are new files, so the next task's **inputs** have changed too, and it re-runs as well. In the animation, step ④: `sample1` changed, so its count file is new, so `SUMMARISE` (which reads all count files) runs again. Tasks that don't depend on `sample1` stay cached.

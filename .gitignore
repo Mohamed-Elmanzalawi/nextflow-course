@@ -21,3 +21,6 @@ capstone1/data/
 
 # Data cache used by the Module 5 checkers
 module05_channels/data/
+
+# Output of the Python versions of the lesson scripts
+py_work/

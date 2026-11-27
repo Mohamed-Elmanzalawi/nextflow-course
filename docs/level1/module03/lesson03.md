@@ -206,9 +206,36 @@ workflow.output.mode = 'copy'
 
 `precedence.nf` only prints its parameter:
 
-```groovy title="precedence.nf"
---8<-- "module03_first_pipeline/lesson03_params_publish/precedence.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="precedence.nf"
+    --8<-- "module03_first_pipeline/lesson03_params_publish/precedence.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="params.py"
+    --8<-- "module03_first_pipeline/lesson03_params_publish/params.py"
+    ```
+
+    ```bash title="Terminal"
+    python3 params.py
+    echo '{"title": "from a params file"}' > params.json
+    python3 params.py --params-file params.json
+    python3 params.py --params-file params.json --title "from the command line"
+    python3 params.py --titel oops                  # a typo
+    ```
+
+    ```text title="Real output"
+    title = from the script
+    title = from a params file
+    title = from the command line
+    usage: params.py [-h] [--title TITLE] [--params-file PARAMS_FILE]
+    params.py: error: unrecognized arguments: --titel oops
+    ```
+
+!!! note "Where the analogy stops"
+    argparse has no `nextflow.config` layer, and you write the file-merging yourself. Nextflow builds all four layers in, and also accepts JSON: `-params-file params.json` works too. Like argparse, it stops on a misspelled parameter such as `--titel`.
 
 ```bash title="Terminal"
 nextflow run precedence.nf                                    # 1. script default

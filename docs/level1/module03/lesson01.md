@@ -38,9 +38,25 @@ A Nextflow script has two kinds of building blocks:
 
 Here's the smallest useful script:
 
-```groovy title="hello.nf"
---8<-- "module03_first_pipeline/lesson01_anatomy/hello.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="hello.nf"
+    --8<-- "module03_first_pipeline/lesson01_anatomy/hello.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="hello.py"
+    --8<-- "module03_first_pipeline/lesson01_anatomy/hello.py"
+    ```
+
+    ```text title="Real output: python3 hello.py && cat py_work/hello.txt"
+    py_work/hello.txt
+    Hello from Python!
+    ```
+
+!!! note "Where the analogy stops"
+    Python runs `say_hello()` in the current folder and writes wherever you tell it. Nextflow gives every task its **own** fresh folder in `work/`, runs the script there, and then **checks** that the promised `hello.txt` exists.
 
 Read it like this:
 

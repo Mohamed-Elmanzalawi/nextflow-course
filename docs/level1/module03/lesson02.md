@@ -29,9 +29,26 @@ level: 1
 
 ### A process that works on files
 
-```groovy title="main.nf"
---8<-- "module03_first_pipeline/lesson02_processes_workflows/main.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="main.nf"
+    --8<-- "module03_first_pipeline/lesson02_processes_workflows/main.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="main.py"
+    --8<-- "module03_first_pipeline/lesson02_processes_workflows/main.py"
+    ```
+
+    ```text title="Real output: python3 main.py (after bash ../make_data.sh), about 2 s"
+    sample1	1000
+    sample2	1250
+    sample3	1500
+    ```
+
+!!! note "Where the analogy stops"
+    In Python you ask for parallel work yourself (`ProcessPoolExecutor`), and `summarise` waits because `list(…)` waits for every count. Nextflow does both by itself: each `COUNT_READS` task starts as soon as its file arrives, `collect()` does the waiting, and the same code can spread the tasks over a SLURM cluster.
 
 Three new ideas, all in this file:
 
