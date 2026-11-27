@@ -29,9 +29,31 @@ level: 1
 
 ### Directives
 
-```groovy title="directives.nf"
---8<-- "module04_processes/lesson02_directives/directives.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="directives.nf"
+    --8<-- "module04_processes/lesson02_directives/directives.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="retry.py"
+    --8<-- "module04_processes/lesson02_directives/retry.py"
+    ```
+
+    ```text title="Real output: python3 retry.py"
+    [s1] attempt 1: 1 CPU, 1 GB
+    [s1] failed (pretend we ran out of memory), retrying
+    [s1] attempt 2: 1 CPU, 2 GB
+    [s1] done: s1.txt
+    [s2] attempt 1: 1 CPU, 1 GB
+    [s2] failed (pretend we ran out of memory), retrying
+    [s2] attempt 2: 1 CPU, 2 GB
+    [s2] done: s2.txt
+    ```
+
+!!! note "Where the analogy stops"
+    In Python, "2 GB" is only a number you print. In Nextflow, `memory` is a **request** to the executor: on SLURM it becomes `--mem`, and the job really gets more memory on the retry. Nextflow also runs `s1` and `s2` at the same time, and each attempt in a fresh task folder.
 
 | Directive | Meaning | On SLURM it becomes… |
 |---|---|---|

@@ -28,9 +28,33 @@ level: 1
 
 ### The sections of a process
 
-```groovy title="blocks.nf"
---8<-- "module04_processes/lesson01_process_blocks/blocks.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="blocks.nf"
+    --8<-- "module04_processes/lesson01_process_blocks/blocks.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="interpolation.py"
+    --8<-- "module04_processes/lesson01_process_blocks/interpolation.py"
+    ```
+
+    ```text title="Real output: python3 interpolation.py (after bash ../make_data.sh)"
+    --- the script Bash receives (Nextflow saves it as .command.sh):
+    awk -v min=50 '
+        NR % 4 == 2 { reads++; if (length($0) >= min) long++ }
+        END { print "reads:", reads, "long enough:", long }
+    ' data/sample1.fastq
+    echo "bash version: $BASH_VERSION"
+
+    --- its output:
+    reads: 1000 long enough: 1000
+    bash version: 3.2.57(1)-release
+    ```
+
+!!! note "Where the analogy stops"
+    Same problem, different escape character. In a Python f-string, `$0` and `$BASH_VERSION` need nothing, but every brace meant for awk must be doubled (`{{ }}`). In a Nextflow script block the braces are fine, but every `$` meant for Bash or awk needs `\$`. Either way, one string is filled in by one language and then run by another.
 
 | Section | Job | Required? |
 |---|---|---|

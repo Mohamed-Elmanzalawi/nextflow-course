@@ -58,6 +58,29 @@ Both can receive a file, but only one **stages** it:
 2. `emit:` names the output. After `out = SPLIT(…)` you write `out.chunks`, `out.n`, `out.warning` (or `SPLIT.out.chunks` and so on).
 3. Only some tasks create `warning.txt`. Without `optional: true`, those that don't would fail with *Missing output file(s)*.
 
+The whole `split.nf`, and the same thing in Python:
+
+=== "Nextflow"
+
+    ```groovy title="split.nf"
+    --8<-- "module04_processes/lesson04_inputs_outputs/split.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="emit.py"
+    --8<-- "module04_processes/lesson04_inputs_outputs/emit.py"
+    ```
+
+    ```text title="Real output: python3 emit.py (after bash ../make_data.sh)"
+    chunks:  ['chunk_sample1_01.fastq', 'chunk_sample1_02.fastq', 'chunk_sample1_03.fastq']
+    chunks:  ['chunk_sample2_01.fastq', 'chunk_sample2_02.fastq', 'chunk_sample2_03.fastq', 'chunk_sample2_04.fastq']
+    chunks:  ['chunk_sample3_01.fastq', 'chunk_sample3_02.fastq', 'chunk_sample3_03.fastq', 'chunk_sample3_04.fastq']
+    ```
+
+!!! note "Where the analogy stops"
+    A Python function returns one object at the end. A Nextflow process sends each named output into its **own channel**, so `out.chunks` and `out.warning` can feed different processes, and a missing optional output simply sends nothing down that channel. Python's `glob` also always gives a list, while a Nextflow glob that matches one file gives a single file (see the gotcha below).
+
 --8<-- "includes/anim/emit_outputs.html"
 
 !!! gotcha "Gotcha! One file or a list?"

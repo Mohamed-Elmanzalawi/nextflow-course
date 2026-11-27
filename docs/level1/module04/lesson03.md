@@ -63,9 +63,29 @@ When a task fails, Nextflow prints a report with everything you need to start:
 
 ## B. Demonstration: a failure that hides
 
-```groovy title="hidden_failure.nf"
---8<-- "module04_processes/lesson03_task_isolation/hidden_failure.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="hidden_failure.nf"
+    --8<-- "module04_processes/lesson03_task_isolation/hidden_failure.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="task_files.py"
+    --8<-- "module04_processes/lesson03_task_isolation/task_files.py"
+    ```
+
+    ```text title="Real output: python3 task_files.py (after bash ../make_data.sh)"
+    bash -ue: exit code 0
+      .command.err: gzip: sample1.fastq: not in gzip format
+      first_read.txt: 0 bytes
+    bash -euo pipefail: exit code 1
+      .command.err: gzip: sample1.fastq: not in gzip format
+      first_read.txt: 0 bytes
+    ```
+
+!!! note "Where the analogy stops"
+    `task_files.py` copies the **shape** of a task folder: a fresh folder, a link per input, `.command.sh`, `.command.out`, `.command.err` and `.exitcode`. Nextflow adds `.command.run` (the wrapper that sets up the environment, containers and the scheduler), `.command.log`, and checks the declared outputs afterwards. Run the Python version and then `ls -a py_work/*/` to compare with a real task folder.
 
 `data/sample1.fastq` is **not** gzipped, so `gzip -cd` can't read it.
 
