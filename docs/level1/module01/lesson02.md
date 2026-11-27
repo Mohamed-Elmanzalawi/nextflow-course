@@ -92,7 +92,7 @@ Your lab has an expression table, and a shared reference folder has a gene annot
 - `annotate.sh` sorts your table and `join`s it with the annotation.
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module01_intro/lesson02_reproducibility
+cd "$COURSE"/module01_intro/lesson02_reproducibility
 bash make_data.sh
 LC_ALL=C bash annotate.sh
 LC_ALL=en_US.UTF-8 bash annotate.sh

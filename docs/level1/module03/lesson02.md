@@ -58,7 +58,7 @@ Three new ideas, all in this file:
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module03_first_pipeline/lesson02_processes_workflows
+cd "$COURSE"/module03_first_pipeline/lesson02_processes_workflows
 bash ../make_data.sh          # 3 small FASTQ files in data/
 nextflow run main.nf
 ```

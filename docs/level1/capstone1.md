@@ -34,7 +34,7 @@ flowchart LR
 ## Set up
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/capstone1
+cd "$COURSE"/capstone1
 bash ../module05_channels/get_data.sh      # the same real data as in Module 5
 ls
 ```

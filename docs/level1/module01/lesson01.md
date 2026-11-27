@@ -126,7 +126,7 @@ You don't need Nextflow yet. This demo shows the **problems** Nextflow solves, u
 - `naive_pipeline.sh` counts reads per sample, with `sleep 2` standing in for a slow tool.
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module01_intro/lesson01_what_is_nextflow
+cd "$COURSE"/module01_intro/lesson01_what_is_nextflow
 bash make_data.sh
 time bash naive_pipeline.sh
 ```

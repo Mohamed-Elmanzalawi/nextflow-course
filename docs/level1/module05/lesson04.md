@@ -74,7 +74,7 @@ Adding a column to the samplesheet now means adding **one key** to the meta map.
 ```
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module05_channels/lesson04_meta_maps
+cd "$COURSE"/module05_channels/lesson04_meta_maps
 bash ../get_data.sh
 nextflow run meta.nf
 ```

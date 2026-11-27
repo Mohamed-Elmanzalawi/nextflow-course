@@ -68,7 +68,7 @@ A reference genome is one file, but `channel.fromPath('ref.fa')` makes a **queue
 Download the real data into the lesson folder (about 400 KB, checked with SHA-256):
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module05_channels/lesson01_queue_value
+cd "$COURSE"/module05_channels/lesson01_queue_value
 bash ../get_data.sh
 ```
 

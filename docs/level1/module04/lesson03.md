@@ -70,7 +70,7 @@ When a task fails, Nextflow prints a report with everything you need to start:
 `data/sample1.fastq` is **not** gzipped, so `gzip -cd` can't read it.
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module04_processes/lesson03_task_isolation
+cd "$COURSE"/module04_processes/lesson03_task_isolation
 bash ../make_data.sh                  # plain .fastq files
 bash ../make_data.sh 3 1000 data gz   # and .fastq.gz files, for the challenge
 nextflow run hidden_failure.nf
@@ -170,7 +170,7 @@ No `scripts/` folder in here: the task can only see its input and its own files.
 **⑤ Fix the pipeline and resume.** Here: move the helper into `bin/`, make it executable, and call it by name:
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module04_processes/lesson03_task_isolation
+cd "$COURSE"/module04_processes/lesson03_task_isolation
 mkdir -p bin && mv scripts/mean_length.sh bin/ && chmod +x bin/mean_length.sh
 # in qc.nf:  mean_length.sh ${fq} > ${fq.simpleName}.length.tsv
 nextflow run qc.nf -resume

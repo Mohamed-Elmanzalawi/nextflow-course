@@ -96,7 +96,7 @@ The pipeline declares both, so the **same `main.nf`** runs anywhere: `-profile d
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module02_environment/lesson03_containers
+cd "$COURSE"/module02_environment/lesson03_containers
 
 # 1. A container, straight from Docker
 docker run --rm --platform linux/amd64 quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0 fastqc --version

@@ -68,7 +68,7 @@ Two ideas from the animation will come back in every lesson:
 Go to the lesson folder and run the script:
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module03_first_pipeline/lesson01_anatomy
+cd "$COURSE"/module03_first_pipeline/lesson01_anatomy
 nextflow run hello.nf
 ```
 

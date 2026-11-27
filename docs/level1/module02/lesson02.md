@@ -196,7 +196,7 @@ concept: installation
 label: "Install check: auto-checked"
 check: 2.2-install
 command: "bash check_install.sh"
-hint: "Run it from `~/Desktop/Projects/learning_nextflow/module02_environment/lesson02_install`. If 'Nextflow on your PATH' fails, open a **new** terminal window first: PATH changes only apply to new shells."
+hint: "Run it from `$COURSE/module02_environment/lesson02_install`. If 'Nextflow on your PATH' fails, open a **new** terminal window first: PATH changes only apply to new shells."
 explain: "All four checks green means your Mac is ready for every lesson up to Module 10."
 ```
 

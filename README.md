@@ -25,6 +25,8 @@ conda activate nf-course
 mkdocs serve          # then open http://127.0.0.1:8000/nextflow-course/
 ```
 
+Lesson commands start with `cd "$COURSE"/…`. The [Setup page](docs/setup.md) shows how to set `COURSE` to your clone once.
+
 The `nf-course` environment is only for the website. You install Nextflow itself in Lesson 2.2.
 
 Your answers are saved in your browser for each site address, so progress made on the local site does not appear on the online site, and vice versa. Use **Export** and **Import** on the Progress page to move it.

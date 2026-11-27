@@ -95,7 +95,7 @@ Here's the complete pipeline. Apart from the `params` and `publish`/`output` par
 ```
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module03_first_pipeline/lesson03_params_publish
+cd "$COURSE"/module03_first_pipeline/lesson03_params_publish
 bash ../make_data.sh
 nextflow run main.nf
 ```

@@ -68,7 +68,7 @@ samples = channel.fromPath(params.input)
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module05_channels/lesson02_factories
+cd "$COURSE"/module05_channels/lesson02_factories
 bash ../get_data.sh
 nextflow run factories.nf
 ```

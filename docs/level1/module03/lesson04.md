@@ -60,7 +60,7 @@ The pipeline is Lesson 3.3's, with the 2-second `sleep` back in `COUNT_READS`, s
 ### 1. A first run, then the same run with `-resume`
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module03_first_pipeline/lesson04_resume
+cd "$COURSE"/module03_first_pipeline/lesson04_resume
 bash ../make_data.sh
 nextflow run main.nf
 nextflow run main.nf -resume

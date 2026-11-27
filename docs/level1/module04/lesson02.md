@@ -77,7 +77,7 @@ Exit status 137 = 128 + 9: the task was killed with `SIGKILL`, which is what SLU
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module04_processes/lesson02_directives
+cd "$COURSE"/module04_processes/lesson02_directives
 nextflow run directives.nf
 ```
 

@@ -2,10 +2,23 @@
 
 The course website is built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/), the same tool used for the official [Nextflow training](https://training.nextflow.io/latest/). Everything lives in your project folder.
 
+## Remember where the course lives (once)
+
+Every lesson starts with a line like `cd "$COURSE"/module03_first_pipeline/lesson01_anatomy`. `$COURSE` is the folder you cloned the course into. Set it once, from inside that folder:
+
+```bash title="Terminal"
+cd ~/nextflow-course                              # wherever you cloned it
+echo "export COURSE=\"$PWD\"" >> ~/.zshrc         # bash users: ~/.bashrc
+source ~/.zshrc
+echo "$COURSE"                                    # prints the folder
+```
+
+New terminal windows now know `$COURSE` too.
+
 ## Open the site
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow
+cd "$COURSE"
 conda activate nf-course
 mkdocs serve
 ```
@@ -21,7 +34,7 @@ Then open <http://127.0.0.1:8000/nextflow-course/> in your browser.
 ## Where things live
 
 ```text
-learning_nextflow/
+$COURSE/                         # the folder you cloned
 ├── mkdocs.yml                  # website configuration
 ├── docs/                       # lesson pages (what you read)
 │   ├── progress.md             # your live progress dashboard

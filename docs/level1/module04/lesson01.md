@@ -64,7 +64,7 @@ Python analogy: the script block is like an **f-string that contains a shell scr
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module04_processes/lesson01_process_blocks
+cd "$COURSE"/module04_processes/lesson01_process_blocks
 bash ../make_data.sh
 nextflow run blocks.nf
 ```

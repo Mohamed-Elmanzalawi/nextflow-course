@@ -68,7 +68,7 @@ Both can receive a file, but only one **stages** it:
 ## B. Demonstration
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module04_processes/lesson04_inputs_outputs
+cd "$COURSE"/module04_processes/lesson04_inputs_outputs
 bash ../make_data.sh
 nextflow run split.nf
 ```

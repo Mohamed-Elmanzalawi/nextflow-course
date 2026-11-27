@@ -65,7 +65,7 @@ reads.filter { f -> f.name.startsWith('cov') }
 ```
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module05_channels/lesson03_operators
+cd "$COURSE"/module05_channels/lesson03_operators
 nextflow -q run operators.nf | sort
 ```
 

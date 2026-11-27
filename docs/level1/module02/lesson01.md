@@ -156,7 +156,7 @@ The lesson folder has:
 - `count_reads.sh`, which counts reads in a gzipped FASTQ.
 
 ```bash title="Terminal"
-cd ~/Desktop/Projects/learning_nextflow/module02_environment/lesson01_bash_refresher
+cd "$COURSE"/module02_environment/lesson01_bash_refresher
 bash make_data.sh
 bash count_reads.sh data/good.fastq.gz;      echo "exit code: $?"
 bash count_reads.sh data/truncated.fastq.gz; echo "exit code: $?"
