@@ -60,9 +60,33 @@ reads.filter { f -> f.name.startsWith('cov') }
 
 ## B. Demonstration
 
-```groovy title="operators.nf"
---8<-- "module05_channels/lesson03_operators/operators.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="operators.nf"
+    --8<-- "module05_channels/lesson03_operators/operators.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="operators.py"
+    --8<-- "module05_channels/lesson03_operators/operators.py"
+    ```
+
+    ```bash title="Terminal"
+    python3 operators.py | sort
+    ```
+
+    ```text title="Real output: identical, line for line, to the Nextflow output below"
+    collect:    [1, 2, 3, 4, 5]
+    combine:    [cov_a, GRCh38]
+    combine:    [cov_a, MN908947]
+    …
+    range:      3
+    sum:        15
+    ```
+
+!!! note "Where the analogy stops"
+    Python works on finished lists, so its order never changes. Channels deliver items as they're produced, so in Nextflow the order can change from run to run (that's why both commands end in `| sort`), and `collect`, `sum` and `count` must wait until their channel has delivered its last item.
 
 ```bash title="Terminal"
 cd "$COURSE"/module05_channels/lesson03_operators

@@ -39,9 +39,31 @@ level: 1
 
 Every task needs **one item from each input**. Nextflow pairs the inputs up in order: the first item of each, then the second of each, and so on, and stops when **any** queue channel runs out.
 
-```groovy title="pairing.nf"
---8<-- "module05_channels/lesson01_queue_value/pairing.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="pairing.nf"
+    --8<-- "module05_channels/lesson01_queue_value/pairing.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="pairing.py"
+    --8<-- "module05_channels/lesson01_queue_value/pairing.py"
+    ```
+
+    ```text title="Real output: python3 pairing.py"
+    1 + a
+    2 + b
+    -- the reference in a queue channel: channel.fromPath('ref.fa')
+    cov_a_R1 mapped against ref.fa
+    -- the reference as a value: channel.value(file('ref.fa'))
+    cov_a_R1 mapped against ref.fa
+    cov_b_R1 mapped against ref.fa
+    hsa_rna_R1 mapped against ref.fa
+    ```
+
+!!! note "Where the analogy stops"
+    `zip` works on inputs that already exist. Channels deliver items **over time**, and a task starts as soon as one item from each input is there, so which sample gets the single reference is random in Nextflow (see section B). The rule is the same in both: items are paired in order, and the shortest input decides.
 
 ```text title="Real output (the end)"
 executor >  local (2)

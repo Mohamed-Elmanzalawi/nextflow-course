@@ -98,6 +98,31 @@ tuple:     hsa_rna hsa_rna_R1.fastq.gz hsa_rna_R2.fastq.gz
 
 All the channels run **at the same time**, so their lines are interleaved, and files from `fromPath` arrive in no particular order. The `csv row` lines show what `splitCsv` makes: one map per line, with the header names as keys.
 
+### The same in Python
+
+`splitCsv(header: true)` is `csv.DictReader`, `map` is a list comprehension, and `fromFilePairs` is `glob` plus `itertools.groupby`:
+
+```python title="factories.py"
+--8<-- "module05_channels/lesson02_factories/factories.py"
+```
+
+```text title="Real output: python3 factories.py"
+csv row:   {'sample': 'cov_a', 'fastq_1': 'data/cov_a_R1.fastq.gz', 'fastq_2': 'data/cov_a_R2.fastq.gz'}
+csv row:   {'sample': 'cov_b', 'fastq_1': 'data/cov_b_R1.fastq.gz', 'fastq_2': 'data/cov_b_R2.fastq.gz'}
+csv row:   {'sample': 'hsa_rna', 'fastq_1': 'data/hsa_rna_R1.fastq.gz', 'fastq_2': 'data/hsa_rna_R2.fastq.gz'}
+tuple:     cov_a cov_a_R1.fastq.gz cov_a_R2.fastq.gz
+tuple:     cov_b cov_b_R1.fastq.gz cov_b_R2.fastq.gz
+tuple:     hsa_rna hsa_rna_R1.fastq.gz hsa_rna_R2.fastq.gz
+pairs:     cov_a ['cov_a_R1.fastq.gz', 'cov_a_R2.fastq.gz']
+pairs:     cov_b ['cov_b_R1.fastq.gz', 'cov_b_R2.fastq.gz']
+pairs:     hsa_rna ['hsa_rna_R1.fastq.gz', 'hsa_rna_R2.fastq.gz']
+```
+
+A Nextflow map prints as `[sample:cov_a, …]`; a Python dict as `{'sample': 'cov_a', …}`. Same data.
+
+!!! note "Where the analogy stops"
+    Python reads the whole sheet first, so a missing file stops the script before any sample is used. Nextflow **streams** the rows: in the typo test in section C, the `cov_a` line was already printed when `cov_b`'s missing file stopped the run.
+
 ---
 
 ## C. Code walkthrough

@@ -69,9 +69,30 @@ Adding a column to the samplesheet now means adding **one key** to the meta map.
 
 ## B. Demonstration
 
-```groovy title="meta.nf"
---8<-- "module05_channels/lesson04_meta_maps/meta.nf"
-```
+=== "Nextflow"
+
+    ```groovy title="meta.nf"
+    --8<-- "module05_channels/lesson04_meta_maps/meta.nf"
+    ```
+
+=== "Python equivalent"
+
+    ```python title="meta.py"
+    --8<-- "module05_channels/lesson04_meta_maps/meta.py"
+    ```
+
+    ```text title="Real output: python3 meta.py (after bash ../get_data.sh)"
+    in:  [id:cov_a, condition:infected, single_end:false] [cov_a_R1.fastq.gz, cov_a_R2.fastq.gz]
+    in:  [id:cov_b, condition:infected, single_end:false] [cov_b_R1.fastq.gz, cov_b_R2.fastq.gz]
+    in:  [id:hsa_rna, condition:control, single_end:false] [hsa_rna_R1.fastq.gz, hsa_rna_R2.fastq.gz]
+    out: [id:cov_a, condition:infected, single_end:false, read_pairs:100]
+    out: [id:cov_b, condition:infected, single_end:false, read_pairs:100]
+    out: [id:hsa_rna, condition:control, single_end:false, read_pairs:4159]
+    oops: [id:cov_a, condition:infected, single_end:false, read_pairs:0]
+    ```
+
+!!! note "Where the analogy stops"
+    The `oops` line is the in-place-change bug from section C, made visible: changing the dict "after" `COUNT_PAIRS` also changed the item that went **in**. Python and Nextflow share this behaviour, and the fix is the same: build a new map, `{**meta, "read_pairs": n}` in Python, `meta + [read_pairs: n]` in Nextflow. In Nextflow it matters even more, because the same map travels through several processes running at the same time.
 
 ```bash title="Terminal"
 cd "$COURSE"/module05_channels/lesson04_meta_maps
